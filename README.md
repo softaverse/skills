@@ -1,18 +1,24 @@
 # Softaverse Skills
 
+[![Install via skills.sh](https://img.shields.io/badge/skills.sh-install-green)](https://skills.sh/softaverse/skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A curated collection of agent skills for Claude Code, Cursor, Codex, and every other
+This repository contains [Agent Skills](https://agentskills.io/home) for everyday
+development work — code review, documentation, design extraction, and skill authoring.
+They are plain Markdown, so they work with Claude Code, Cursor, Codex, and every other
 agent that reads `SKILL.md`.
 
-## Quickstart
+> [!NOTE]
+> This repository is under active development.
+
+## Installation
 
 ```bash
 npx skills add softaverse/skills
 ```
 
-Pick the skills you want from the interactive list and choose which agents to install
-them into. No global install, no account, nothing to configure.
+From the `npx skills add` command, you can select the specific skills from this repo to
+install, and choose which agents to install them into.
 
 ```bash
 # See what's in here without installing
@@ -29,26 +35,40 @@ npx skills update
 ```
 
 `skills` is the [open agent skills CLI](https://github.com/vercel-labs/skills) — it works
-with any repository, this one included.
+with any repository, this one included. It needs Node.js 18 or newer; the skills
+themselves have no runtime.
 
-## Skills
+## Available Skills
 
-| Skill | Use it for |
-| --- | --- |
-| [`extract-design-system`](skills/extract-design-system/SKILL.md) | Extracting design tokens and reusable components from a website URL or local HTML file. |
-| [`code-reviewer`](skills/code-reviewer/SKILL.md) | Reviewing recently changed code for bugs, security, and performance issues. |
-| [`explain-code`](skills/explain-code/SKILL.md) | Explaining code with visual diagrams and everyday analogies; great for teaching and onboarding. |
-| [`write-readme`](skills/write-readme/SKILL.md) | Restructuring a README into the 8-section entry-point layout and moving deep docs into `docs/`. |
-| [`git-commit-optimizer`](skills/git-commit-optimizer/SKILL.md) | Writing conventional commits, splitting large diffs, and cleaning up commit history. |
-| [`idea-to-product`](skills/idea-to-product/SKILL.md) | Turning product ideas into concise, actionable plans and implementation roadmaps. |
-| [`optimize-images`](skills/optimize-images/SKILL.md) | Converting and compressing PNG/JPG to WebP and updating source references. |
-| [`obsidian-formatter`](skills/obsidian-formatter/SKILL.md) | Formatting Markdown for correct display in Obsidian (tables, code blocks, headings). |
-| [`draw-mermaid-diagrams-for-obsidian`](skills/draw-mermaid-diagrams-for-obsidian/SKILL.md) | Creating Mermaid diagrams tailored for Obsidian notes. |
-| [`route-skill-references`](skills/route-skill-references/SKILL.md) | Refactoring a bloated skill into a lean `SKILL.md` plus on-demand reference files. |
+<!-- BEGIN SKILLS -->
+- **Code and review**
+  - [**Code Reviewer**](./skills/code-reviewer) — review recently changed code for bugs, security, and performance issues.
+  - [**Explain Code**](./skills/explain-code) — explain code with visual diagrams and everyday analogies, for teaching and onboarding.
+  - [**Git Commit Optimizer**](./skills/git-commit-optimizer) — write conventional commits, split large diffs, and clean up commit history.
+- **Design and assets**
+  - [**Extract Design System**](./skills/extract-design-system) — pull design tokens and reusable components out of a website URL or local HTML file.
+  - [**Optimize Images**](./skills/optimize-images) — convert and compress PNG/JPG to WebP and update source references.
+- **Documentation and notes**
+  - [**Write README**](./skills/write-readme) — restructure a README into the 8-section entry-point layout and move deep docs into `docs/`.
+  - [**Obsidian Formatter**](./skills/obsidian-formatter) — format Markdown so tables, code blocks, and headings render correctly in Obsidian.
+  - [**Draw Mermaid Diagrams for Obsidian**](./skills/draw-mermaid-diagrams-for-obsidian) — create Mermaid diagrams tailored for Obsidian notes.
+- **Planning and skill authoring**
+  - [**Idea to Product**](./skills/idea-to-product) — turn product ideas into concise, actionable plans and implementation roadmaps.
+  - [**Route Skill References**](./skills/route-skill-references) — refactor a bloated skill into a lean `SKILL.md` plus on-demand reference files.
+<!-- END SKILLS -->
 
-## Requirements
+## Using these skills locally
 
-- Node.js 18 or newer (only to run `npx skills`; the skills themselves are plain Markdown).
+This repository ignores `.claude/skills/`, so install into it like any other consumer:
+
+```bash
+npx skills add . -a claude-code
+```
+
+## Support
+
+If you need help or encounter issues with these skills, search for existing issues or open
+a new one in the [GitHub Issue Tracker](https://github.com/softaverse/skills/issues).
 
 ## Contributing
 
@@ -65,7 +85,7 @@ The `name` in the frontmatter must match the directory name, and `description` s
 both *what* the skill does and *when* to use it — that sentence is the only thing an agent
 sees before deciding to load the skill.
 
-Before opening a pull request, confirm the skill is discoverable and add it to the table
+Before opening a pull request, confirm the skill is discoverable and add it to the list
 above:
 
 ```bash
@@ -74,13 +94,8 @@ npx skills add . --list
 
 A skill missing required frontmatter is reported as skipped rather than listed.
 
-## Using these skills locally
-
-This repository ignores `.claude/skills/`, so install into it like any other consumer:
-
-```bash
-npx skills add . -a claude-code
-```
+You can also help by [reporting bugs or inaccuracies](https://github.com/softaverse/skills/issues)
+in the skill Markdown files, or by filing a feature request for a new skill.
 
 ## Previous CLI
 
@@ -91,4 +106,5 @@ migrate beyond switching the install command.
 
 ## License
 
-[MIT](LICENSE)
+You are free to copy, modify, and distribute these skills under the terms of the MIT
+license. See the [LICENSE](LICENSE) file for details.
