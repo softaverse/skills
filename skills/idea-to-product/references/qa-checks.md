@@ -1,44 +1,48 @@
-# Discovery Questions & Quality Checks
+# Review gates
 
-Contains Phase 1 question patterns, sample quick-questions, and minimal quality checks for planning artifacts.
+Read during the Review phase, before handing a plan over to Build.
 
-## Questioning strategy (Phase 1)
-- Ask 3–5 focused questions per round
-- Progress layers: Why (business) → What (product) → How (tech)
+## Drive the review — don't ask "任何想法嗎？"
 
-### Round 1 — Business (3 example starter questions)
-- 1) What user pain does this solve today, and how do they cope now? 
-- 2) Who is the primary user and the typical usage scenario?
-- 3) How will you acquire your first users?
+Three targeted questions, then iterate:
 
-### Round 2 — Product
-- 1) Walk me through the core flow step-by-step (entry → core action → success)
-- 2) What roles exist and what can each do?
-- 3) What must be in the MVP vs what can wait?
+1. Outcome 對嗎？—— 「這個 P0 要證明的是 [X]，對嗎？」
+2. v1 太大了嗎？—— 提出你自己會先砍掉的那一項，讓使用者反駁。
+3. 技術棧有意見嗎？
 
-### Round 3 — Technical
-- 1) Planned tech stack and any existing constraints?
-- 2) Expected scale (users/day, concurrent)
-- 3) Any external integrations required now?
+Anything the user doesn't object to is agreed. Move on.
 
-## If user wants to skip discovery
-Ask these 3 quick confirmations (required before building):
-1. Who is the core user and the core success metric? (one sentence)
-2. What are the 3 P0 features required to validate the idea? (list)
-3. Any hard constraints (compliance, existing stack, deadline)? (yes/no + brief)
+## Artifact gates
 
-## Minimal planning artifact checks
-- One-liner present
-- Roles & permissions defined
-- Prioritized feature list (P0/P1/P2)
-- 1–2 user flows written out
-- Data model sketch included
-- Tech recommendation with rationale
-- MVP scope and open questions listed
-- Risks and mitigations enumerated
+The plan is not ready to build from until all of these pass:
 
-## Typical follow-up prompts for agent
-- "Produce a PRD for [idea] using PRD template (medium product)."
-- "Give a 2-week launch plan for the P0 features." 
-- "List integration steps for payments (Stripe) and webhook handling." 
+- [ ] **One-liner** — product, user, problem, in one sentence
+- [ ] **Outcome** — the single thing P0 must prove, with a number attached
+- [ ] **Challenge verdict recorded** — which existing tool was considered, why it doesn't fit
+- [ ] **Roles** — who v1 serves, and which roles are explicitly deferred
+- [ ] **Prioritised features** — every item tagged P0/P1/P2/P3
+- [ ] **1–2 core flows** written out step by step, with exceptions
+- [ ] **Data sketch** — entities and relationships, enough to write the schema
+- [ ] **Tech choices** — each names a specific library/service and a reason
+- [ ] **External dependencies** — third-party services listed
+- [ ] **Out of scope** — with a reason per item
+- [ ] **Open questions** — and none of them blocks P0
+- [ ] **Risks** — with mitigations, not just names
 
+## Red flags — send it back
+
+| Symptom | What it means |
+|---|---|
+| P0 contains auth, billing, admin, or CI | Scaffolding disguised as validation |
+| Every template section is filled | Placeholder padding — cut the empty ones |
+| A feature says "good UX" or "easy to use" | Not a requirement; delete or make it specific |
+| No item in "out of scope" | Scope was never actually bounded |
+| Estimates are all round numbers with no basis | Nobody thought about sequencing |
+| The document is longer than the P0 build | Wrong output mode — drop a level |
+
+## Final gate
+
+> Could an engineer who wasn't in this conversation start P0 tomorrow
+> without asking a follow-up question?
+
+If no, the plan isn't done. If yes, stop planning and build.

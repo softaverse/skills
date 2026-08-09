@@ -1,18 +1,26 @@
-# References — Idea to Product
+# References — idea-to-product
 
-This folder contains topic-specific reference files used by the idea-to-product skill. SKILL.md should remain concise and route to these files when deep content is needed.
+**Maintainer-facing index. Not a runtime reference — `SKILL.md` decides what to read and when.**
 
-Files:
+| File | Phase | Contents |
+|---|---|---|
+| `challenge.md` | Challenge | Build-vs-buy ladder, the five cuts, worked kill/keep examples |
+| `discovery.md` | Discovery | Repo-inference map, question banks by axis, questioning technique |
+| `feature-list.md` | Output: MVP | Feature list template, user stories variant |
+| `prd.md` | Output: COMPLEX | PRD template |
+| `technical-spec.md` | Output: ENGINEERING | Tech spec, API requirements, decision log |
+| `build-plan.md` | Output: BUILD | Build plan template, sequencing, level exit gates |
+| `qa-checks.md` | Review | Review questions, artifact gates, red flags |
 
-- `output-templates.md` — Templates for Phase 2 outputs: Feature List, PRD, Technical Spec, User Stories, Decision Log, API Requirements. (Read when producing planning documents.)
-- `technical-spec.md` — Implementation guidance and detailed technical-spec structure. (Read during Phase 3–4 or when writing a Tech Spec.)
-- `qa-checks.md` — Phase 1 questioning patterns, quick confirmation questions, and minimal artifact quality checks. (Read during Discovery and review.)
-- `rewrite-checklist.md` — Checklist for refactoring this Skill into concise SKILL.md + references. (Useful for maintainers.)
+## Invariants
 
-When to open a file:
-- Preparing Phase 2 artifacts → open `output-templates.md`.
-- Writing or reviewing technical designs → open `technical-spec.md`.
-- Running discovery conversations or validating artifacts → open `qa-checks.md`.
-- Refactoring the skill itself → open `rewrite-checklist.md`.
-
-Fallback: If a required topic is not covered in these references, prefer official docs and include a brief external link in the output.
+- `SKILL.md` holds everything that must fire **at decision time** — intent detection,
+  the Challenge questions, the "don't ask what won't change the plan" rule, the P0–P3
+  ladder, guardrails. Behaviour never moves into `references/`: there is no trigger that
+  makes the model read a file it hasn't decided it needs.
+- `references/` holds only what is looked up **after** a decision — templates, question
+  banks, worked examples.
+- One hop only: `SKILL.md` → one reference. References do not chain.
+- Each rule lives in exactly one file.
+- This README is not routed from `SKILL.md`. Update it when files are added, removed,
+  or renamed.
