@@ -1,6 +1,6 @@
 ---
-description: Refactors existing Skills into a lean SKILL.md plus topic-specific reference files for progressive disclosure.
-when_to_use: Use when simplifying a bloated Skill, splitting examples or lookup material into references, adding a reference routing map, or reorganizing Skill content so only relevant files are loaded on demand.
+name: route-skill-references
+description: Refactors existing Skills into a lean SKILL.md plus topic-specific reference files for progressive disclosure. Use when simplifying a bloated Skill, splitting examples or lookup material into references, adding a reference routing map, or reorganizing Skill content so only relevant files are loaded on demand.
 ---
 
 # Route Skill References
@@ -16,6 +16,7 @@ Use this skill to turn an existing Skill into a concise entry point that routes 
 - Routing map pattern: read `references/routing-template.md` when adding or revising the links from `SKILL.md` to reference files.
 - Rewrite checklist: read `references/rewrite-checklist.md` before editing a skill with several sections, duplicated examples, or unclear routing.
 - Scripts best practices: read `references/scripts-best-practices.md` when adding reusable shell scripts to the `scripts/` directory (for deterministic operations that run without context cost).
+- Script scaffold: read `references/script-template.md` when writing a new script file.
 - Reference index: update `references/README.md` only when adding, removing, or renaming reference files.
 
 Do not read every reference by default. Pick the file that matches the current refactor decision.
