@@ -4,6 +4,9 @@
   "private": true,
   "description": "A curated collection of agent skills, installable with `npx skills`",
   "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-skills.mjs"
+  },
   "keywords": [
     "claude",
     "claude-code",
