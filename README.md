@@ -44,6 +44,7 @@ themselves have no runtime.
 - **Code and review**
   - [**Code Reviewer**](./skills/code-reviewer) — review recently changed code for bugs, security, and performance issues.
   - [**Explain Code**](./skills/explain-code) — explain code with visual diagrams and everyday analogies, for teaching and onboarding.
+  - [**Explain Concept**](./skills/explain-concept) — explain a technology as an evolution story: the problem it solves, what changed, a minimal example, and whether you need it.
   - [**Git Commit Optimizer**](./skills/git-commit-optimizer) — write conventional commits, split large diffs, and clean up commit history.
 - **Design and assets**
   - [**Extract Design System**](./skills/extract-design-system) — pull design tokens and reusable components out of a website URL or local HTML file.
