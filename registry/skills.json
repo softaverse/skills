@@ -39,6 +39,11 @@
     "path": "skills/optimize-images",
     "description": "Convert and compress PNG/JPG images to WebP format using cwebp to reduce file size. Use when the user wants to optimize, compress, or convert images while keeping originals as backup. Includes source code reference updates."
   },
+  "write-readme": {
+    "repo": "https://github.com/softaverse/softaverse",
+    "path": "skills/write-readme",
+    "description": "Write or restructure a project README using the 8-section structure common to high-star GitHub projects, and move Architecture / API / Database / Deployment / Troubleshooting into docs/. Use when creating, rewriting, or trimming a README."
+  },
   "route-skill-references": {
     "repo": "https://github.com/softaverse/softaverse",
     "path": "skills/route-skill-references",

@@ -105,6 +105,7 @@ npx softaverse add extract-design-system --target claude-code codex
 | [`draw-mermaid-diagrams-for-obsidian`](skills/draw-mermaid-diagrams-for-obsidian/SKILL.md) | Create Mermaid diagrams tailored for Obsidian notes. |
 | [`idea-to-product`](skills/idea-to-product/SKILL.md) | Turn product ideas into concise, actionable plans and implementation roadmaps. |
 | [`optimize-images`](skills/optimize-images/SKILL.md) | Convert and compress PNG/JPG to WebP and update source references; includes scripts and workflow. |
+| [`write-readme`](skills/write-readme/SKILL.md) | Write or restructure a README into the 8-section entry-point structure and move deep docs into `docs/`. |
 | [`route-skill-references`](skills/route-skill-references/SKILL.md) | Refactor Skills into a lean SKILL.md with topic-specific reference files for progressive disclosure. |
 
 ## Supported targets
