@@ -65,14 +65,14 @@ The `name` in the frontmatter must match the directory name, and `description` s
 both *what* the skill does and *when* to use it — that sentence is the only thing an agent
 sees before deciding to load the skill.
 
-Before opening a pull request:
+Before opening a pull request, confirm the skill is discoverable and add it to the table
+above:
 
 ```bash
-npm run validate
+npx skills add . --list
 ```
 
-This checks that every skill has valid frontmatter, that its `references/` links resolve,
-and that it appears in the table above.
+A skill missing required frontmatter is reported as skipped rather than listed.
 
 ## Using these skills locally
 
