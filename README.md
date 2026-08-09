@@ -1,126 +1,93 @@
-# Softaverse
+# Softaverse Skills
 
-[![npm version](https://img.shields.io/npm/v/softaverse.svg)](https://www.npmjs.com/package/softaverse)
-[![npm downloads](https://img.shields.io/npm/dm/softaverse.svg)](https://www.npmjs.com/package/softaverse)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Install AI agent skills into Claude Code, Codex, Cursor, Windsurf, GitHub Copilot, and more.
-
-![Softaverse CLI demo](docs/demo.gif)
+A curated collection of agent skills for Claude Code, Cursor, Codex, and every other
+agent that reads `SKILL.md`.
 
 ## Quickstart
 
-List available skills:
-
 ```bash
-npx softaverse list
+npx skills add softaverse/skills
 ```
 
-Install a skill:
+Pick the skills you want from the interactive list and choose which agents to install
+them into. No global install, no account, nothing to configure.
 
 ```bash
-npx softaverse add extract-design-system
+# See what's in here without installing
+npx skills add softaverse/skills --list
+
+# Install one skill into Claude Code and Cursor
+npx skills add softaverse/skills --skill extract-design-system -a claude-code -a cursor
+
+# Install everything, everywhere
+npx skills add softaverse/skills --all
+
+# Update later
+npx skills update
 ```
 
-Install a skill into specific tools:
-
-```bash
-npx softaverse add extract-design-system --target claude-code codex cursor
-```
-
-## Features
-
-- Install skills into multiple AI coding tools.
-- Use interactive prompts or scriptable flags.
-- Support both skill-directory and rule-file based tools.
-- Run without global installation through `npx`.
-
-## Requirements
-
-- Node.js 18 or newer.
-
-## Installation
-
-Install the CLI globally if you plan to use it often:
-
-```bash
-npm install -g softaverse
-```
-
-## Usage
-
-Install a skill interactively:
-
-```bash
-softaverse add extract-design-system
-```
-
-Choose skills and targets interactively:
-
-```bash
-softaverse add skills
-```
-
-Install without prompts:
-
-```bash
-softaverse add extract-design-system --target claude-code codex cursor
-```
-
-List available skills:
-
-```bash
-softaverse list
-```
-
-List supported targets:
-
-```bash
-softaverse targets
-```
-
-Remove an installed skill:
-
-```bash
-softaverse remove extract-design-system
-```
-
-Every command can also be run through `npx`:
-
-```bash
-npx softaverse list
-npx softaverse targets
-npx softaverse add extract-design-system --target claude-code codex
-```
+`skills` is the [open agent skills CLI](https://github.com/vercel-labs/skills) — it works
+with any repository, this one included.
 
 ## Skills
 
 | Skill | Use it for |
 | --- | --- |
-| [`web-design`](skills/web-design/SKILL.md) | Designing modern websites with stronger visual direction and layout decisions. |
 | [`extract-design-system`](skills/extract-design-system/SKILL.md) | Extracting design tokens and reusable components from a website URL or local HTML file. |
-| [`code-reviewer`](skills/code-reviewer/SKILL.md) | Reviews recently written or modified code; focuses on changed files and detects bugs, security, and performance issues. |
-| [`explain-code`](skills/explain-code/SKILL.md) | Explains code with visual diagrams and everyday analogies; great for teaching and onboarding. |
-| [`obsidian-formatter`](skills/obsidian-formatter/SKILL.md) | Formats Markdown for correct display in Obsidian (tables, code blocks, headings, diagrams). |
-| [`draw-mermaid-diagrams-for-obsidian`](skills/draw-mermaid-diagrams-for-obsidian/SKILL.md) | Create Mermaid diagrams tailored for Obsidian notes. |
-| [`idea-to-product`](skills/idea-to-product/SKILL.md) | Turn product ideas into concise, actionable plans and implementation roadmaps. |
-| [`optimize-images`](skills/optimize-images/SKILL.md) | Convert and compress PNG/JPG to WebP and update source references; includes scripts and workflow. |
-| [`write-readme`](skills/write-readme/SKILL.md) | Write or restructure a README into the 8-section entry-point structure and move deep docs into `docs/`. |
-| [`route-skill-references`](skills/route-skill-references/SKILL.md) | Refactor Skills into a lean SKILL.md with topic-specific reference files for progressive disclosure. |
+| [`code-reviewer`](skills/code-reviewer/SKILL.md) | Reviewing recently changed code for bugs, security, and performance issues. |
+| [`explain-code`](skills/explain-code/SKILL.md) | Explaining code with visual diagrams and everyday analogies; great for teaching and onboarding. |
+| [`write-readme`](skills/write-readme/SKILL.md) | Restructuring a README into the 8-section entry-point layout and moving deep docs into `docs/`. |
+| [`git-commit-optimizer`](skills/git-commit-optimizer/SKILL.md) | Writing conventional commits, splitting large diffs, and cleaning up commit history. |
+| [`idea-to-product`](skills/idea-to-product/SKILL.md) | Turning product ideas into concise, actionable plans and implementation roadmaps. |
+| [`optimize-images`](skills/optimize-images/SKILL.md) | Converting and compressing PNG/JPG to WebP and updating source references. |
+| [`obsidian-formatter`](skills/obsidian-formatter/SKILL.md) | Formatting Markdown for correct display in Obsidian (tables, code blocks, headings). |
+| [`draw-mermaid-diagrams-for-obsidian`](skills/draw-mermaid-diagrams-for-obsidian/SKILL.md) | Creating Mermaid diagrams tailored for Obsidian notes. |
+| [`route-skill-references`](skills/route-skill-references/SKILL.md) | Refactoring a bloated skill into a lean `SKILL.md` plus on-demand reference files. |
 
-## Supported targets
+## Requirements
 
-| Tool | Target key | Installed to |
-| --- | --- | --- |
-| Claude Code | `claude-code` | `.claude/skills/<skill>/` |
-| Codex | `codex` | `.codex/skills/<skill>/` |
-| Antigravity | `antigravity` | `.agents/skills/<skill>/` |
-| Cursor | `cursor` | `.cursor/rules/<skill>.mdc` |
-| Windsurf | `windsurf` | `.windsurf/rules/<skill>.md` |
-| GitHub Copilot | `github-copilot` | `.github/copilot-instructions.md` |
-| Cline | `cline` | `.clinerules/<skill>.md` |
-| Roo Code | `roo-code` | `.roo/rules/<skill>.md` |
-| Gemini CLI | `gemini-cli` | `GEMINI.md` |
+- Node.js 18 or newer (only to run `npx skills`; the skills themselves are plain Markdown).
+
+## Contributing
+
+Each skill is one directory under `skills/`:
+
+```
+skills/my-skill/
+  SKILL.md          # frontmatter (name + description) and the instructions
+  references/       # optional, loaded only when SKILL.md routes to it
+  scripts/          # optional
+```
+
+The `name` in the frontmatter must match the directory name, and `description` should say
+both *what* the skill does and *when* to use it — that sentence is the only thing an agent
+sees before deciding to load the skill.
+
+Before opening a pull request:
+
+```bash
+npm run validate
+```
+
+This checks that every skill has valid frontmatter, that its `references/` links resolve,
+and that it appears in the table above.
+
+## Using these skills locally
+
+This repository ignores `.claude/skills/`, so install into it like any other consumer:
+
+```bash
+npx skills add . -a claude-code
+```
+
+## Previous CLI
+
+Versions up to `softaverse@1.0.1` shipped a dedicated `npx softaverse` CLI. It has been
+retired in favour of `npx skills`, which does the same job across many more agents and is
+maintained by a wider community. Existing installs keep working; there is nothing to
+migrate beyond switching the install command.
 
 ## License
 
