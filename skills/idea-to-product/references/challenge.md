@@ -16,7 +16,7 @@ Walk down. Stop at the first rung that satisfies the outcome.
 | 4 | Is it a thin layer on someone's API? | Build the layer, not the platform |
 | 5 | Genuinely needs a product | Proceed to Discovery |
 
-Most "我想做一個 SaaS" requests stop at rung 1–3.
+Most "I want to build a SaaS" requests stop at rung 1–3.
 
 ## The five cuts
 
@@ -35,19 +35,20 @@ If the idea still holds after all five, it is probably real.
 Five lines maximum. Format:
 
 ```
-現成方案：<tool>，覆蓋 ~X%
-缺口：<the specific thing it can't do>
-判斷：<build / don't build / build a thin layer>
-如果要做，P0 只需要：<one sentence>
+Existing option: <tool>, covers ~X%
+Gap: <the specific thing it can't do>
+Verdict: <build / don't build / build a thin layer>
+If we build, P0 only needs: <one sentence>
 ```
 
 Never hedge into a question. Give the verdict, then let the user override.
 
 ## Worked examples
 
-### Kill — 線上預約 SaaS
+### Kill — online booking SaaS
 
-> 「我要做一個線上預約 SaaS，讓客戶選時段、自動寄確認信。」
+> "I want to build an online booking SaaS where customers pick a slot and a confirmation
+> email is sent automatically."
 
 - Rung 1 hit: Calendly, Cal.com, SimplyBook cover this outright.
 - Verdict: don't build. Recommend Cal.com (self-hostable if data residency matters).
@@ -55,26 +56,29 @@ Never hedge into a question. Give the verdict, then let the user override.
   multi-practitioner resource conflicts, health-record linkage, offline operation,
   local payment rails.
 
-### Shrink — 診所預約系統
+### Shrink — clinic booking system
 
-> 「我想做一個給診所使用的線上預約系統，要能對接健保、多醫師排班。」
+> "I want to build an online booking system for clinics, with national health-insurance
+> integration and multi-doctor scheduling."
 
-- Rung 1 misses: 健保 integration is not in any off-the-shelf booking tool.
-- But: 排班 + 提醒 is solved. Only the 健保 layer is novel.
-- Verdict: build the thin layer. P0 = 健保 資料對接 proven against one clinic's real data.
+- Rung 1 misses: health-insurance integration is not in any off-the-shelf booking tool.
+- But: scheduling + reminders is solved. Only the health-insurance layer is novel.
+- Verdict: build the thin layer. P0 = the health-insurance data integration proven against
+  one clinic's real data.
   Scheduling UI in P0 is a stock component, not the risk.
 
-### Keep, and skip Challenge — 滑鼠放大器
+### Keep, and skip Challenge — mouse magnifier
 
-> 「我想做 Mac 滑鼠放大器，快捷鍵放大。」
+> "I want to build a Mac mouse magnifier, zoom via hotkey."
 
 - Scope is already concrete → this is **MVP state**, not Idea state.
 - Challenge does not run. Go straight to Plan/Build.
-- Cheap sanity check only: macOS 內建 Accessibility Zoom 是否已足夠？One line, then move on.
+- Cheap sanity check only: is macOS's built-in Accessibility Zoom already enough? One line, then move on.
 
-### Descope — 內部工具 with a dashboard
+### Descope — internal tool with a dashboard
 
-> 「做一個內部工具，讓團隊看到每天的訂單狀況，要有 dashboard 跟權限管理。」
+> "Build an internal tool so the team can see daily order status — with a dashboard and
+> permission management."
 
 - Rung 2 hit for the dashboard: Metabase / Retool over the existing DB, zero code.
 - Permissions: the DB already has users. Don't rebuild authz.

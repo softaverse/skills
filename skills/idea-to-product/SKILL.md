@@ -47,10 +47,10 @@ Classify the input into one state. Only run the phases that state needs:
 
 | State | Signal | Entry phase |
 |---|---|---|
-| **How-to** | "怎麼做 X？", "X 怎麼實作？", named tech + a task | Answer directly — do not run this skill |
-| **Idea** | A wish, no user or scope yet ("我想做一個滑鼠放大器") | Challenge |
+| **How-to** | "How do I do X?", "How is X implemented?", named tech + a task | Answer directly — do not run this skill |
+| **Idea** | A wish, no user or scope yet ("I want to build a mouse magnifier") | Challenge |
 | **Problem** | A pain described, no solution shape yet | Challenge |
-| **MVP** | Scope is already concrete ("Mac 滑鼠放大器，快捷鍵放大") | Skip to Plan or Build |
+| **MVP** | Scope is already concrete ("Mac mouse magnifier, zoom via hotkey") | Skip to Plan or Build |
 | **Implementation** | Plan agreed, or an existing repo to extend | Build |
 | **Debug** | Something exists and is broken | Not this skill — just fix it |
 
@@ -74,9 +74,10 @@ Answer these six, out loud, in **five lines or fewer**:
 **Hard rule:** if an existing tool covers ~80% of the need, name it and say so before
 offering to build anything. Then let the user override.
 
-> 「我要做一個線上預約 SaaS」
-> → Calendly / Google Calendar 已經解決 80%。如果需求是「客戶選時段 → 寄確認信」，
-> 那不需要 SaaS。要做的理由是什麼？（多診所？健保資料？離線？）
+> "I want to build an online booking SaaS"
+> → Calendly / Google Calendar already cover 80% of it. If the need is "customer picks a
+> slot → confirmation email", that is not a SaaS. What is the reason to build?
+> (Multiple clinics? Health-insurance records? Offline use?)
 
 For build-vs-buy checklists and worked examples: read `references/challenge.md`.
 
@@ -86,7 +87,7 @@ For build-vs-buy checklists and worked examples: read `references/challenge.md`.
 
 **The one rule: if the answer would not change the implementation, do not ask it.**
 
-「你的產品願景是什麼」對工程沒有幫助。不要問。
+"What is your product vision" does nothing for the engineering. Do not ask it.
 
 Five axes, in this order. Ask about an axis only when it is both **missing** and
 **decision-changing**:
@@ -108,8 +109,8 @@ Rules of engagement:
 - **Max 3 questions per round.** Never a wall of questions.
 - **Use `AskUserQuestion`** when the answer is a choice between known options — it is
   faster for the user than free text, and forces you to actually propose options.
-- Ask with concrete scenarios, not abstractions: not "需要通知嗎？", but "小明報名成功後，
-  他在哪裡看到確認？Email？簡訊？站內？"
+- Ask with concrete scenarios, not abstractions: not "do you need notifications?", but
+  "after Ming signs up successfully, where does he see the confirmation? Email? SMS? In-app?"
 
 Question banks per state, and the full questioning technique: read `references/discovery.md`.
 
@@ -148,7 +149,7 @@ document full of decisions beats a long one full of placeholders.
 
 ## 5. Review
 
-Deliver the artifact, then drive one focused review pass — not an open "任何想法嗎？":
+Deliver the artifact, then drive one focused review pass — not an open "any thoughts?":
 
 - Is the Outcome right? (the one thing that must work)
 - Is v1 too big? Name the thing you would cut first.
@@ -184,10 +185,10 @@ Check in after each level. Stop and ask at any real decision point rather than a
 
 | Situation | Response |
 |---|---|
-| Wants to skip straight to code | "可以，先確認三件事就開工：核心使用者是誰？P0 要證明什麼？有沒有不能用的技術？" |
-| Scope creep mid-build | "這功能不錯，但推到 P2。P0 要驗證的是 [X]，多加東西會讓驗證變慢。" |
+| Wants to skip straight to code | "Sure — three things first, then we start: who is the core user? What must P0 prove? Any tech that is off the table?" |
+| Scope creep mid-build | "Good feature, but it goes to P2. P0 is validating [X]; adding more only slows that down." |
 | User is indecisive | Give an opinionated pick with a reason and a stated migration cost — never a menu without a recommendation. |
-| Tech-stack conflict | Existing stack wins. "你已經在用 NestJS，後端就繼續 NestJS，不值得為這個專案學新框架。" |
+| Tech-stack conflict | Existing stack wins. "You are already on NestJS — keep the backend on NestJS; a new framework is not worth learning for this project." |
 | Idea has a real flaw | Say it in one sentence, then keep going. Do not soften it into a question. |
 
 ---

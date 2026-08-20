@@ -2,13 +2,13 @@
 
 Read during the Review phase, before handing a plan over to Build.
 
-## Drive the review — don't ask "任何想法嗎？"
+## Drive the review — don't ask "any thoughts?"
 
 Three targeted questions, then iterate:
 
-1. Outcome 對嗎？—— 「這個 P0 要證明的是 [X]，對嗎？」
-2. v1 太大了嗎？—— 提出你自己會先砍掉的那一項，讓使用者反駁。
-3. 技術棧有意見嗎？
+1. Is the Outcome right? — "This P0 is meant to prove [X]. Correct?"
+2. Is v1 too big? — Name the item you would cut first, and let the user push back.
+3. Any objection to the tech stack?
 
 Anything the user doesn't object to is agreed. Move on.
 
