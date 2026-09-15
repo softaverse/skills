@@ -56,6 +56,8 @@ themselves have no runtime.
 - **Planning and skill authoring**
   - [**Idea to Product**](./skills/idea-to-product) — turn product ideas into concise, actionable plans and implementation roadmaps.
   - [**Route Skill References**](./skills/route-skill-references) — refactor a bloated skill into a lean `SKILL.md` plus on-demand reference files.
+- **System maintenance**
+  - [**Disk Audit**](./skills/disk-audit) — scan a macOS disk for reclaimable space and report a tiered cleanup list with commands.
 <!-- END SKILLS -->
 
 ## Using these skills locally
