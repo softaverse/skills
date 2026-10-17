@@ -82,14 +82,27 @@ scripted lines get their estimated length, an ad-lib placeholder line absorbs th
 Writes `timing.start / end / dur / source / flags` per segment, `timing` per overlay, `t / rel`
 per zoom, and `timing.md` (est vs dur, flags, measured picture mix).
 
+### `instances.py` — one composition per animation
+
+```bash
+instances.py <episode-dir> [--dry-run]
+```
+
+Copies each slot's source composition to `<episode>/<slot>` (`Seg_06.o1` → `seg_06-o1`) and bakes
+the slot's content into the variable defaults (kit pieces also get `duration`, `theme`, `placement`,
+`motion`). Relinks relative asset symlinks so copies one level deeper still find fonts. Custom builds
+already at the slot path are updated in place; stale instances (manifest `instance`) are removed.
+Prints one line per slot, noting values the component doesn't declare.
+
 ### `render_plan.py` — render commands, never run
 
 ```bash
 render_plan.py <episode-dir> [--fps 60] [--resolution landscape-4k]
 ```
 
-One command per cutaway / transition / overlay: composition = `reuse.from`, `reuse.as`, or
-`<episode>/<slot>` for custom builds; kit pieces get `duration` + `theme`; overlays → MOV,
+One command per cutaway / transition / overlay, rendering the slot's instance when it exists (no
+variables needed); otherwise `reuse.from` / `reuse.as` / the custom build with the slot's vars (kit
+pieces get `duration` + `theme`); overlays → MOV,
 others → MP4, into `<episode>/renders/<slot>.<ext>`. Writes `renders.sh` and `renders.md`
 (blocked: not built / no timing; notes: fixed-length compositions to trim or hold).
 

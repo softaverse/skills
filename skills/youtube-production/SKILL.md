@@ -18,7 +18,7 @@ before the next stage starts.** An ok unlocks only the next step, never everythi
 | Stage | Input from the user | Output | Reference |
 |---|---|---|---|
 | **A — Plan** | topic, audience, core point, what is built, the result | outline, script, storyboard, animation & asset lists | `references/stage-a-planning.md` |
-| **B — Retime & animate** | the voice track the user already edited (fillers, pauses, retakes cut) + screen recordings | transcript, storyboard timing measured from the voice, then animations in hf-studio | `references/stage-b-retime.md` |
+| **B — Retime & animate** | the voice track the user already edited (fillers, pauses, retakes cut) + screen recordings | transcript, storyboard timing measured from the voice, animations in hf-studio, one previewable instance per animation, render commands | `references/stage-b-retime.md` |
 | **C — Assemble** | the rendered animations (the storyboard timing is final) | DaVinci timeline, captions, chapters, upload package | not written yet |
 
 Stage C is not available yet: after Stage B, stop and tell the user so.

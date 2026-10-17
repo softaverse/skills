@@ -9,7 +9,7 @@ Input: the voice track the user already edited in DaVinci — fillers, pauses an
 nothing left to choose. Stage B never picks takes or edits audio.
 
 ```
-B0 input ─ B1 transcribe ─ B2 align ─ B3 retime ─▶ ✋1 ─ B4 build (hf-studio gates ✋✋✋) ─ B5 render plan ─▶ ✋ end of B
+B0 input ─ B1 transcribe ─ B2 align ─ B3 retime ─▶ ✋1 ─ B4 build (hf-studio gates ✋✋✋) ─ B5 instances + render plan ─▶ ✋ end of B
 ```
 
 All scripts: `python3 <skill>/scripts/<name>.py` (usage in `scripts.md`).
@@ -112,15 +112,26 @@ static storyboards, then the compositions:
 When a slot's build is done, give that slot `vars` with its own content (a builder slot's copy
 lives in its `elements` until then) so the render uses it.
 
-## B5 — Render plan
+## B5 — Instances and render plan
 
 ```bash
-render_plan.py <episode>        # writes renders.sh + renders.md; never runs anything
+instances.py <episode>          # one composition per animation, this episode's content baked in
+render_plan.py <episode>        # writes renders.sh + renders.md from those instances; runs nothing
 ```
 
-Every animation renders at 60 fps, 4K (exact 3× of 1280×720) into `<episode>/renders/`:
-overlays as MOV (ProRes 4444 with alpha), cutaways and transitions as MP4. Kit pieces get
-`duration` from the measured timing and the episode `theme`.
+`instances.py` writes `<episode>/<slot>` for every cutaway, transition and overlay (`Seg_06.o1` →
+`seg_06-o1`): a copy of the component with the slot's vars — and, for kit pieces, the measured
+`duration`, the episode `theme`, the overlay `placement` and `motion` overrides — set as the variable
+defaults. Layout and motion are untouched, so an instance is as correct as the verified component,
+with data `check` already validated; no AI work is needed. Custom builds already at the slot path
+are updated in place; instances whose slot disappeared are removed. Instances are generated — edit
+the storyboard or the component and re-run, never edit them. Re-run both scripts after any B3 re-run.
 
-**✋ End of Stage B** — hand over `renders.md` (what each file is, and any trim/hold notes) and
-`renders.sh` for the user to run. Never run it yourself. Stage C starts when the renders exist.
+The user previews every animation in the Gallery (the episode folder) with its real copy, length and
+theme, before anything is rendered. Final files render at 60 fps, 4K (exact 3× of 1280×720) into
+`<episode>/renders/`: overlays as MOV (ProRes 4444 with alpha), cutaways and transitions as MP4 —
+either all at once with `renders.sh`, or one by one from the player's Export (format / fps / 4K
+selectors). Fixed-length legacy compositions are flagged in `renders.md` to trim or hold in DaVinci.
+
+**✋ End of Stage B** — point the user at the Gallery to review the instances, then hand over
+`renders.md` and `renders.sh`. Never render yourself. Stage C starts when the renders exist.

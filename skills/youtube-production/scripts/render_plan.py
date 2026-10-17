@@ -4,10 +4,10 @@
     render_plan.py <episode-dir> [--studio <hf-studio>] [--fps 60] [--resolution landscape-4k]
 
 For each cutaway, transition and overlay in storyboard.json:
-  composition   reuse.from (as-is / variables) · reuse.as (built kit / shared piece) ·
-                <episode>/<slot> for a custom fork / new (e.g. EP3-stitch/seg_03, EP3-stitch/seg_06-o1)
-  variables     the slot's vars; kit components also get duration (from the measured timing)
-                and theme (from the storyboard)
+  composition   the slot's instance <episode>/<slot> when instances.py has made it (content baked
+                in, no variables needed); otherwise reuse.from / reuse.as / the custom build
+  variables     only without an instance: the slot's vars, plus duration / theme / placement /
+                motion for kit components
   format        overlays → mov (ProRes 4444, alpha) · cutaways / transitions → mp4
   output        <episode>/renders/<slot>.<ext>   e.g. Seg_06.o1.mov, Seg_05.transition.mp4
 
@@ -66,6 +66,11 @@ def main():
                 comp = r["from"]
             else:
                 comp = r["as"] or slot_dir(sb.get("episode", ep.name), slot)
+            # An instance (instances.py) has this slot's content baked in: render it as-is.
+            inst = slot_dir(sb.get("episode", ep.name), slot)
+            from_instance = (comps / inst / "index.html").exists()
+            if from_instance:
+                comp = inst
             name = slot.replace(" (transition)", ".transition")
             ext = "mov" if layer == "overlay" else "mp4"
             out = out_dir / f"{name}.{ext}"
@@ -87,8 +92,8 @@ def main():
             except (OSError, json.JSONDecodeError):
                 pass
             is_kit = comp.startswith("kit/") or "kit" in manifest
-            variables = dict(anim.get("vars") or {})
-            if is_kit:
+            variables = {} if from_instance else dict(anim.get("vars") or {})
+            if is_kit and not from_instance:
                 if dur is not None:
                     variables["duration"] = round(dur, 3)
                 variables["theme"] = theme
