@@ -58,6 +58,8 @@ themselves have no runtime.
   - [**Route Skill References**](./skills/route-skill-references) — refactor a bloated skill into a lean `SKILL.md` plus on-demand reference files.
 - **System maintenance**
   - [**Disk Audit**](./skills/disk-audit) — scan a macOS disk for reclaimable space and report a tiered cleanup list with commands.
+- **Video production**
+  - [**YouTube Production**](./skills/youtube-production) — plan a YouTube episode from brief to a line-numbered script and a storyboard that reuses your HyperFrames animation library (Stage A; voice retiming and DaVinci assembly in progress).
 <!-- END SKILLS -->
 
 ## Using these skills locally
