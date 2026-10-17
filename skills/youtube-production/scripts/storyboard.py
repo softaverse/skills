@@ -6,6 +6,7 @@
                                                       kinds.json and the source manifests;
                                                       --write fills timing.est per segment
     storyboard.py lists <episode-dir>                 write animations.md and assets.md
+    storyboard.py recipes [<episode-dir>]             recipes available per element type (targets)
 
 <episode-dir> holds script.md and storyboard.json. hf-studio is found from --studio,
 HF_STUDIO, or by walking up from the episode dir to the folder holding kinds.json.
@@ -13,6 +14,7 @@ HF_STUDIO, or by walking up from the episode dir to the folder holding kinds.jso
 """
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -106,6 +108,106 @@ def reuse_of(anim):
     r = anim.get("reuse") or {}
     return {"mode": r.get("mode", anim.get("mode")), "from": r.get("from", anim.get("from")),
             "why": r.get("why", anim.get("why")), "ref": r.get("ref", []), "as": r.get("as")}
+
+
+COMMON_PARAMS = {"speed": {"min": 0.5, "max": 2.0, "label": "速度", "fmt": "×{}"},
+                 "color": {"label": "顏色", "fmt": "{}"}}
+COLOR_RE = re.compile(r"^(#[0-9a-fA-F]{3,8}|[a-z][a-z0-9-]*)$")
+_recipes = {}
+
+
+def load_recipe(studio, rid):
+    """{id, name, status, role, params, use} from recipes/<id>/RECIPE.md, or None."""
+    key = (str(studio), rid)
+    if key not in _recipes:
+        f = Path(studio) / "recipes" / rid / "RECIPE.md"
+        if not f.exists():
+            _recipes[key] = None
+        else:
+            text = f.read_text(encoding="utf-8")
+            field = lambda k: (re.search(rf"^{k}:\s*(.+)$", text, re.M) or [None, ""])[1].strip()
+            try:
+                params = json.loads(field("params") or "{}")
+            except json.JSONDecodeError:
+                params = {}
+            body = text.split("---", 2)[-1]
+            use = next((l.strip() for l in body.splitlines() if l.strip() and not l.startswith(("#", "|"))), "")
+            targets = [t.strip() for t in field("targets").strip("[]").split(",") if t.strip()]
+            _recipes[key] = {"id": rid, "name": field("name").split(" ")[0] or rid, "status": field("status") or "draft",
+                             "role": field("role"), "params": params, "use": use, "targets": targets}
+    return _recipes[key]
+
+
+TARGET_NAMES = {"eyebrow": "眉標", "title": "標題／副標", "sentence": "句子", "keyword": "關鍵詞",
+                "cards": "卡片群／節點", "number": "數字", "line": "連接線", "ghost": "背景大字"}
+
+
+def all_recipes(studio):
+    root = Path(studio) / "recipes"
+    return [r for r in (load_recipe(studio, d.name) for d in sorted(root.iterdir()) if (d / "RECIPE.md").exists()) if r] \
+        if root.is_dir() else []
+
+
+def cmd_recipes(args):
+    """Which recipes each element type can use — the menu A4 picks `motion` from."""
+    start = Path(args.episode).resolve() if args.episode else Path.cwd()
+    studio = find_studio(args.studio, start)
+    recs = all_recipes(studio)
+    if not recs:
+        sys.exit(f"no recipes under {studio / 'recipes'}")
+    by = {}
+    for r in recs:
+        for t in r["targets"] or ["?"]:
+            by.setdefault(t, []).append(r)
+    order = [*TARGET_NAMES, *sorted(set(by) - set(TARGET_NAMES))]
+    print("| 元素 | target | 配方（狀態） |\n|---|---|---|")
+    for t in order:
+        if t in by:
+            items = "、".join(f"{r['name']} `{r['id']}`（{r['status']}）" for r in by[t])
+            print(f"| {TARGET_NAMES.get(t, t)} | `{t}` | {items} |")
+
+
+def motion_entries(anim):
+    """`motion` items as {recipe, params}; a bare string is a recipe with no overrides."""
+    return [{"recipe": m, "params": {}} if isinstance(m, str) else {"recipe": m.get("recipe"), "params": m.get("params") or {}}
+            for m in anim.get("motion", [])]
+
+
+def check_motion(slot, anim, studio, errors, warnings):
+    for m in motion_entries(anim):
+        rec = load_recipe(studio, m["recipe"])
+        if not rec:
+            errors.append(f"{slot}: no recipe '{m['recipe']}' in {Path(studio) / 'recipes'}")
+            continue
+        if rec["status"] != "accepted":
+            warnings.append(f"recipe '{m['recipe']}' is {rec['status']}, not accepted yet")
+        for k, v in m["params"].items():
+            spec = rec["params"].get(k) or COMMON_PARAMS.get(k)
+            if spec is None:
+                errors.append(f"{slot}: recipe '{m['recipe']}' has no parameter '{k}' "
+                              f"(has {', '.join([*rec['params'], *COMMON_PARAMS])})")
+            elif k == "color":
+                if not isinstance(v, str) or not COLOR_RE.match(v):
+                    errors.append(f"{slot}: color must be a theme token name (accent-soft) or #hex, got {v!r}")
+            elif "options" in spec and v not in spec["options"]:
+                errors.append(f"{slot}: {m['recipe']}.{k} must be one of {spec['options']}, got {v!r}")
+            elif "min" in spec and (not isinstance(v, (int, float)) or not spec["min"] <= v <= spec["max"]):
+                errors.append(f"{slot}: {m['recipe']}.{k} = {v!r} outside {spec['min']}–{spec['max']}")
+
+
+def motion_label(anim, studio):
+    """Display: 標題上浮 → 卡片依序淡入（位移 24px、速度 ×1.2）＋ 浮水印緩慢平移"""
+    fg, bg = [], []
+    for m in motion_entries(anim):
+        rec = load_recipe(studio, m["recipe"]) or {"name": m["recipe"], "params": {}, "role": ""}
+        notes = []
+        for k, v in m["params"].items():
+            spec = rec["params"].get(k) or COMMON_PARAMS.get(k, {})
+            fmt = spec.get("fmt") or ("{}" + spec.get("unit", ""))
+            notes.append(f"{spec.get('label', k)} {fmt.format(v)}")
+        label = rec["name"] + (f"（{'、'.join(notes)}）" if notes else "")
+        (bg if rec.get("role") == "background" else fg).append(label)
+    return " → ".join(fg) + "".join(f" ＋ {b}" for b in bg)
 
 
 def planned_builds(sb):
@@ -282,6 +384,9 @@ def cmd_check(args):
             if anim.get("cues") and layer != "overlay":
                 warnings.append(f"{slot}: cues inside a {layer} — animations follow the segment length; "
                                 f"put word-timed emphasis in an overlay or a cut instead")
+            check_motion(slot, anim, studio, errors, warnings)
+            if r["mode"] in ("fork", "new") and not r["as"] and not anim.get("motion"):
+                warnings.append(f"{slot}: custom {r['mode']} with no `motion` — pick recipes so the build doesn't improvise")
             for c in anim.get("cues", []):
                 if normalize(c.get("at", "")) not in seg_text:
                     errors.append(f"{slot}: cue phrase '{c.get('at')}' not in {sid}'s lines")
@@ -320,6 +425,10 @@ def cmd_check(args):
         if l["id"] not in seen_line:
             errors.append(f"{l['id']} is in no segment")
 
+    pending = sorted({w.split("'")[1] for w in warnings if w.startswith("recipe '") and "not accepted" in w})
+    warnings = [w for w in warnings if not (w.startswith("recipe '") and "not accepted" in w)]
+    if pending:
+        warnings.append(f"{len(pending)} recipes not accepted yet: {', '.join(pending)}")
     table, off = mix_report(sb) if not errors else ([], [])
     for o in off:
         warnings.append(f"picture mix: {o}")
@@ -351,7 +460,14 @@ def cmd_lists(args):
         return f"{ids[0]}–{ids[-1]}" if len(ids) > 1 else (ids[0] if ids else "")
 
     planned = planned_builds(sb)
+    studio = find_studio(getattr(args, "studio", None), ep.resolve())
     groups = {"reuse": [], "fork": [], "new": []}
+    used_recipes = []
+    for seg in sb["segments"]:
+        for _, _, anim in animations_of(seg):
+            for m in motion_entries(anim):
+                if m["recipe"] not in used_recipes:
+                    used_recipes.append(m["recipe"])
     for seg in sb["segments"]:
         for slot, layer, anim in animations_of(seg):
             r = reuse_of(anim)
@@ -360,6 +476,12 @@ def cmd_lists(args):
             row = {"slot": slot, "lines": line_span(seg), "kind": kind_s, "r": r, "anim": anim,
                    "visual": seg.get("visual", "") if layer == "cutaway" else ""}
             groups["reuse" if r["mode"] in ("as-is", "variables") else r["mode"]].append(row)
+
+    def motion_s(anim, r):
+        if anim.get("motion"):
+            return motion_label(anim, studio)
+        src = r["from"] if r["mode"] in ("as-is", "variables") else r["as"]
+        return "（kit 內建）" if (src or "").startswith("kit/") else "（沿用原動畫）"
 
     def vars_s(anim):
         return "<br>".join(f"`{k}`: {v}" for k, v in (anim.get("vars") or {}).items()) or "—"
@@ -380,23 +502,58 @@ def cmd_lists(args):
           "Generated from storyboard.json by `storyboard.py lists` — edit the storyboard, not this file.", "",
           f"**{total} animations** · reuse {len(groups['reuse'])} · fork {len(groups['fork'])} · "
           f"new {len(groups['new'])}", "", "## Picture mix", "", *mix_report(sb)[0], ""]
+    mode_zh = {"as-is": "直接用", "variables": "改參數", "fork": "fork", "new": "新做"}
+    pic_zh = {"screen": "螢幕錄影", "broll": "B-roll", "camera": "露臉", "cutaway": "cutaway"}
+    md += ["## 分鏡總表", "", "| Seg | 句子 | 畫面 | 動畫（來源・模式） | 動態（配方） | 長度 |", "|---|---|---|---|---|---|"]
+    for seg in sb["segments"]:
+        t = seg.get("timing", {})
+        length = f"{t.get('dur', t.get('est', 0)):.1f}s"
+        pic = pic_zh.get(seg.get("picture"), seg.get("picture"))
+        if seg.get("animation"):
+            r = reuse_of(seg["animation"])
+            src = r["from"] if r["mode"] in ("as-is", "variables") else (r["as"] or r["from"] or "—")
+            md.append(f"| {seg['id']} | {line_span(seg)} | {pic} | `{src}`・{mode_zh[r['mode']]} | "
+                      f"{motion_s(seg['animation'], r)} | {length} |")
+        else:
+            md.append(f"| {seg['id']} | {line_span(seg)} | {pic} | — | — | {length} |")
+        for ov in seg.get("overlays", []):
+            r = reuse_of(ov)
+            src = r["from"] if r["mode"] in ("as-is", "variables") else (r["as"] or r["from"] or "—")
+            text = (ov.get("vars") or {}).get("text") or (ov.get("vars") or {}).get("title") or ov.get("at")
+            md.append(f"| ↳ {ov['id']} | 「{ov['at']}」 | 標註「{text}」 | `{src}`・{mode_zh[r['mode']]} | "
+                      f"{motion_s(ov, r)} | {ov.get('timing', {}).get('dur', ov.get('dur', 0)):.1f}s |")
+    md.append("")
+    if used_recipes:
+        md += ["## 配方說明", ""]
+        for rid in used_recipes:
+            rec = load_recipe(studio, rid)
+            if not rec:
+                md.append(f"- **{rid}**：找不到這個配方")
+                continue
+            demo = (f" ▶ [看示範](http://localhost:3025/app/player.html?c=recipes/{rid})"
+                    if rec["status"] in ("built", "accepted") else f"（{rec['status']}，尚無示範）")
+            alts = [a["name"] for a in all_recipes(studio)
+                    if a["id"] != rid and set(a["targets"]) & set(rec["targets"])]
+            alt = f"　同類可替換：{'、'.join(alts)}" if alts else ""
+            md.append(f"- **{rec['name']}** `{rid}`：{rec['use']}{demo}{alt}")
+        md.append("")
     if groups["reuse"]:
         md += ["## Reuse (as-is / variables)", "",
-               "| Slot | Lines | Kind | From | Mode | Values |", "|---|---|---|---|---|---|"]
+               "| Slot | Lines | Kind | From | Mode | Motion | Values |", "|---|---|---|---|---|---|---|"]
         md += [f"| {r['slot']} | {r['lines']} | {r['kind']} | `{r['r']['from']}`"
                f"{' (built by ' + planned[r['r']['from']][0] + ')' if r['r']['from'] in planned else ''} | "
-               f"{r['r']['mode']} | {vars_s(r['anim'])} |" for r in groups["reuse"]]
+               f"{r['r']['mode']} | {motion_s(r['anim'], r['r'])} | {vars_s(r['anim'])} |" for r in groups["reuse"]]
         md.append("")
     if groups["fork"]:
         md += ["## Fork (copy, then modify)", "",
-               "| Slot | Lines | Kind | From | Builds | What changes | Visual |", "|---|---|---|---|---|---|---|"]
+               "| Slot | Lines | Kind | From | Builds | Motion | What changes | Visual |", "|---|---|---|---|---|---|---|---|"]
         md += [f"| {r['slot']} | {r['lines']} | {r['kind']} | `{r['r']['from']}` | {as_s(r['r'])} | "
-               f"{elems_s(r['anim'])} | {r['visual']} |" for r in groups["fork"]]
+               f"{motion_s(r['anim'], r['r'])} | {elems_s(r['anim'])} | {r['visual']} |" for r in groups["fork"]]
         md.append("")
     if groups["new"]:
-        md += ["## New", "", "| Slot | Lines | Kind | Builds | Elements | Refs | Why new |",
-               "|---|---|---|---|---|---|---|"]
-        md += [f"| {r['slot']} | {r['lines']} | {r['kind']} | {as_s(r['r'])} | {elems_s(r['anim'])} | "
+        md += ["## New", "", "| Slot | Lines | Kind | Builds | Motion | Elements | Refs | Why new |",
+               "|---|---|---|---|---|---|---|---|"]
+        md += [f"| {r['slot']} | {r['lines']} | {r['kind']} | {as_s(r['r'])} | {motion_s(r['anim'], r['r'])} | {elems_s(r['anim'])} | "
                f"{', '.join(f'`{x}`' for x in r['r']['ref']) or '—'} | {r['r']['why'] or '—'} |"
                for r in groups["new"]]
         md.append("")
@@ -442,10 +599,14 @@ def main():
     p.add_argument("episode")
     p.add_argument("--write", action="store_true")
     p.add_argument("--studio")
+    p = sub.add_parser("recipes")
+    p.add_argument("episode", nargs="?")
+    p.add_argument("--studio")
     p = sub.add_parser("lists")
     p.add_argument("episode")
+    p.add_argument("--studio")
     args = ap.parse_args()
-    {"estimate": cmd_estimate, "check": cmd_check, "lists": cmd_lists}[args.cmd](args)
+    {"estimate": cmd_estimate, "check": cmd_check, "lists": cmd_lists, "recipes": cmd_recipes}[args.cmd](args)
 
 
 if __name__ == "__main__":

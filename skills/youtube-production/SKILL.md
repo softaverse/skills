@@ -18,10 +18,10 @@ before the next stage starts.** An ok unlocks only the next step, never everythi
 | Stage | Input from the user | Output | Reference |
 |---|---|---|---|
 | **A — Plan** | topic, audience, core point, what is built, the result | outline, script, storyboard, animation & asset lists | `references/stage-a-planning.md` |
-| **B — Retime & animate** | the voice track the user already edited (fillers, pauses, retakes cut) + screen recordings | transcript, storyboard timing measured from the voice, then animations in hf-studio | not written yet |
+| **B — Retime & animate** | the voice track the user already edited (fillers, pauses, retakes cut) + screen recordings | transcript, storyboard timing measured from the voice, then animations in hf-studio | `references/stage-b-retime.md` |
 | **C — Assemble** | the rendered animations (the storyboard timing is final) | DaVinci timeline, captions, chapters, upload package | not written yet |
 
-Stages B and C are not available yet: after Stage A, stop and tell the user so.
+Stage C is not available yet: after Stage B, stop and tell the user so.
 
 ## Where things live
 
@@ -64,6 +64,9 @@ and go straight to the storyboard.
   length set by the storyboard, themeable), then the channel's own compositions, then library
   ones, and any of them over new work — every reuse keeps episodes looking alike and saves a
   build. A piece that will recur is planned as a new kit component. Explain every `new`.
+- Motion comes from recipes: hf-studio `recipes/` defines every way things move (timing,
+  properties, easing, order, acceptance). Storyboards pick recipes; builds implement them;
+  nothing improvises motion.
 - Footage first: about 60–70% of the running time is the real demo / screen, 20–30%
   templated graphics, 5–10% custom animation (`storyboard.py check` measures it).
 - `storyboard.json` is the only place a decision is recorded. Edit it, then regenerate
@@ -79,5 +82,6 @@ and go straight to the storyboard.
 ## References
 
 - `references/stage-a-planning.md` — Stage A workflow, checkpoints, writing and storyboarding rules
+- `references/stage-b-retime.md` — Stage B: transcribe, align, retime, build in hf-studio, render plan
 - `references/storyboard-schema.md` — `storyboard.json` fields and validation rules
 - `references/scripts.md` — usage and output of every script in `scripts/`

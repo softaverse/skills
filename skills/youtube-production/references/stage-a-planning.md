@@ -27,10 +27,11 @@ A0 setup ─ A1 brief ─ A2 outline ──▶ ✋1 ─ A3 script ──▶ ✋2
      areas, motion language (eases, durations, entrance patterns), dos and don'ts, and a
      *Reference compositions* list naming the ones that best embody the style.
    - Show it to the user and get an ok. This is a one-time extra checkpoint.
-4. **Episode style.** If this episode deviates from the channel style, write only the
-   differences in `EP<n>-<slug>/DESIGN.md`, set `"style": "DESIGN.md"` and a `"theme"` in
-   storyboard.json. If hf-studio's `assets/kit/themes.css` has no `.kit-theme-<name>` for it yet,
-   list that as an open item — adding the theme is Stage B work.
+4. **Episode style — the user decides.** Default is the channel style; don't infer a deviation.
+   Ask once (or take it from the brief): "這集用頻道風格嗎？" Only if the user wants a different
+   look, write the differences in `EP<n>-<slug>/DESIGN.md` and set `"style": "DESIGN.md"` and a
+   `"theme"` in storyboard.json. If hf-studio's `assets/kit/themes.css` has no
+   `.kit-theme-<name>` for it yet, list that as an open item — adding the theme is Stage B work.
 
 ## A1 — Brief
 
@@ -88,7 +89,8 @@ Format rules (the Stage B aligner depends on them):
   block number as the section id (`## 3-1 初始提示詞`) so recordings map to sections; otherwise `S1`, `S2`…
 - If the user arrives with a finished script, convert it without rewording: keep their lines,
   fix only obvious typos, and list every change you made.
-- One spoken line per row: `L01 <text>`. Ids are sequential and permanent once recording starts.
+- One spoken line per row: `L01 <text>`. Ids are sequential and permanent once recording starts;
+  a line added later gets an inserted id (`L78a`).
 - Stage directions go in `（）` — they are dropped when matching the recording.
 - Write what will be **said**: `三十分鐘` if that is how it is spoken, `30 分鐘` only if read as "thirty".
 
@@ -183,6 +185,11 @@ composition that is slightly less ideal over a library one that is slightly bett
 - `vars` with the real copy, within each variable's `max` (kit components declare one) or
   close to its default length.
 - `elements` for `fork` / `new`: every node, label, number, icon that is drawn.
+- `motion` for `fork` / `new`: the recipes (hf-studio `recipes/README.md`) that move those
+  elements. Work element by element: list the screen's elements by type (title, cards, number,
+  line, ghost…), then pick one recipe per element from `storyboard.py recipes` — recipes are
+  interchangeable within a type, so the same purpose can be staged many ways. Only `accepted` recipes; if none fits, say so as an open item — a new recipe is
+  defined and accepted before Stage B builds with it.
 - No inner cues: a cutaway plays its acts across whatever length the segment ends up being.
   If something must land on a word, make it an overlay with `at`, or split the segment.
 - Prefer `screen` + a label overlay over a cutaway whenever the thing being described is on
@@ -204,7 +211,10 @@ python3 <skill>/scripts/storyboard.py lists <episode-dir>           # writes ani
 Fix every error; judge every warning (explain the ones you keep).
 
 **✋ Checkpoint 3 (end of Stage A)** — present, in chat:
-1. The segment table: id · lines · picture · animation (source + mode) · overlays · est.
+1. The 分鏡總表 from `animations.md`: segment · lines · picture · animation (source + mode) ·
+   motion (recipes, with any param overrides) · length, overlays as ↳ rows — followed by the
+   配方說明 for the recipes used. The user swaps templates or recipes, or tunes params, by
+   asking; edit `storyboard.json` and regenerate.
 2. The picture mix table from `check`, and workload: counts of `as-is` / `variables` /
    `fork` / `new`, and why each `new` exists.
 3. The asset list to record.

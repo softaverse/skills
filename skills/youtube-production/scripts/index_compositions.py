@@ -95,8 +95,8 @@ def load_index(studio):
     items = []
     for mf in comps.glob("**/manifest.json"):
         rel = mf.parent.relative_to(comps).as_posix()
-        if "/storyboard" in f"/{rel}" or "/." in f"/{rel}":
-            continue
+        if "/storyboard" in f"/{rel}" or "/." in f"/{rel}" or rel.startswith("recipes/"):
+            continue  # recipe demos are previews of motion, not candidates for a slot
         try:
             m = json.loads(mf.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):

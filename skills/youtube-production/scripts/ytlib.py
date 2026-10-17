@@ -16,7 +16,7 @@ try:  # Whisper's zh output is often Simplified; convert when OpenCC is availabl
 except Exception:  # noqa: BLE001 - any import/config failure means "no conversion"
     _S2T = None
 
-LINE_RE = re.compile(r"^\s*(?:[-*]\s*)?\**\[?(L\d{2,4})\]?\**\s*[|:：.\s]\s*(.+?)\s*$")
+LINE_RE = re.compile(r"^\s*(?:[-*]\s*)?\**\[?(L\d{2,4}[a-z]?)\]?\**\s*[|:：.\s]\s*(.+?)\s*$")
 SECTION_RE = re.compile(r"^\s*#{2,3}\s+(.+?)\s*$")
 DIRECTION_RE = re.compile(r"（[^）]*）|\([^)]*\)|\[[^\]]*\]|【[^】]*】")
 
