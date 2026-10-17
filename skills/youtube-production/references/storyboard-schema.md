@@ -152,7 +152,8 @@ Errors (must fix):
 - purpose not in `kinds.json`; `reuse.mode` not in the enum; `from` missing for a non-`new` mode
 - `from` that has no `manifest.json` (unless another slot builds it `as` that path); a `vars` key the manifest does not declare
 - a string longer than the variable's `max` (kit components declare one); `duration` / `theme` in a kit's `vars`; a kit without the episode's `theme`
-- two slots building the same `as`; an `as` that already exists; `as` on `as-is` / `variables`; a `fork` of a path this episode builds
+- two slots building the same `as`; an `as` that already exists (before Stage B — once timing is measured, the built composition existing is expected); `as` on `as-is` / `variables`; a `fork` of a path this episode builds
+- `vars` of a `new` / `fork` slot that the built composition (`as`, or `<episode>/<slot>`) doesn't declare, once it exists
 - an overlay or cue `at` phrase that does not occur in its segment's lines
 - a `motion` id with no `recipes/<id>/RECIPE.md`; a param the recipe doesn't declare; a value outside its range or options; a `color` that is neither a token name nor `#hex`
 

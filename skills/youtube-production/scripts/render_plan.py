@@ -24,15 +24,10 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from storyboard import animations_of, find_studio, motion_entries, reuse_of  # noqa: E402
+from storyboard import animations_of, find_studio, motion_entries, reuse_of, slot_dir  # noqa: E402
 from ytlib import load_json  # noqa: E402
 
 ROOT_DUR = re.compile(r"<[a-z]+\b[^>]*\bdata-composition-id=[^>]*>", re.S)
-
-
-def slot_dir(episode, slot):
-    """Custom builds live in the episode folder: 'Seg_06.o1' → 'seg_06-o1'."""
-    return f"{episode}/{slot.split(' ')[0].lower().replace('.', '-')}" + ("-transition" if "transition" in slot else "")
 
 
 def fixed_length(comp_dir):
@@ -97,6 +92,8 @@ def main():
                 if dur is not None:
                     variables["duration"] = round(dur, 3)
                 variables["theme"] = theme
+                if layer == "overlay" and anim.get("placement"):
+                    variables["placement"] = anim["placement"]  # kit overlays declare a placement variable
                 overrides = {m["recipe"]: m["params"] for m in motion_entries(anim) if m["params"]}
                 if overrides:  # kit contract: the `motion` variable carries per-use recipe params
                     variables["motion"] = json.dumps(overrides, ensure_ascii=False)

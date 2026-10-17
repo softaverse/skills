@@ -210,6 +210,11 @@ def motion_label(anim, studio):
     return " → ".join(fg) + "".join(f" ＋ {b}" for b in bg)
 
 
+def slot_dir(episode, slot):
+    """Where a custom build lives: 'Seg_06.o1' → '<episode>/seg_06-o1'."""
+    return f"{episode}/{slot.split(' ')[0].lower().replace('.', '-')}" + ("-transition" if "transition" in slot else "")
+
+
 def planned_builds(sb):
     """{composition path: slot} for every `as` a new/fork animation will create."""
     planned = {}
@@ -227,7 +232,8 @@ def tier_of(seg):
     if seg.get("picture") != "cutaway":
         return "footage"
     r = reuse_of(seg.get("animation") or {})
-    return "template" if r["mode"] in ("as-is", "variables") or r["as"] else "custom"
+    # building a kit piece is template work; building an episode-only piece is custom, even if reused later
+    return "template" if r["mode"] in ("as-is", "variables") or (r["as"] or "").startswith("kit/") else "custom"
 
 
 def mix_of(sb):
@@ -271,7 +277,9 @@ def cmd_check(args):
     for target, slots in planned.items():
         if len(slots) > 1:
             errors.append(f"{', '.join(slots)}: all build `as` {target} — build it once, reuse it elsewhere")
-        if (comps / target / "manifest.json").exists():
+        # Only a planning error: after Stage B has built it, the composition existing is the point.
+        measured = any("dur" in (seg.get("timing") or {}) for seg in sb.get("segments", []))
+        if (comps / target / "manifest.json").exists() and not measured:
             errors.append(f"{slots[0]}: `as` {target} already exists — pick a new path or reuse it")
     style = sb.get("style", "../DESIGN.md")
     theme = sb.get("theme", "channel")
@@ -339,43 +347,55 @@ def cmd_check(args):
                 warnings.append(f"{slot}: new animation — {r['why'] or 'no reason given'}")
                 if not anim.get("elements"):
                     warnings.append(f"{slot}: new animation lists no elements")
+            elif not r["from"]:
+                errors.append(f"{slot}: reuse.from is required for mode {r['mode']}")
+                continue
+            # Which manifest the vars belong to: the source for as-is / variables; for new / fork the
+            # composition the build creates (`as`, or <episode>/<slot>) once it exists.
+            if r["mode"] in ("as-is", "variables"):
+                target = r["from"]
+                mf = comps / target / "manifest.json"
+                if target in planned and not mf.exists():
+                    target = None  # built in this episode; vars are checked once it exists
+                elif not mf.exists():
+                    errors.append(f"{slot}: {target} has no manifest.json in {comps}")
+                    continue
             else:
-                if not r["from"]:
-                    errors.append(f"{slot}: reuse.from is required for mode {r['mode']}")
-                    continue
-                mf = comps / r["from"] / "manifest.json"
-                if r["from"] in planned and not mf.exists():
-                    if r["mode"] == "fork":
+                if r["mode"] == "fork":
+                    if r["from"] in planned and not (comps / r["from"] / "manifest.json").exists():
                         errors.append(f"{slot}: fork of {r['from']}, which this episode builds — reuse it with variables")
-                    continue  # built earlier in this episode; vars are checked once it exists
-                if not mf.exists():
-                    errors.append(f"{slot}: {r['from']} has no manifest.json in {comps}")
-                    continue
-                declared = {v["id"]: v for v in load_json(mf).get("variables", []) if v.get("id")}
+                    elif not (comps / r["from"] / "manifest.json").exists():
+                        errors.append(f"{slot}: {r['from']} has no manifest.json in {comps}")
+                    if not (anim.get("elements") or anim.get("constraints")):
+                        warnings.append(f"{slot}: fork without elements/constraints — what changes?")
+                target = r["as"] or slot_dir(episode_dir, slot)
+                if not (comps / target / "manifest.json").exists():
+                    target = None
+            if target:
+                declared = {v["id"]: v for v in load_json(comps / target / "manifest.json").get("variables", []) if v.get("id")}
+                is_kit = target.startswith("kit/") or "duration" in declared and "theme" in declared
                 for key, val in (anim.get("vars") or {}).items():
                     if key not in declared:
-                        errors.append(f"{slot}: {r['from']} declares no variable '{key}'")
+                        errors.append(f"{slot}: {target} declares no variable '{key}'")
                         continue
                     default, cap = declared[key].get("default"), declared[key].get("max")
-                    if r["from"].startswith("kit/") and key in ("duration", "theme"):
+                    if is_kit and key in ("duration", "theme"):
                         errors.append(f"{slot}: don't set '{key}' — Stage B fills duration from the segment "
                                       f"length, theme comes from the storyboard's \"theme\"")
                     if isinstance(val, str) and isinstance(cap, (int, float)):
                         if len(val.replace("*", "")) > cap:
                             errors.append(f"{slot}: '{key}' has {len(val.replace('*', ''))} chars, "
-                                          f"{r['from']} fits at most {cap}")
+                                          f"{target} fits at most {cap}")
                     elif isinstance(val, str) and isinstance(default, str) and default and \
                             text_width(val) > text_width(default) * 1.5 + 2:
                         warnings.append(f"{slot}: '{key}' is ~{text_width(val):.0f} em wide vs default "
                                         f"~{text_width(default):.0f} — may overflow")
-                if r["from"].startswith("kit/"):
+                if is_kit:
                     themes = [o.get("value") for o in declared.get("theme", {}).get("options", [])]
                     if themes and theme not in themes:
-                        errors.append(f"{slot}: {r['from']} has no theme '{theme}' (has {', '.join(themes)})")
-                if r["mode"] == "variables" and not anim.get("vars"):
-                    warnings.append(f"{slot}: mode variables but no vars — is it as-is?")
-                if r["mode"] == "fork" and not (anim.get("elements") or anim.get("constraints")):
-                    warnings.append(f"{slot}: fork without elements/constraints — what changes?")
+                        errors.append(f"{slot}: {target} has no theme '{theme}' (has {', '.join(themes)})")
+            if r["mode"] == "variables" and not anim.get("vars"):
+                warnings.append(f"{slot}: mode variables but no vars — is it as-is?")
             if own_style and r["mode"] in ("as-is", "variables") and r["from"] \
                     and r["from"] not in planned and not r["from"].startswith(episode_dir + "/") \
                     and not r["from"].startswith("kit/"):

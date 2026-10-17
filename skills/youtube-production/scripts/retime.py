@@ -135,6 +135,9 @@ def main():
                 problems.append(f"{ov['id']}: '{ov['at']}' not heard — placed at the segment's first word")
             dur = round(min(ov.get("dur", 3), end - at), 3)
             ov["timing"] = {"start": at, "rel": round(at - start, 3), "dur": dur}
+            if dur < 2:
+                problems.append(f"{ov['id']}: only {dur:.1f}s on screen — '{ov['at']}' is said too close to the "
+                                f"segment end; anchor it to an earlier phrase")
         for z in seg.get("zooms", []):
             at = phrase_time(z["at"], window, target, times)
             if at is None:
