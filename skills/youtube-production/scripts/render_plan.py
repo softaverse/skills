@@ -2,6 +2,7 @@
 """Render commands for every animation in an episode — written, never run.
 
     render_plan.py <episode-dir> [--studio <hf-studio>] [--fps 60] [--resolution landscape-4k]
+                   [--since <episode>/voice/storyboard.before.json]
 
 For each cutaway, transition and overlay in storyboard.json:
   composition   the slot's instance <episode>/<slot> when instances.py has made it (content baked
@@ -13,6 +14,12 @@ For each cutaway, transition and overlay in storyboard.json:
 
 Writes <episode>/renders.sh (the commands, for the user to run) and renders.md (what each
 render is, and anything that blocks it: not built yet, no measured timing, fixed length).
+
+--since compares against a snapshot taken before a revision round (or a re-recording) and adds
+a 這輪要重匯 section to renders.md: slots that are new, whose render-relevant content changed
+(source, vars, motion, placement, length, theme) or that were removed. A changed overlay start
+(`rel`) alone is listed as edit-only — move the clip in DaVinci, the render stays valid. Changes
+inside a component (a kit fix) aren't in the storyboard: list those slots by hand.
 """
 
 import argparse
@@ -40,12 +47,58 @@ def fixed_length(comp_dir):
     return float(m.group(1)) if m else None
 
 
+def render_inputs(sb):
+    """{slot: (what the render depends on, overlay rel)} — rel only positions the clip in the edit."""
+    theme = sb.get("theme", "channel")
+    out = {}
+    for seg in sb.get("segments", []):
+        seg_dur = (seg.get("timing") or {}).get("dur")
+        for slot, layer, anim in animations_of(seg):
+            r = reuse_of(anim)
+            if layer == "overlay":
+                dur = (anim.get("timing") or {}).get("dur")
+            elif layer == "transition":
+                dur = anim.get("dur")
+            else:
+                dur = seg_dur
+            key = {"source": r["from"] if r["mode"] in ("as-is", "variables") else (r["as"] or "custom"),
+                   "mode": r["mode"], "vars": anim.get("vars") or {}, "motion": anim.get("motion") or [],
+                   "placement": anim.get("placement"), "dur": None if dur is None else round(dur, 2),
+                   "theme": theme}
+            out[slot] = (key, (anim.get("timing") or {}).get("rel"))
+    return out
+
+
+def diff_since(before, after):
+    """Markdown rows: what to re-export since the snapshot."""
+    old, new = render_inputs(before), render_inputs(after)
+    rows = []
+    for slot, (key, rel) in new.items():
+        name = slot.replace(" (transition)", ".transition")
+        if slot not in old:
+            rows.append(f"| {name} | 新增 | 匯出 |")
+            continue
+        okey, orel = old[slot]
+        changed = [k for k in key if key[k] != okey.get(k)]
+        if changed:
+            detail = ", ".join(f"{k} {okey.get(k)} → {key[k]}" if k in ("dur", "placement", "source", "theme") else k
+                               for k in changed)
+            rows.append(f"| {name} | {detail} | 重匯 |")
+        elif rel is not None and orel is not None and abs(rel - orel) > 0.01:
+            rows.append(f"| {name} | 進場 {orel:g}s → {rel:g}s | 只在 DaVinci 挪位置 |")
+    for slot in old:
+        if slot not in new:
+            rows.append(f"| {slot.replace(' (transition)', '.transition')} | 已刪除 | 從 timeline 拿掉、刪 renders/ 裡的檔 |")
+    return rows
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode")
     ap.add_argument("--studio")
     ap.add_argument("--fps", type=int, default=60)
     ap.add_argument("--resolution", default="landscape-4k")
+    ap.add_argument("--since", help="storyboard snapshot from before this round; lists what to re-export")
     args = ap.parse_args()
 
     ep = Path(args.episode).resolve()
@@ -126,6 +179,11 @@ def main():
           f"`renders.sh` renders into `renders/` at {args.fps} fps, {args.resolution}. Overlays are MOV "
           "(ProRes 4444, alpha); cutaways and transitions are MP4.", "",
           "| Output | Layer | Composition | Mode | Length | Format | Notes |", "|---|---|---|---|---|---|---|", *rows]
+    if args.since:
+        changes = diff_since(load_json(args.since), sb)
+        md += ["", f"## 這輪要重匯（對照 `{Path(args.since).name}`）", ""]
+        md += (["| Output | 變更 | 要做的事 |", "|---|---|---|", *changes] if changes else ["沒有要重匯的。"])
+        print("\n".join(md[md.index(f"## 這輪要重匯（對照 `{Path(args.since).name}`）"):]))
     (ep / "renders.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(f"{len(rows)} renders · {len(rows) - blocked} ready · {blocked} blocked → {ep}/renders.sh, renders.md")
 

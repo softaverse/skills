@@ -95,6 +95,7 @@ A1  voice        L01 L02 L03 L04 L05 L06 L07 L08 ...
 | `theme` | no | Kit theme for every `kit/…` animation in the episode (`.kit-theme-<name>` in hf-studio `assets/kit/themes.css`). Default `channel` |
 | `mix` | no | Override the picture budget: `{ "footage": [0.6, 0.7], "template": [0.2, 0.3], "custom": [0.05, 0.1] }` (the defaults) |
 | `segments` | yes | In script order |
+| `revisions` | no | Change requests queued for the next revision round; see *Revision* |
 
 ### Segment
 
@@ -143,6 +144,30 @@ An animation plus where and when it sits:
 | `placement` | yes | `top-left` · `top-right` · `bottom-left` · `bottom-right` · `left-third` · `right-third` · `lower-third` · `center`. On `picture: camera`, keep it off the face |
 | + Animation fields | yes | `kind.layer` must be `overlay` |
 
+### Revision
+
+A change request, written by the user in plain words and handled in one batch later
+(*Revision round* in `stage-b-retime.md`). It records a request, not a decision: nothing reads
+it except `check` and `storyboard.py revisions`, so an open revision never changes an instance.
+
+```json
+"revisions": [
+  { "id": "R01", "at": "03:38", "ask": "補一組終端機打字的疊畫面…；不要回應行；做成 kit" },
+  { "id": "R02", "slot": "Seg_19", "ask": "第三欄的描述太長",
+    "target": "Seg_19 · c3Desc", "type": "A", "status": "done", "result": "c3Desc 改短 · 重匯 Seg_19" }
+]
+```
+
+| Field | Written by | Notes |
+|---|---|---|
+| `id` | user | `R01`, `R02`… never reused |
+| `at` / `slot` | user | At least one (a follow-up on a delivered clip uses `slot`, e.g. `Seg_39.o1`). `at` is a timecode on the edit timeline (`03:38`, `3:38.5`) — the voice track is the whole timeline, so it maps straight onto `timing`; `slot` is a segment or overlay id |
+| `ask` | user | What to change, in plain words — the user writes it, or you record what they said in chat. Answers to follow-up questions go here too |
+| `target` | round | The resolved place: segment, phrase, slot, field |
+| `type` | round | `A` data only (vars / placement / dur / `at` / motion of an existing slot) · `B` a new slot from an existing component · `C` a new or changed component (hf-studio's three gates) · `D` voice or script (re-record / B1–B3) |
+| `status` | round | `open` (default) → `planned` (the user approved the plan) → `done` |
+| `result` | round | What changed in the storyboard and which renders to re-export |
+
 ## Validation (`storyboard.py check`)
 
 Errors (must fix):
@@ -166,3 +191,5 @@ Warnings (judge):
 - a custom `fork` / `new` (no `as`) without `motion`; a `motion` recipe that is not `accepted` yet
 - a cutaway whose estimate is under 2 s or over 20 s
 - overlays on `camera` segments placed `center`
+- revisions not `done` yet (malformed ids, an empty `ask`, a bad timecode, an unknown `slot`,
+  `status` or `type` are errors)

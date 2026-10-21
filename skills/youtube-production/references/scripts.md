@@ -45,6 +45,14 @@ storyboard.py recipes [<episode-dir>]         # recipes per element type (target
   target (同類可替換). Repeated "not accepted yet" warnings collapse into one line.
 - `lists` does not validate — run `check` first.
 
+```bash
+storyboard.py revisions <episode-dir> [--all]   # open change requests, resolved
+```
+
+- Per revision: the segment at `at` (from `timing`), every slot in it with its source and placement
+  (overlays marked `← on screen` when they cover `at`), the script line (`voice/lines.json`) and the
+  words said ±2 s (`voice/transcript.json`). `--all` includes `done` ones.
+
 ## Stage B
 
 ### `transcribe.py` — voice → transcript
@@ -105,6 +113,11 @@ variables needed); otherwise `reuse.from` / `reuse.as` / the custom build with t
 pieces get `duration` + `theme`); overlays → MOV,
 others → MP4, into `<episode>/renders/<slot>.<ext>`. Writes `renders.sh` and `renders.md`
 (blocked: not built / no timing; notes: fixed-length compositions to trim or hold).
+
+`--since <snapshot.json>` adds a 這輪要重匯 section to `renders.md` (and prints it): slots that
+are new, whose render inputs changed (source, mode, vars, motion, placement, length, theme), or that
+were removed. An overlay whose only change is its start (`rel`) is edit-only — move it in DaVinci.
+Component changes (a kit fix) don't show in the storyboard; add those slots by hand.
 
 ### `ytlib.py`
 

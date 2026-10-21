@@ -135,3 +135,132 @@ selectors). Fixed-length legacy compositions are flagged in `renders.md` to trim
 
 **✋ End of Stage B** — point the user at the Gallery to review the instances, then hand over
 `renders.md` and `renders.sh`. Never render yourself. Stage C starts when the renders exist.
+
+---
+
+## Revision round
+
+Once the instances exist, the user reviews the episode and collects changes. They don't come one by
+one: the user writes them into `storyboard.json` → `revisions` (`at` or `slot` + `ask`, schema in
+`storyboard-schema.md`) — or says them in chat, and you write them there — then says 「處理修改」.
+Until then only record: add the revision, run `storyboard.py revisions` to show where it lands,
+discuss options if asked (e.g. which library piece fits), and write each answer into its `ask`.
+Never touch `segments` or compositions before the round.
+
+```
+queue R01…Rn ─ 「處理修改」─ 1 snapshot ─ 2 resolve ─ ✋3 batch plan ─ 4 storyboard ─ 5 build C (✋✋) ─ 6 hand over
+                                                                                      └─ follow-up tweaks (below)
+```
+
+1. **Snapshot**: `cp <episode>/storyboard.json <episode>/voice/storyboard.before.json`.
+2. **Resolve**: `storyboard.py revisions <episode>` — segment, slots on screen, script line and the
+   words said ±2 s for each `at`. Fill `target` and `type` (A data · B new slot, existing component ·
+   C new/changed component · D voice/script).
+   - When the timecode and the content disagree (the phrase the request is about is said elsewhere),
+     say so **once**, with both times. The user's answer wins; don't ask again.
+   - **Clips-only mode**: the user may say placement is theirs (「我會手動處理放置位置」). Then stop
+     asking about position, length fit or what the clip covers; anchor each slot where the timecode
+     or the content puts it (that only names the instance and its render) and note in `constraints`
+     that the edit places it.
+3. **✋ One plan for the batch**: per revision, the target, the type and the exact storyboard change.
+   For C, this plan *is* hf-studio gate 1 for every build in the round: what is on screen, every
+   variable with its `max`, which recipe moves each element. Prefer one kit component serving several
+   revisions (R01 + R03 → `kit/terminal-type` with a `mode`) and extending an existing kit (a new
+   variable) over a new one. A motion no recipe covers → extend or add the recipe first (define →
+   implement + demo → accept, `recipes/README.md`); its demo is reviewed with gate 2. On ok, mark them
+   `planned`.
+4. **Apply A / B / C to the storyboard**: edit `segments` (new overlays get the next free `.o<n>`;
+   C slots get `mode: new|fork` + `as`; a slot that uses a variable the kit doesn't declare yet fails
+   `check` until gate 3 adds it — expected). D goes through *Re-recording a segment* below. Then
+   `storyboard.py check` → `retime.py` (re-times overlays) → `storyboard.py lists`.
+5. **Build C**: gate 2 ✋ (static storyboards, plus the recipe demo), gate 3 ✋ (compositions) —
+   batched, one gate at a time. A changed kit keeps its old storyboard; write the new one next to it
+   (`storyboard/<change>.html`). Verify as in *Checks* below.
+6. **Hand over**: `instances.py <episode>`, then
+   `render_plan.py <episode> --since <episode>/voice/storyboard.before.json`. Add slots whose
+   component changed in step 5 (they aren't in the storyboard diff) — unless check-seek shows they're
+   unchanged. Mark each revision `done` with its `result`; give the user the player URL of every
+   changed instance and the 這輪要重匯 list. Never render.
+
+### Follow-up tweaks
+
+After a hand-over the user often reacts to one clip (「拉寬」「放更多字」「要滿版不透明」「不要分兩排」).
+Each reaction is a new revision (`R04`, `R05`…, `slot` = that clip), handled right away, one at a time:
+
+1. Snapshot, add the revision with `target` / `type`, `status: planned`.
+2. A **new design** (another layout, a new component) still starts at gate 1 — propose it with
+   concrete numbers and wait. A **tweak of what was just approved** (size, amount of text, timing,
+   opaque vs transparent) is built directly: when the request is open-ended (「縮小但看得清楚」),
+   pick the value yourself, try it, and look at the snapshot before reporting — don't ask.
+3. Change the kit through new variables whose defaults keep the old behaviour, so every other
+   instance stays identical; then edit the slot's `vars`, `instances.py`, verify, `done` +
+   `render_plan --since`.
+4. Report what changed, what you chose and why (with the fallback if it's not right, e.g. "drop the
+   last section to get 19 px back"), and the one render to re-export.
+
+Things these tweaks taught:
+- **Full-frame opaque in an overlay slot**: fine for a short insert the edit puts on the top track.
+  It must be opaque from frame 0 (only the content enters, no fade-in of the frame), has no fade-out
+  (cutaway rule), and `render_plan` still says MOV — tell the user to pick MP4 in the player.
+- **Long text at a fixed length**: show most of it with the frame and type only the tail
+  (`typeLast`), instead of speeding type-on past readability.
+- **Readable size**: the 1280×720 canvas renders at 4K and lands at 1080p ×1.5. Keep body text ≥ 15 px
+  on the canvas (≈ 22 px at 1080p); when it won't fit, cut content rather than go smaller.
+
+### Checks
+
+For every changed kit and every instance in the round:
+- `npx hyperframes check` (kit components and instances), `npm run check-seek -- <path>`.
+- Snapshots of the cases the round actually uses, plus `minDuration`, every string at `max` and both
+  themes. `snapshot` can't take variables: copy the composition to a sibling temp folder at the same
+  depth (`compositions/kit/_tmp-x/`, so relative asset symlinks still resolve), change the declared
+  defaults in `data-composition-variables`, snapshot, delete the copy.
+- Regression: check-seek the other instances of every kit you changed (e.g. `seg_15` after a
+  `grid-list` change) and the other slots of the same kit in this round.
+- Small text on a new background clears 4.5:1 in both themes (`check` reports it); theme tokens meant
+  for light backgrounds (`--kit-highlight`, `--kit-accent`, the caret) may fail on a dark one.
+
+## Re-recording a segment
+
+During the edit the user may re-record one segment's voice. There is no per-segment sync:
+every script reads the whole voice track, so the new take goes through the DaVinci timeline and
+B1–B3 run again on the whole file.
+
+1. **The user swaps the take in DaVinci.** The new recording replaces the old one on the
+   timeline, with fillers and pauses already cut. The rest of the timeline must stay untouched;
+   any other trim changes that segment's length too, and it will show up in the comparison below.
+2. **The user re-exports the whole voice track** (as in B0: voice only, WAV, whole timeline) and
+   says which segment was re-recorded.
+3. **Snapshot the current timing** before anything rewrites it:
+   ```bash
+   cp <episode>/storyboard.json <episode>/voice/storyboard.before.json
+   ```
+4. **Re-run B1 → B2 → B3** on the new file. In B2 the script still follows the voice: if the new
+   take is worded differently, rewrite those lines in `script.md` under the same ids, and insert
+   new ids (`L78a`) for added sentences. Never renumber.
+5. **Compare the lengths.** Renders depend on each slot's `dur` (and an overlay's `rel` / `dur`),
+   not on `start`, so only the slots whose values changed need a new render:
+   ```bash
+   python3 - <episode> <<'EOF'
+   import json, sys
+   ep = sys.argv[1]
+   old = {s["id"]: s for s in json.load(open(f"{ep}/voice/storyboard.before.json"))["segments"]}
+   for s in json.load(open(f"{ep}/storyboard.json"))["segments"]:
+       o = old.get(s["id"], {})
+       a, b = o.get("timing", {}).get("dur"), s["timing"].get("dur")
+       if a is None or abs(a - b) > 0.01:
+           print(f'{s["id"]}: {a} → {b}')
+       oo = {x["id"]: x for x in o.get("overlays", [])}
+       for x in s.get("overlays", []):
+           t0, t1 = oo.get(x["id"], {}).get("timing", {}), x.get("timing", {})
+           if any(abs((t0.get(k) or 0) - (t1.get(k) or 0)) > 0.01 for k in ("rel", "dur")):
+               print(f'  {x["id"]}: rel {t0.get("rel")} → {t1.get("rel")}, dur {t0.get("dur")} → {t1.get("dur")}')
+   EOF
+   ```
+   Expect the re-recorded segment and often **the segment before it**: each cut lands `lead`
+   (0.2 s) before the next segment's first word, so a new take with a different lead-in moves the
+   previous segment's end. Later segments only shift; their renders stay valid.
+6. **Re-run B5** (`instances.py`, `render_plan.py`) and hand over the list from step 5: the user
+   reviews those instances in the Gallery and re-exports only them from the player, not the whole
+   `renders.sh`. If a changed length breaks a kit piece's `minDuration` or a custom build's fixed
+   `data-duration`, fix the storyboard (B3) or rebuild that slot (B4) first.

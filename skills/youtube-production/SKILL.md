@@ -53,6 +53,8 @@ Infer it from the episode folder before asking:
 | no folder, or only `brief.md` / `outline.md` | A |
 | `storyboard.json` exists, no voice track given | A is done — confirm, then wait for the edited voice |
 | user hands over the edited voice track | B |
+| instances exist and the user queued changes in `revisions` | B — *Revision round* in `references/stage-b-retime.md` |
+| timing is measured and the user re-recorded a segment's voice | B — *Re-recording a segment* in `references/stage-b-retime.md` (not a fresh Stage B) |
 | `storyboard.json` has measured `timing.dur` and the animations are rendered | C |
 
 Do not downgrade: if the user arrives with a finished script, convert it (A3, no rewording)
@@ -69,6 +71,9 @@ and go straight to the storyboard.
   nothing improvises motion.
 - Footage first: about 60–70% of the running time is the real demo / screen, 20–30%
   templated graphics, 5–10% custom animation (`storyboard.py check` measures it).
+- Changes after the instances exist are queued as `revisions` in `storyboard.json` and handled in
+  one round when the user says 「處理修改」; reactions to a delivered clip are follow-up revisions
+  (*Revision round* in `references/stage-b-retime.md`).
 - `storyboard.json` is the only place a decision is recorded. Edit it, then regenerate
   the lists; never edit `animations.md` / `assets.md` by hand.
 - Segment and line ids are permanent once Stage B starts (renders and timelines are named

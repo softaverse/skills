@@ -118,10 +118,17 @@ def main():
             if args.dry_run:
                 rows.append((slot, src_rel, "update in place" if in_place else f"→ {dst_rel}")); continue
             if not in_place:
+                # The slot's own stage-two storyboard lives in dst/storyboard — keep it across the rebuild
+                keep = dst / "storyboard"
+                parked = dst.parent / f".{dst.name}.storyboard"
+                if keep.is_dir():
+                    shutil.move(keep, parked)
                 if dst.exists():
                     shutil.rmtree(dst)
                 shutil.copytree(src, dst, symlinks=True, ignore=shutil.ignore_patterns(".hyperframes", "storyboard"))
                 relink(dst, src)
+                if parked.is_dir():
+                    shutil.move(parked, keep)
             html = (dst / "index.html").read_text(encoding="utf-8")
             html, declared = bake(meta_first(html), values)
             missing = sorted(set(values) - declared)

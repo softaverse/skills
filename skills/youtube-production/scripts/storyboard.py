@@ -7,6 +7,9 @@
                                                       --write fills timing.est per segment
     storyboard.py lists <episode-dir>                 write animations.md and assets.md
     storyboard.py recipes [<episode-dir>]             recipes available per element type (targets)
+    storyboard.py revisions <episode-dir> [--all]     the open change requests (`revisions`), each
+                                                      resolved to its segment, slots, line and the
+                                                      words said around it
 
 <episode-dir> holds script.md and storyboard.json. hf-studio is found from --studio,
 HF_STUDIO, or by walking up from the episode dir to the folder holding kinds.json.
@@ -21,7 +24,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ytlib import dump_json, load_json, normalize, parse_script  # noqa: E402
+from ytlib import dump_json, fmt_time, load_json, load_words, normalize, parse_script  # noqa: E402
 
 CHARS_PER_SEC = 4.5
 LINE_PAUSE = 0.3
@@ -35,6 +38,20 @@ SEG_ID = re.compile(r"^Seg_\d{2,3}[a-z]?$")
 DEFAULT_MIX = {"footage": (0.60, 0.70), "template": (0.20, 0.30), "custom": (0.05, 0.10)}
 MIX_LABELS = {"footage": "實拍（操作畫面、螢幕錄影）", "template": "模板化動態圖形", "custom": "客製化動畫"}
 ZOOM_TYPES = {"zoom", "highlight"}
+REV_ID = re.compile(r"^R\d{2,3}$")
+REV_STATUS = ("open", "planned", "done")
+# A data-only edit · a new slot from an existing component · a build or component change (gates) · voice/script
+REV_TYPES = {"A": "只改資料", "B": "新增 slot（既有元件）", "C": "新元件／改元件", "D": "配音／稿子"}
+TIMECODE = re.compile(r"^(?:(\d+):)?(\d{1,2}):(\d{2}(?:\.\d+)?)$")
+
+
+def parse_timecode(tc):
+    """'03:38' / '3:38.5' / '1:03:38' → seconds; None when it isn't a timecode."""
+    m = TIMECODE.match(str(tc).strip())
+    if not m:
+        return None
+    h, mi, se = m.groups()
+    return int(h or 0) * 3600 + int(mi) * 60 + float(se)
 
 
 def spoken_units(text):
@@ -445,6 +462,8 @@ def cmd_check(args):
         if l["id"] not in seen_line:
             errors.append(f"{l['id']} is in no segment")
 
+    check_revisions(sb, errors, warnings)
+
     pending = sorted({w.split("'")[1] for w in warnings if w.startswith("recipe '") and "not accepted" in w})
     warnings = [w for w in warnings if not (w.startswith("recipe '") and "not accepted" in w)]
     if pending:
@@ -465,6 +484,106 @@ def cmd_check(args):
     print(f"{n} segments · {len(lines)} lines · est {fmt_dur(total)} · "
           f"{len(errors)} errors · {len(warnings)} warnings{' · timing.est written' if args.write else ''}")
     sys.exit(1 if errors else 0)
+
+
+def check_revisions(sb, errors, warnings):
+    """`revisions` is the change-request queue: the user writes `at`/`slot` + `ask`, a revision
+    round fills `target` / `type` / `status` / `result`. Open requests warn, they never block."""
+    revs = sb.get("revisions")
+    if revs is None:
+        return
+    if not isinstance(revs, list):
+        errors.append("revisions must be a list")
+        return
+    slots = {sl.split(" ")[0] for seg in sb.get("segments", []) for sl, _, _ in animations_of(seg)}
+    slots |= {seg.get("id") for seg in sb.get("segments", [])}
+    seen, open_ids = set(), []
+    for rv in revs:
+        rid = rv.get("id", "?")
+        if not REV_ID.match(rid):
+            errors.append(f"revision {rid}: id must look like R01")
+        if rid in seen:
+            errors.append(f"revision {rid}: duplicate id")
+        seen.add(rid)
+        if not str(rv.get("ask", "")).strip():
+            errors.append(f"revision {rid}: `ask` is empty")
+        if "at" not in rv and "slot" not in rv:
+            errors.append(f"revision {rid}: needs `at` (timecode) or `slot`")
+        if "at" in rv and parse_timecode(rv["at"]) is None:
+            errors.append(f"revision {rid}: `at` '{rv['at']}' is not a timecode like 03:38")
+        if rv.get("slot") and rv["slot"] not in slots:
+            errors.append(f"revision {rid}: no segment or slot {rv['slot']}")
+        status = rv.get("status", "open")
+        if status not in REV_STATUS:
+            errors.append(f"revision {rid}: status must be one of {list(REV_STATUS)}")
+        if rv.get("type") and rv["type"] not in REV_TYPES:
+            errors.append(f"revision {rid}: type must be one of {sorted(REV_TYPES)}")
+        if status != "done":
+            open_ids.append(rid)
+    if open_ids:
+        warnings.append(f"{len(open_ids)} revisions not done yet: {', '.join(open_ids)} — "
+                        "`storyboard.py revisions` lists them")
+
+
+def cmd_revisions(args):
+    ep = Path(args.episode)
+    sb = load_json(ep / "storyboard.json")
+    revs = [rv for rv in sb.get("revisions", []) if args.all or rv.get("status", "open") != "done"]
+    if not revs:
+        print("no open revisions")
+        return
+    words = load_words(ep / "voice" / "transcript.json") if (ep / "voice" / "transcript.json").exists() else []
+    lines_at = []
+    if (ep / "voice" / "lines.json").exists():
+        data = load_json(ep / "voice" / "lines.json")
+        lines_at = [l for l in (data.get("lines", data) if isinstance(data, dict) else data)
+                    if isinstance(l, dict) and l.get("start") is not None]
+    script = {l["id"]: l["text"] for l in parse_script(ep / "script.md")} if (ep / "script.md").exists() else {}
+    segs = sb.get("segments", [])
+
+    def seg_at(t):
+        for seg in segs:
+            tm = seg.get("timing") or {}
+            if tm.get("start") is not None and tm["start"] <= t < tm.get("end", float("inf")):
+                return seg
+        return None
+
+    for rv in revs:
+        rid, status = rv.get("id", "?"), rv.get("status", "open")
+        head = f"## {rid} · {status}" + (f" · {rv['type']} {REV_TYPES.get(rv['type'], '')}" if rv.get("type") else "")
+        out = [head, "", f"> {rv.get('ask', '')}", ""]
+        t = parse_timecode(rv["at"]) if "at" in rv else None
+        seg = seg_at(t) if t is not None else None
+        if rv.get("slot"):
+            sid = rv["slot"].split(".")[0]
+            seg = next((s for s in segs if s.get("id") == sid), seg)
+        if t is not None:
+            out.append(f"- at: {fmt_time(t)}")
+        if seg:
+            tm = seg.get("timing") or {}
+            span = f"{fmt_time(tm['start'])}–{fmt_time(tm['end'])}" if "start" in tm else "not timed"
+            out.append(f"- segment: {seg['id']} · {seg.get('picture')} · {span} — {seg.get('visual', '')}")
+            for sl, layer, anim in animations_of(seg):
+                r = reuse_of(anim)
+                live = ""
+                if layer == "overlay" and t is not None and "start" in (anim.get("timing") or {}):
+                    a = anim["timing"]
+                    live = f" · {fmt_time(a['start'])}+{a['dur']:g}s" + (" ← on screen" if a["start"] <= t < a["start"] + a["dur"] else "")
+                place = f" · {anim['placement']}" if anim.get("placement") else ""
+                out.append(f"  - {sl} ({layer}) {r['mode']} `{r['from'] or r['as'] or ''}`{place}{live}")
+        else:
+            out.append("- segment: none at this time" if t is not None else "- segment: —")
+        if t is not None:
+            line = next((l for l in lines_at if l["start"] <= t < (l.get("end") or l["start"])), None)
+            if line:
+                out.append(f"- line: {line['id']} {script.get(line['id'], line.get('text', ''))}")
+            near = "".join(w["text"] for w in words if t - 2 <= w["start"] <= t + 2)
+            if near:
+                out.append(f"- said ±2s: {near}")
+        for key in ("target", "result"):
+            if rv.get(key):
+                out.append(f"- {key}: {rv[key]}")
+        print("\n".join(out) + "\n")
 
 
 # ── lists ───────────────────────────────────────────────────────────────────
@@ -625,8 +744,12 @@ def main():
     p = sub.add_parser("lists")
     p.add_argument("episode")
     p.add_argument("--studio")
+    p = sub.add_parser("revisions")
+    p.add_argument("episode")
+    p.add_argument("--all", action="store_true", help="include done revisions")
     args = ap.parse_args()
-    {"estimate": cmd_estimate, "check": cmd_check, "lists": cmd_lists, "recipes": cmd_recipes}[args.cmd](args)
+    {"estimate": cmd_estimate, "check": cmd_check, "lists": cmd_lists, "recipes": cmd_recipes,
+     "revisions": cmd_revisions}[args.cmd](args)
 
 
 if __name__ == "__main__":
