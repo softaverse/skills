@@ -4,3 +4,7 @@ node_modules/
 .claude/skills/
 .agents/skills/
 skills-lock.json
+
+# Python bytecode
+__pycache__/
+*.pyc
