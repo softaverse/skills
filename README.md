@@ -59,7 +59,7 @@ themselves have no runtime.
 - **System maintenance**
   - [**Disk Audit**](./skills/disk-audit) — scan a macOS disk for reclaimable space and report a tiered cleanup list with commands.
 - **Audio**
-  - [**Voice Polish**](./skills/voice-polish) — polish a voiceover or podcast recording with an ffmpeg vocal chain: audition presets at matched loudness, tweak, and master to a platform loudness target.
+  - [**Voice Polish**](./skills/voice-polish) — polish a voiceover or podcast recording with an ffmpeg vocal chain: even out tone and level differences between clips, audition presets at matched loudness, tweak, and master to a platform loudness target.
 - **Video production**
   - [**YouTube Production**](./skills/youtube-production) — plan a YouTube episode from brief to a line-numbered script and a storyboard that reuses your HyperFrames animation library (Stage A; voice retiming and DaVinci assembly in progress).
 <!-- END SKILLS -->

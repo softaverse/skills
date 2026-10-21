@@ -45,6 +45,8 @@ scripts/master.sh out.wav final.wav -14 -1
 | dull, muffled, unclear | `presenceFreq=3000..4000 presenceGain=2..4`, `airGain=1..3` |
 | harsh, piercing | lower `presenceGain` or `airGain` |
 | sibilant "s" sounds | `deEssAmount=60..75`, `deEssThresh` lower (more negative), `deEssFreq` 5500–7500 |
+| one section sounds different, muffled, far away, like another mic | tone, not level: `matcheq.py --check`, then match that section (see SKILL.md step 6) |
+| one section louder / quieter than the rest | section-level difference, not dynamics: `level.py` before the chain (see SKILL.md step 6); the compressor cannot fix it |
 | levels jump around | lower `compThresh` (more negative) or raise `compRatio` toward 5–6, then rebalance `compMakeup` |
 | over-processed, squashed | `compRatio=3`, `compThresh` closer to −20, less `satDrive` |
 | background noise, hiss | out of scope: no gate or denoiser here; denoise first (e.g. DeepFilterNet), then run the chain |
