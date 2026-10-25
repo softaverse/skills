@@ -11,6 +11,17 @@ agent that reads `SKILL.md`.
 > [!NOTE]
 > This repository is under active development.
 
+## Updating Skills
+
+To update previously installed skills to the latest versions, run the following
+command.
+
+```bash
+npx skills update
+```
+
+This command gives you an option to also remove obsolete skills.
+
 ## Installation
 
 ```bash
