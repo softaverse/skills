@@ -1,0 +1,78 @@
+# 風格家族
+
+hf-studio 裡已經有好幾套完整的視覺語言，各自決定了顏色、字體、卡片材質，**以及動態手感**。
+選家族是全片層級的決定，要在逐幕討論之前先定；同一支片混兩個家族通常會很亂
+（例外：疊畫面的字幕或名牌可以來自別的家族，只要顏色調得過去）。
+
+- **頻道預設：明亮簡報 (Softaverse Default)** `softaverse` — 淺藍白漸層底、白色玻璃卡、天藍主色、深藍字；「一次只強調一件事」，資訊用卡片和節點講。
+  - 感受：明亮、乾淨、像一份講得很清楚的簡報
+  - 適合：這個頻道的預設；AI 開發、工具教學
+  - 搭配：Ease-out、Spring（小）、Connector、Hand Underline、Shared Element
+  - 注意：規格在 `compositions/DESIGN.md`；深色只用在擬真介面（終端機、數據圖），不當整片底色
+  - 範例：`web-stack-intro` `deploy-arch` `idea-to-ai` `hyperframes-tool`
+- **EP3 編輯感：髮絲線 (Hairline Editorial)** `hairline` — 細髮絲線切格、陶土色編號、大量留白，像一本設計雜誌。
+  - 感受：知性、設計師、克制
+  - 適合：設計主題、需要「高級感」的集數
+  - 搭配：Rise、Clip Wipe、Table、Grid List
+  - 注意：差異寫在 `compositions/EP3-stitch/DESIGN.md`；kit 元件大多在這套下做的
+  - 範例：`EP3-stitch/seg_15` `EP3-stitch/seg_11` `kit/table-card` `kit/grid-list`
+- **Kallaway：深色玻璃 (Herk Kallaway)** `kallaway` — 深色底、極光光暈、毛玻璃卡片、細光邊、等寬字時間碼；卡片彈性進場。
+  - 感受：科技、精緻、創作者頻道、深夜
+  - 適合：科技、AI、商業類的口播頻道
+  - 搭配：Aurora、Glass、Spring、Stagger、Glow
+  - 注意：tier1 是全螢幕切畫面、tier2 是透明疊畫面；300 張卡涵蓋所有版式
+  - 範例：`herk-kallaway/t1-overview-agenda` `herk-kallaway/t1-section-aurora-bars` `herk-kallaway/t1-stat-odometer` `herk-kallaway/t2-lt-glasscard`
+- **Vox：紙質解說 (Herk Vox Explainer)** `vox` — 牛皮紙、黃色強調、便利貼、印章、剪報、手繪圈；動作略帶跳格的剪貼感。
+  - 感受：新聞解說、有觀點、手作、知識型
+  - 適合：議題解說、歷史、地理、「為什麼」系列
+  - 搭配：Scrapbook、Stamp、Map Zoom、Marker、Stop-motion
+  - 注意：資訊密度高時要控制拼貼量
+  - 範例：`herk-vox-explainer/t1-section-stamp` `herk-vox-explainer/t1-section-collage` `herk-vox-explainer/t2-lb-sticky` `herk-vox-explainer/t1-stat-receipt`
+- **Remotion 扁平 (Remotion Flat)** `remotionflat` — 冷灰底、一個藍色強調、扁平色塊；六個主題（flat / editorial / caption / pattern / paper / dark）。
+  - 感受：乾淨、現代、YouTube 教學、友善
+  - 適合：數據圖、名牌、YouTube 元件
+  - 搭配：Spring、Count-up、Bars
+  - 注意：規則在 `compositions/remotion-inspired/DESIGN.md`；只參考視覺，不移植原始碼
+  - 範例：`remotion-inspired/bar-chart` `remotion-inspired/name-lower-third` `remotion-inspired/pattern-background` `remotion-inspired/youtube-end-card`
+- **手繪 (Hand-drawn)** `handdrawn` — 歪歪的手繪框、箭頭、底線、手寫字，線條一直微微抖動（boil）。
+  - 感受：親切、筆記、教學、溫暖
+  - 適合：概念解釋、白板教學、溫暖的品牌
+  - 搭配：Boil、Write-on、Hand Circle、Whiteboard
+  - 注意：疊在乾淨的數位卡片上可以當強調，整片手繪則是另一種風格
+  - 範例：`catalog/hw-title` `catalog/hw-pipeline` `catalog-components/hw-callout-circle` `catalog-components/whiteboard-ink`
+- **定格紙感 (Stop-motion Paper)** `stopmotionpaper` — 紙卡、貼紙、紙團，用每 3 格動一次的定格節奏，帶隨機微晃。
+  - 感受：可愛、手作、幽默
+  - 適合：輕鬆主題、幽默段落、兒童向
+  - 搭配：Stop-motion、Paper Transition、Physics
+  - 注意：不能和流暢動畫混在同一畫面
+  - 範例：`remocn/paper-wobble` `remocn/check-list` `remocn/crumple-toss` `remocn/paper-sticker`
+- **Apple 式產品片 (Apple-style Promo)** `applepromo` — 乾淨背景、寫實地圖或裝置、彈性的介面動態、精準音效。
+  - 感受：精緻、可信、產品發表
+  - 適合：產品宣傳、App 介紹、YouTube 業配段落
+  - 搭配：Spring、Count-up、Device、Flight Path
+  - 注意：音效是一半的質感
+  - 範例：`catalog/apple-money-count` `catalog/vpn-youtube-spot` `catalog/nyc-paris-flight` `catalog/ai-chat-reveal`
+- **新聞廣播 (Broadcast News)** `broadcast` — 新聞台的標題條、跑馬燈、紅色欄目、襯線頭條。
+  - 感受：正式、即時、權威
+  - 適合：時事評論、快訊梗
+  - 搭配：News Lower Third、Marker
+  - 注意：不要讓人誤認為真的新聞台
+  - 範例：`catalog/lower-third-bild` `catalog/news-ticker` `remotion-inspired/news-headline`
+- **電影感 3D 片頭 (Cinematic 3D Title)** `cinematic3d` — 玻璃碎片、樹葉、線框傳送門、冰晶等 3D 物件組成片名，帶霧和景深。
+  - 感受：大製作、史詩、驚豔
+  - 適合：系列片頭、重大發表
+  - 搭配：Orbit、Particles、Light Leak
+  - 注意：render 成本高；和簡報式內文要有過渡
+  - 範例：`catalog/glass-shard-title` `catalog/canopy-part-title` `catalog/wireframe-portal-title` `catalog/frost-sequence-camera-orbit`
+- **短影音高能 (Short-form Energy)** `shortform` — 逐詞大字幕、重擊、emoji、對拍硬切、速度變化。
+  - 感受：刺激、停不下來、年輕
+  - 適合：Shorts / Reels / TikTok、長片的精華剪輯
+  - 搭配：Word Pop、Slam、Beat Sync、Punch-in
+  - 注意：長片整支用會疲乏
+  - 範例：`remocn/caption-word-pop` `catalog-components/caption-kinetic-slam` `catalog-components/caption-emoji-pop` `catalog/beat-freeze-cut`
+- **介面微動 (UI Micro-motion)** `uimicro` — 來自 transitions.dev 的介面小動作：徽章彈出、卡片變形、頁面滑動、文字錯開。
+  - 感受：精緻、App、產品感
+  - 適合：產品介面示範、SaaS 宣傳
+  - 搭配：Spring、Micro UI、Cursor
+  - 注意：都是小尺度，放大成全螢幕會失去精緻感
+  - 範例：`catalog-components/badge-pop` `catalog-components/card-resize` `catalog-components/page-slide` `catalog-components/text-stagger`

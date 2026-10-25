@@ -1,0 +1,89 @@
+# 鏡頭運動
+
+在 HyperFrames 裡沒有真的攝影機——「鏡頭」是整個畫面一起縮放、平移、傾斜、模糊。
+鏡頭動的時候，畫面上的元素最好少動；兩者同時大動會暈。
+
+- **推近 (Push-in)** `pushin` — 鏡頭緩慢、持續地往前推，主體越來越大。
+  - 感受：專注、加重語氣、電影感、「聽好了」
+  - 適合：金句、結論、重要的一句話、搜尋框打字
+  - 搭配：Blur-in、Calm Pacing、Typewriter
+  - 注意：要慢（整幕推 5–15%）；推太快像手震；每幕都推就失去強調
+  - 範例：`catalog-components/push-in` `snapcn/search-typing`
+- **拉遠揭露 (Pull-back Reveal)** `pullback` — 先是一個細節的特寫，鏡頭拉遠，才看到它在整體裡的位置。
+  - 感受：恍然大悟、全貌、規模感
+  - 適合：從一個數字拉到整張圖、從一個功能拉到整個系統
+  - 搭配：Dashboard、Hub、Grid
+  - 注意：特寫那一刻要讓人看得懂是什麼
+  - 範例：`catalog-components/pull-back-reveal` `catalog-components/parallax-unzoom`
+- **橫移巡覽 (Pan / Stations)** `pan` — 鏡頭沿著一排內容橫向移動，在每一站停一下。
+  - 感受：導覽、按部就班、連續
+  - 適合：步驟、功能一覽、時間軸
+  - 搭配：Timeline、Steps
+  - 注意：每站停留時間要夠讀
+  - 範例：`catalog-components/pan-stations` `remocn/infinite-bento-pan`
+- **跟著游標放大 (Zoom-follow)** `zoomfollow` — 像螢幕錄影的自動縮放：鏡頭推近到下一個要點擊的地方，跟著游標移動。
+  - 感受：教學、清楚、專業的螢幕錄影
+  - 適合：操作示範、UI 教學
+  - 搭配：Cursor Click、Feather Spotlight
+  - 注意：縮放要有彈性（spring），不要硬切放大
+  - 範例：`catalog-components/cursor-zoom-follow` `catalog-components/ui-focus-zoom` `remocn/terminal-cursor-zoom`
+- **特寫硬切 (Punch-in)** `punchin` — 不是慢慢推，而是直接切到同一個畫面的放大版。
+  - 感受：強調、節奏、YouTuber 剪接感
+  - 適合：講到重點那一下、按下按鈕的瞬間
+  - 搭配：Hard Cut、Beat Sync
+  - 注意：放大 1.2–1.5 倍就夠；一直切會像在抖
+  - 範例：`snapcn/prompt-zoom` `snapcn/answer-stream`
+- **捲動巡覽 (Scroll Camera)** `scrollcam` — 鏡頭沿著一張很長的頁面（網頁、程式碼、文件）往下捲，停在重點。
+  - 感受：完整、真實、像在看真的東西
+  - 適合：網站展示、程式碼走讀、長文件
+  - 搭配：Spotlight、Highlight Band
+  - 注意：捲動速度要穩，停下前減速
+  - 範例：`catalog-components/scroll-camera-story` `remocn/stage` `catalog/code-scroll` `remocn/glass-code-walk`
+- **環繞 (Orbit)** `orbit` — 鏡頭繞著一個物件轉，或物件在鏡頭前轉。
+  - 感受：產品感、立體、大製作
+  - 適合：產品展示、3D logo、單一功能卡
+  - 搭配：3D Object、Light Sweep
+  - 注意：需要真的 3D 或做得很像；平面卡片繞起來會穿幫
+  - 範例：`catalog/orbit-card` `catalog/product-turntable` `catalog/frost-sequence-camera-orbit` `catalog-components/three-orbiting-cards`
+- **滑動變焦 (Dolly Zoom)** `dollyzoom` — 主體大小不變，背景卻往後拉長或往前壓縮——希區考克式的暈眩。
+  - 感受：震驚、不安、戲劇性頓悟
+  - 適合：「等一下……」的那一刻
+  - 搭配：Slam、Calm 後的突然變化
+  - 注意：非常強烈，一支片一次
+  - 範例：`catalog/camera-dolly-zoom`
+- **焦點轉移 (Rack Focus)** `rackfocus` — 前景清楚、背景模糊，接著焦點換到背景，前景變模糊。
+  - 感受：電影、層次、注意力轉移
+  - 適合：兩個東西之間轉移注意、比較
+  - 搭配：Depth Stack、Blur-in
+  - 注意：兩個物件要明顯在不同深度
+  - 範例：`catalog/rack-focus` `catalog-components/focus-rack` `catalog-components/focus-swap`
+- **畫面晃動 (Camera Shake)** `shake` — 畫面短暫抖動：重擊的餘震，或持續的手持感。
+  - 感受：衝擊、臨場、緊張
+  - 適合：Slam 落地、爆炸、驚訝；或紀錄片手持感
+  - 搭配：Slam、Impact、Flash
+  - 注意：衝擊型只要 3–6 格；持續手持要很微弱
+  - 範例：`catalog-components/camera-shake` `catalog-components/headline-slam`
+- **穿進螢幕 (Device Dive)** `dive` — 鏡頭推向手機或螢幕，穿進去，裡面的介面展開成整個畫面。
+  - 感受：進入產品、沉浸
+  - 適合：從「這是一個 App」到「我們來看裡面」
+  - 搭配：Device Frame、Zoom-through
+  - 注意：裝置和介面的透視要接得上
+  - 範例：`catalog-components/parallax-device-dive`
+- **景深堆疊 (Depth Stack)** `depthstack` — 幾層內容放在不同深度，鏡頭移動時近的動得多、遠的動得少（視差）。
+  - 感受：立體、空間、有層次
+  - 適合：卡片堆、場景式的片頭、相片牆
+  - 搭配：Rack Focus、Orbit
+  - 注意：層數 3–4 層就夠
+  - 範例：`catalog-components/camera-rig-depth-stack` `catalog/gallery-tunnel` `catalog-components/keyframe-scrub-stack`
+- **一鏡到底 (Oner)** `oner` — 整段不切鏡，虛擬攝影機在一個大場景裡移動、縮放、帶到每個重點。
+  - 感受：流暢、高手、電影
+  - 適合：一段完整的操作流程、產品導覽
+  - 搭配：Scroll Camera、Zoom-follow
+  - 注意：場景要事先規劃成一張大圖；中途要改很麻煩
+  - 範例：`snapcn/terminal-simulator` `catalog-components/scroll-camera-story`
+- **微幅漂移 (Ken Burns / Drift)** `kenburns` — 靜止的畫面或卡片極慢地放大、平移、輕微傾斜，讓它「活著」。
+  - 感受：不死板、有呼吸、紀錄片
+  - 適合：靜態圖、停留較久的卡片、照片
+  - 搭配：Calm Pacing、Hold
+  - 注意：幾乎察覺不到才對
+  - 範例：`catalog-components/yt-camera-move` `catalog-components/drift-hold` `catalog/yt-prism-title`
