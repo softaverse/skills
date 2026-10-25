@@ -1,0 +1,159 @@
+# 質感與深度
+
+## 質感與深度 (Texture & Depth)
+
+- **擬玻風格 / 玻璃擬物 (Glassmorphism)** `glass` — 半透明感、背景模糊效果（`backdrop-filter`）以及細微的白色邊框，營造出「磨砂玻璃」的質感。
+  - 感受：輕盈、科技、層次、透亮
+  - 適合：浮動面板、導覽列、卡片、AI 產品
+  - 搭配：Aurora、Dark SaaS、Floating Nav、Bokeh
+  - 注意：背景要夠豐富才看得出效果；文字對比容易不足；大面積使用吃效能
+- **黏土擬物風格 (Claymorphism)** `clay` — 柔軟、澎潤的 3D 立體形狀搭配內陰影，呈現出親切、活潑且具觸感的視覺效果。
+  - 感受：柔軟、可愛、好親近、可觸摸
+  - 適合：兒童、教育、App、輕鬆的消費品牌
+  - 搭配：Macaron、Kawaii、3D Render、Spring
+  - 注意：不適合嚴肅或專業的品牌；陰影過多會顯得廉價
+- **擬物化 / 擬真風格 (Skeuomorphic)** `skeuo` — 模仿真實物質的質感（如皮革、紙張、金屬）與開關控制器，讓數位介面看起來就像實體配件。
+  - 感受：真實、懷舊、可觸摸
+  - 適合：音樂工具、遊戲、懷舊主題、硬體品牌
+  - 搭配：Letterpress、Wood Grain、Fabric
+  - 注意：製作成本高、容易過時；大面積使用會很重
+- **顆粒/噪點質感 (Grainy/Noise)** `grain` — 在漸層色彩上添加底片顆粒或噪點疊加，降低過度的「數位光滑感」，並增添視覺溫度。
+  - 感受：溫度、類比、有質地
+  - 適合：品牌官網、藝術、生活風格
+  - 搭配：Aurora、Riso、Film、Earth Tones
+  - 注意：顆粒太粗會像畫質差；注意檔案大小
+- **新擬物化 (Neumorphism / Soft UI)** `neu` — 背景與元素同色，靠一亮一暗兩道陰影做出浮起或凹陷的感覺。
+  - 感受：柔和、一體成形、安靜
+  - 適合：小型控制面板、概念展示
+  - 搭配：Monochromatic、Morandi
+  - 注意：對比度很低，按鈕狀態難辨識，有嚴重無障礙問題；不建議大量使用
+- **扁平化設計 (Flat Design)** `flat` — 沒有陰影、漸層和質感，只用純色塊與簡單圖示。
+  - 感受：清楚、輕量、直接
+  - 適合：App、工具、插畫風品牌
+  - 搭配：Corporate Memphis、Color Blocking、Outline Icons
+  - 注意：容易單調、層級不足；常需要加一點陰影或深度
+- **質感設計 (Material Design)** `material` — Google 的設計規範，用海拔高度（Elevation）分層，每一層有對應的陰影。
+  - 感受：有秩序、可預期、Google 感
+  - 適合：Android App、後台、工具
+  - 搭配：Material You、Ripple、FAB
+  - 注意：看起來很「Google」，品牌個性較弱
+- **液態玻璃 (Liquid Glass)** `liquid` — Apple 2025 年推出的材質，帶折射與高光，會隨內容流動變形。
+  - 感受：新潮、流動、Apple 感
+  - 適合：2025 後的產品介面、浮動控制
+  - 搭配：Glass、Rim Light、Dark SaaS
+  - 注意：很新、實作難度高；網頁上只能近似，別承諾完全一樣
+- **極光漸層 (Aurora / Mesh Gradient)** `aurora` — 多色漸層暈開成霧狀，柔和、會流動。
+  - 感受：夢幻、柔和、科技、未來
+  - 適合：AI 產品、Hero 背景、SaaS
+  - 搭配：Glass、Gradient Text、Dark SaaS、Grain
+  - 注意：近年非常普遍，容易撞臉；文字要放在對比夠的區域
+- **等距視角 (Isometric)** `iso` — 用 2.5D 等角投影畫插圖或圖示，常用來表現系統架構與場景。
+  - 感受：系統化、聰明、技術感
+  - 適合：SaaS 架構說明、流程、遊戲化場景
+  - 搭配：Infographic、3D Icons、Radial
+  - 注意：插圖成本高；風格要全站一致
+- **紙張／剪紙風 (Paper Cut / Layered Paper)** `paper` — 層層疊起的紙片加上細微陰影，有手作的立體感。
+  - 感受：手作、層次、溫暖
+  - 適合：兒童、教育、節慶、文創
+  - 搭配：Collage、Folk Pattern、Kawaii
+  - 注意：陰影過重會顯得幼稚
+- **金屬鉻質感 (Chrome / Metallic)** `chrome` — 鏡面反射的液態金屬，近年在 Y2K 復興中很常見。
+  - 感受：亮眼、Y2K、未來、時髦
+  - 適合：音樂、潮牌、活動視覺
+  - 搭配：Y2K、Y3K、Acid、Holographic
+  - 注意：很搶眼，適合點綴；全站使用會累
+- **全像／鐳射 (Holographic / Iridescent)** `holo` — 隨角度變色的彩虹光澤。
+  - 感受：夢幻、閃亮、年輕
+  - 適合：美妝、潮流、限量活動
+  - 搭配：Y2K、Chrome、Macaron
+  - 注意：容易俗氣；控制在少量重點元素
+- **長陰影 (Long Shadow)** `longshadow` — 45° 拉長的扁平陰影，是扁平化的延伸。
+  - 感受：復古扁平、有方向感
+  - 適合：圖示、2013 年代扁平風
+  - 搭配：Flat、Color Blocking
+  - 注意：風格已顯過時，除非刻意懷舊
+- **3D 渲染風 (3D Render)** `render3d` — Blender 式的柔光 3D 物件，常用在主視覺。
+  - 感受：精緻、立體、吸睛
+  - 適合：Hero 主視覺、產品展示、3D 圖示
+  - 搭配：Clay、Aurora、Floating Product、3D Icons
+  - 注意：製作成本高；檔案大，要注意載入
+- **線框風 (Wireframe / Outline)** `wire` — 只用細線描邊，不填色，帶有技術藍圖感。
+  - 感受：技術、藍圖、精準
+  - 適合：開發者工具、硬體、建築
+  - 搭配：Grid Background、Monospace、Sci-fi HUD
+  - 注意：資訊辨識度低，需要搭配實心元素建立層級
+- **半色調網點 (Halftone)** `halftone` — 用印刷網點表現明暗，有復古印刷感。
+  - 感受：復古印刷、漫畫、手作
+  - 適合：Zine、音樂、活動海報
+  - 搭配：Pop Art、Riso、Newsprint
+  - 注意：細節在小尺寸會糊掉
+- **霓虹光暈 (Glow)** `glow` — 元素周圍帶發光暈染，常見於暗色介面。
+  - 感受：發光、能量、夜晚
+  - 適合：暗色介面、CTA 強調、遊戲
+  - 搭配：Cyberpunk、Dark SaaS、Neon
+  - 注意：發光太多會刺眼，點到為止
+- **漸層描邊 (Gradient Border)** `gborder` — 卡片或按鈕帶彩色漸層邊框（AI 產品常見）。
+  - 感受：AI 感、精緻、強調
+  - 適合：AI 產品卡片、Pro 方案、CTA
+  - 搭配：Dark SaaS、Aurora、Glass
+  - 注意：已經很常見；只給最重要的元素用
+- **Fluent 壓克力 (Fluent / Acrylic)** `fluent` — 微軟的半透明材質，帶噪點與光照反應。
+  - 感受：半透明、Windows 感、系統化
+  - 適合：桌面應用、微軟生態
+  - 搭配：Glass、Grain
+  - 注意：品牌辨識會偏向微軟
+- **散景光斑 (Bokeh)** `bokeh` — 失焦的圓形光點，營造夢幻景深。
+  - 感受：夢幻、浪漫、柔焦
+  - 適合：背景、節慶、攝影、美妝
+  - 搭配：Glass、Aurora
+  - 注意：搶背景注意力，文字區要乾淨
+- **網格線背景 (Grid Background)** `gridbg` — 淡淡的方格或點陣底紋，常見於開發者工具的官網。
+  - 感受：工程、精確、開發者
+  - 適合：開發者工具官網、技術文件
+  - 搭配：Dark SaaS、Monospace、Wireframe
+  - 注意：太明顯會干擾內容，要非常淡
+- **邊緣光 (Rim Light / Edge Highlight)** `rim` — 物件邊緣一道亮光，深色介面常用。
+  - 感受：精緻、立體、高級暗色
+  - 適合：暗色卡片、3D 物件、產品渲染
+  - 搭配：Dark SaaS、Glow、Liquid Glass
+  - 注意：亮邊太粗會像外框
+- **大理石紋 (Marble)** `marble` — 石材紋理，有精品和建築感。
+  - 感受：精品、建築、永恆
+  - 適合：珠寶、建築、高端品牌
+  - 搭配：Black & Gold、Serif Revival、Minimalism
+  - 注意：用多了顯得浮誇；適合背景或局部
+- **木紋 (Wood Grain)** `wood` — 溫暖的自然材質，常見於生活風格品牌。
+  - 感受：溫暖、自然、手作
+  - 適合：家具、咖啡、生活風格
+  - 搭配：Earth Tones、Japandi
+  - 注意：容易像舊式擬物；用照片而非貼圖較自然
+- **布料／針織 (Fabric / Knit)** `fabric` — 織物紋理，柔軟有手感。
+  - 感受：柔軟、舒適、溫暖
+  - 適合：服飾、寢具、手作品牌
+  - 搭配：Earth Tones、Morandi
+  - 注意：紋理會干擾文字閱讀
+- **凸版浮雕 (Letterpress / Emboss)** `press` — 壓印在紙上的凹凸感。
+  - 感受：精緻、印刷、儀式感
+  - 適合：婚禮、名片、精品、文具
+  - 搭配：Serif Revival、Paper Cut
+  - 注意：對比低，不適合放重要文字
+- **光束 (Light Beams)** `beams` — 從上方打下的柔光，AI 產品登陸頁常見。
+  - 感受：神聖、聚焦、AI 未來感
+  - 適合：AI 產品 Hero、發表會
+  - 搭配：Dark SaaS、Aurora、Glow
+  - 注意：很常見，容易像模板
+- **粒子 (Particles)** `particles` — 漂浮的光點或星塵。
+  - 感受：科技、宇宙、靈動
+  - 適合：Hero 背景、科技品牌
+  - 搭配：Space、Dark SaaS、Glow
+  - 注意：耗效能，手機要降級
+- **1-bit 抖色 (Dithering)** `dither` — 只用黑白兩色，靠點陣抖動表現明暗，有早期 Mac 的感覺。
+  - 感受：復古電腦、極客、獨特
+  - 適合：開發者、藝術、獨立產品
+  - 搭配：Pixel Art、Terminal、Monospace
+  - 注意：照片細節會大量流失
+- **卡通渲染 (Cel Shading)** `cel` — 分明的明暗色階和描邊，像動畫賽璐珞。
+  - 感受：動畫感、鮮明、年輕
+  - 適合：遊戲、動漫、年輕品牌
+  - 搭配：Pop Art、Kawaii
+  - 注意：3D 製作成本高

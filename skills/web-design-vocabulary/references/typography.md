@@ -1,0 +1,124 @@
+# 字體排印
+
+## 字體排印 (Typography)
+
+- **大字報排版 (Big Type / Oversized Typography)** `bigtype` — 字級極大，文字本身就是主視覺。
+  - 感受：大膽、自信、宣言感
+  - 適合：Hero、品牌官網、作品集
+  - 搭配：Editorial、Swiss、Minimalism、Brutalist
+  - 注意：文案要短而有力；手機上要重新設定字級
+- **動態字體 (Kinetic Typography)** `kinetic` — 文字會移動、變形、跟著捲動反應。
+  - 感受：動感、敘事、吸睛
+  - 適合：Hero、發表頁、品牌影片感網頁
+  - 搭配：Big Type、Scrollytelling
+  - 注意：動太多會干擾閱讀；要尊重減少動態偏好
+- **可變字體 (Variable Fonts)** `variable` — 字重和字寬可以連續變化，用在互動或動畫上。
+  - 感受：精緻、細膩、互動
+  - 適合：品牌官網、字體展示、互動實驗
+  - 搭配：Kinetic Typography、Hover Reveal
+  - 注意：中文可變字體選擇少
+- **襯線復興 (Serif Revival)** `serif` — 在科技產品裡用襯線體做標題，帶出人文和高級感。
+  - 感受：人文、高級、有溫度
+  - 適合：把科技產品做得有品味、出版、精品
+  - 搭配：Editorial、Minimalism、Earth Tones
+  - 注意：中文襯線（明體）在小字級與螢幕上要測可讀性
+- **等寬字體美學 (Monospace Aesthetic)** `monofont` — 全站用等寬字，呈現開發者或技術氣質。
+  - 感受：技術、極客、精準
+  - 適合：開發者工具、技術部落格
+  - 搭配：Terminal、Grid Background、Swiss
+  - 注意：長段內文很難讀；建議只用在標題或標籤
+- **手寫字體 (Script / Handwriting)** `script` — 書法或手寫字，帶人味和溫度。
+  - 感受：溫度、個人、手作
+  - 適合：婚禮、甜點、個人品牌
+  - 搭配：Editorial、Serif Revival
+  - 注意：只用在少量裝飾性文字
+- **描邊字 (Outline Text)** `outline` — 只有輪廓、沒有填色的大字。
+  - 感受：輕盈、設計感、層次
+  - 適合：Hero 大字、背景裝飾字
+  - 搭配：Big Type、Marquee
+  - 注意：小字級時幾乎讀不到
+- **文字遮罩 (Text Mask)** `tmask` — 文字裡面填入圖片或影片。
+  - 感受：驚喜、視覺化、吸睛
+  - 適合：Hero 標題
+  - 搭配：Big Type、Video Background
+  - 注意：文字要夠粗夠大
+- **混排字體 (Font Pairing)** `pairing` — 襯線配無襯線，或粗細對比的字體組合。
+  - 感受：層次、品味
+  - 適合：幾乎所有網站
+  - 搭配：Editorial、Serif Revival
+  - 注意：最多兩到三套字體
+- **中文直排 (Vertical CJK Text)** `vertical` — 由上而下、由右而左排列，有東方編排感。
+  - 感受：東方、文雅、意境
+  - 適合：中式品牌、詩詞、文化
+  - 搭配：Ink Wash、Guochao、Japandi
+  - 注意：網頁直排的響應式與可讀性成本高；多用在標題
+- **斑駁字 (Distressed Type)** `worn` — 磨損、做舊、印刷不均的字體質感。
+  - 感受：粗獷、復古、真實
+  - 適合：啤酒、工業、音樂
+  - 搭配：Industrial、Zine
+  - 注意：小字不適用
+- **寬字距大寫 (Letter-spaced Caps)** `tracking` — 全大寫加寬字距，精品感的小標。
+  - 感受：精品、優雅、秩序
+  - 適合：小標、導覽、精品品牌
+  - 搭配：Editorial、Minimalism、Art Deco
+  - 注意：只適用拉丁字母；中文加大字距效果不同
+- **壓縮字體 (Condensed Type)** `condensed` — 窄長字形，海報和運動品牌常用。
+  - 感受：力量、速度、海報感
+  - 適合：運動、活動、新聞
+  - 搭配：Sporty、Big Type
+  - 注意：長文難讀
+- **首字放大 (Drop Cap)** `dropcap` — 段落第一個字放大下沉，帶有雜誌和書籍感。
+  - 感受：書卷氣、雜誌感
+  - 適合：長文、部落格、出版
+  - 搭配：Editorial、Single Column
+  - 注意：中文首字放大要調整行高
+- **打字機效果 (Typewriter)** `typewriter` — 文字逐字出現，帶閃爍游標。
+  - 感受：敘事、逐步揭露、科技
+  - 適合：Hero 標語、AI 產品
+  - 搭配：Terminal、Streaming Text
+  - 注意：重要資訊不要藏在打字動畫裡
+- **跑馬燈文字 (Marquee)** `marquee` — 文字無限橫向滾動的帶狀標語。
+  - 感受：活潑、潮、流動
+  - 適合：品牌宣言、客戶列表、活動
+  - 搭配：Big Type、Neo-Brutalism
+  - 注意：會分散注意力，要能暫停
+- **3D 立體字 (Extruded 3D Type)** `type3d` — 有厚度和側面的立體文字。
+  - 感受：立體、吸睛、玩心
+  - 適合：遊戲、活動、Hero
+  - 搭配：3D Render、Y2K
+  - 注意：只用在大標題
+- **文字路徑 (Text on Path)** `textpath` — 文字沿著曲線或圓形排列。
+  - 感受：玩心、裝飾、徽章感
+  - 適合：徽章、標誌、裝飾元素
+  - 搭配：Hand-drawn、Kinetic Typography
+  - 注意：不適合承載重要資訊
+- **疊印字 (Overprint / Knockout)** `overprint` — 文字互相疊色，或從色塊中鏤空。
+  - 感受：印刷感、層次、設計感
+  - 適合：海報式 Hero、藝文
+  - 搭配：Riso、Duotone
+  - 注意：可讀性要測
+- **堆疊字 (Stacked Type)** `stackedtype` — 同一個詞多行重複堆疊。
+  - 感受：節奏、重複、強調
+  - 適合：Hero、活動標題
+  - 搭配：Big Type、Kinetic Typography
+  - 注意：重複太多會變成雜訊
+- **極細字 (Hairline Type)** `hairline` — 極細的字重，優雅輕盈。
+  - 感受：優雅、輕盈、精品
+  - 適合：精品、美妝、時尚
+  - 搭配：Minimalism、Editorial
+  - 注意：只適合大字級；小字會消失
+- **中英混排 (Mixed CJK–Latin)** `mixed` — 中文與英文字體的搭配與間距處理。
+  - 感受：專業、細緻、在地化
+  - 適合：所有中文網站
+  - 搭配：Font Pairing
+  - 注意：中英字重和基線要調整；這是品質細節而非風格
+- **等寬數字 (Tabular Numbers)** `tabnum` — 每個數字等寬，表格和計數器不會跳動。
+  - 感受：精準、穩定
+  - 適合：表格、價格、計數器、儀表板
+  - 搭配：Dashboard、Count-up
+  - 注意：屬於細節，通常不需要跟使用者討論
+- **手寫標註 (Annotations)** `annot` — 手寫箭頭、圈選和註解，加在介面或截圖上。
+  - 感受：親切、說明感、手作
+  - 適合：教學、產品介紹、作品集
+  - 搭配：Doodle、Hand-drawn Icons
+  - 注意：數量要克制

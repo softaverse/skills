@@ -1,0 +1,254 @@
+# 氛圍與時代感
+
+## 氛圍與時代感 (Atmosphere & Era)
+
+- **粗獷主義 (Brutalist)** `brutal` — 原始、未經修飾，採用系統預設字型、高對比度與硬朗的邊角，展現一種「醜得很有型（Ugly-cool）」的風格。
+  - 感受：叛逆、原始、有態度
+  - 適合：藝術家、獨立品牌、實驗作品
+  - 搭配：Big Type、Monospace、Neo-Brutalism
+  - 注意：一般使用者可能覺得「沒做完」；信任感要求高的產品慎用
+- **賽博朋克 / 網絡叛客 (Cyberpunk)** `cyber` — 暗色模式（Dark mode）、霓虹亮色點綴（如青色/洋紅色）、故障藝術效果（Glitch）以及具科技感的介面設計。
+  - 感受：未來、反叛、夜城
+  - 適合：遊戲、科技活動、Web3
+  - 搭配：Glitch、Neon、Glow、Sci-fi HUD
+  - 注意：很容易變成廉價模板；可讀性要特別處理
+- **Y2K 風格** `y2k` — 千禧年（90 年代末至 2000 年代初）的樂觀主義風格。常見金屬鉻質感、泡泡字體、明亮的粉藍/粉紅色，以及藥丸形狀的按鈕。
+  - 感受：樂觀、懷舊、潮
+  - 適合：潮牌、音樂、年輕族群
+  - 搭配：Chrome、Holographic、Pill Button、Macaron
+  - 注意：風格強烈，跟理性、專業的訊息衝突
+- **復古未來主義 (Retro-Futurism)** `retro` — 80 年代的合成器波形（Synthwave）美學。包含夕陽景致、網格線條、VHS 錄影帶視覺效果與發光線條。
+  - 感受：懷舊未來、夜晚、音樂
+  - 適合：音樂、遊戲、活動
+  - 搭配：Neon、Glow、Grid Background
+  - 注意：主題性很強，不易延伸到全站
+- **新粗獷主義 (Neo-Brutalism)** `neob` — 粗黑邊框、實心偏移陰影、高飽和撞色，是更好親近的 Brutalist（Gumroad、Figma 社群常見）。
+  - 感受：大膽、友善、有個性
+  - 適合：新創、創作者工具、社群產品
+  - 搭配：Color Blocking、Big Type、Pill Button
+  - 注意：粗框和偏移陰影要全站一致，混搭其他質感會很亂
+- **蒸汽波 (Vaporwave)** `vapor` — 粉紫配青藍、古希臘雕像、Windows 95 介面元素，帶點懷舊的諷刺感。
+  - 感受：諷刺、懷舊、超現實
+  - 適合：音樂、藝術、迷因
+  - 搭配：Retro-Futurism、Old Web、Glitch
+  - 注意：主題極強，商業品牌很難駕馭
+- **復古像素風 (Pixel Art / 8-bit)** `pixel` — 像素字型和點陣圖示，有早期電玩的氛圍。
+  - 感受：電玩、可愛、懷舊
+  - 適合：遊戲、獨立開發者、活動
+  - 搭配：Dithering、Pixel Icons、Game UI
+  - 注意：長段文字用像素字很難讀
+- **孟菲斯風格 (Memphis)** `memphis` — 80 年代的幾何色塊、波浪線、圓點和三角形，活潑又雜亂。
+  - 感受：活潑、大膽、玩心
+  - 適合：兒童、創意活動、年輕品牌
+  - 搭配：Color Blocking、Dopamine、Geometric Abstract
+  - 注意：元素太多會亂；需要留白平衡
+- **包浩斯風格 (Bauhaus)** `bauhaus` — 基本幾何形（圓、方、三角）加上三原色，講究功能與結構。
+  - 感受：理性、幾何、經典
+  - 適合：設計品牌、教育、藝文
+  - 搭配：Swiss、Constructivism、Color Blocking
+  - 注意：原色組合很強烈，要控制面積
+- **日式極簡／侘寂 (Japandi / Wabi-sabi)** `japandi` — 大地色、自然材質、不完美的手作感，寧靜內斂。
+  - 感受：寧靜、自然、內斂、高級
+  - 適合：家居、茶、生活風格、療癒
+  - 搭配：Earth Tones、Minimalism、Wood Grain、Serif Revival
+  - 注意：太素會缺乏轉換點，CTA 要清楚
+- **手繪塗鴉風 (Hand-drawn / Doodle)** `doodle` — 手繪線條、塗鴉圖示和不規則邊緣，親切隨性。
+  - 感受：親切、隨性、人味
+  - 適合：教育、兒童、個人品牌、新創
+  - 搭配：Annotations、Hand-drawn Icons、Script
+  - 注意：手繪品質要一致，否則顯得業餘
+- **終端機風格 (Terminal / Hacker)** `terminal` — 黑底綠字、等寬字型、命令列游標。
+  - 感受：極客、硬派、開發者
+  - 適合：CLI 工具、開發者產品
+  - 搭配：Monospace、Typewriter、Dark Mode OLED
+  - 注意：對非技術使用者有距離感
+- **企業孟菲斯 (Corporate Memphis)** `corp` — 扁平人物插圖，四肢誇張、配色明亮，常見於科技公司官網。
+  - 感受：友善、樂觀、科技公司
+  - 適合：SaaS、科技公司官網
+  - 搭配：Flat、Pill Button
+  - 注意：已被大量使用、常被嘲諷為「千篇一律」
+- **裝飾藝術 (Art Deco)** `deco` — 1920 年代的對稱幾何、金色線條、扇形紋樣。
+  - 感受：奢華、對稱、復古經典
+  - 適合：精品、飯店、酒吧、婚禮
+  - 搭配：Black & Gold、Serif Revival、Letter-spaced Caps
+  - 注意：細節繁複，需要精準執行
+- **新藝術 (Art Nouveau)** `nouveau` — 植物藤蔓曲線、華麗邊框。
+  - 感受：華麗、有機、浪漫
+  - 適合：美妝、花藝、藝文
+  - 搭配：Script、Earth Tones
+  - 注意：過度裝飾會影響可讀性
+- **Frutiger Aero** `aero` — 2000 年代後期的水滴、藍天綠草、光澤玻璃（Windows Vista 時代）。
+  - 感受：清新、光亮、2000s 懷舊
+  - 適合：懷舊主題、音樂、活動
+  - 搭配：Glass、Chrome、Bokeh
+  - 注意：現在多是懷舊用途
+- **酸性設計 (Acid Graphics)** `acid` — 螢光色、扭曲的鉻字、雷射元素，帶點銳舞（rave）文化。
+  - 感受：狂野、夜店、反主流
+  - 適合：音樂、潮牌、活動
+  - 搭配：Chrome、Neon、Glitch
+  - 注意：極端風格，受眾窄
+- **故障藝術 (Glitch Art)** `glitch` — 錯位、色偏、雜訊條紋。
+  - 感受：不穩定、數位、反叛
+  - 適合：音樂、科技活動、遊戲
+  - 搭配：Cyberpunk、Kinetic Typography
+  - 注意：效果太多會像出錯；注意光敏感使用者
+- **Zine／龐克 DIY** `zine` — 影印質感、剪報字、膠帶貼痕，有地下刊物感。
+  - 感受：地下、DIY、真誠
+  - 適合：獨立品牌、音樂、藝文活動
+  - 搭配：Collage、Halftone、Riso
+  - 注意：對品牌信任度要求高的產品不適合
+- **Risograph 印刷風** `riso` — 孔版印刷的套色偏移和顆粒，螢光粉紅加藍是代表色。
+  - 感受：手作印刷、獨立、溫度
+  - 適合：出版、藝文、插畫
+  - 搭配：Grain、Halftone、Duotone
+  - 注意：套色偏移要克制
+- **太陽龐克 (Solarpunk)** `solarpunk` — 綠色植物、太陽能和有機曲線，帶有樂觀的未來感。
+  - 感受：希望、綠色、永續
+  - 適合：環保、能源、城市規劃
+  - 搭配：Earth Tones、Organic Blob
+  - 注意：容易流於說教，需要具體內容
+- **蒸汽龐克 (Steampunk)** `steampunk` — 黃銅、齒輪、維多利亞時代的機械感。
+  - 感受：機械、冒險、復古
+  - 適合：遊戲、主題活動
+  - 搭配：Skeuomorphic、Wood Grain
+  - 注意：主題性極強
+- **黑色電影 (Noir)** `noir` — 高反差黑白、強烈光影、百葉窗投影。
+  - 感受：神秘、戲劇、張力
+  - 適合：電影、偵探、攝影
+  - 搭配：Low-key、Monochromatic
+  - 注意：整體很暗，資訊頁面不適合
+- **日系可愛 (Kawaii)** `kawaii` — 圓潤造型、粉嫩色、表情符號化的角色。
+  - 感受：可愛、療癒、友善
+  - 適合：兒童、寵物、甜點、日系品牌
+  - 搭配：Macaron、Clay、Sticker Style
+  - 注意：跟專業、嚴肅訊息衝突
+- **夢核 (Dreamcore)** `dreamcore` — 模糊、過曝、似曾相識的空間，有懷舊又不安的感覺。
+  - 感受：恍惚、懷舊、不安
+  - 適合：藝術、音樂、實驗
+  - 搭配：Bokeh、Film
+  - 注意：氛圍強烈但不明確，商業用途少
+- **學院風 (Dark Academia)** `darkacad` — 深棕、墨綠、古典襯線、羊皮紙和舊書感。
+  - 感受：知性、古典、沉靜
+  - 適合：出版、教育、書店
+  - 搭配：Serif Revival、Drop Cap、Earth Tones
+  - 注意：深色系可讀性要顧好
+- **有機流體 (Organic / Blob)** `blob` — 不規則的柔軟色塊和液態形狀。
+  - 感受：柔和、有機、親切
+  - 適合：健康、新創、生活風格
+  - 搭配：Aurora、Clay、Spring
+  - 注意：用多了會失去重心
+- **極繁主義 (Maximalism)** `maximal` — 滿版圖案、撞色、層層堆疊，跟極簡主義相反。
+  - 感受：熱鬧、豐富、大膽
+  - 適合：潮牌、藝術、活動
+  - 搭配：Dopamine、Collage、Folk Pattern
+  - 注意：極難平衡，資訊容易被淹沒
+- **中世紀現代 (Mid-century Modern)** `midcentury` — 1950 年代的回力鏢形、原子星芒、芥末黃配橄欖綠。
+  - 感受：復古溫暖、設計感
+  - 適合：家具、生活風格、咖啡
+  - 搭配：Earth Tones、Geometric Abstract
+  - 注意：配色需要克制
+- **普普藝術 (Pop Art)** `popart` — 漫畫網點、粗黑輪廓、高飽和色，帶點安迪·沃荷式的重複。
+  - 感受：大眾、搶眼、幽默
+  - 適合：娛樂、食品、活動
+  - 搭配：Halftone、Color Blocking、Big Type
+  - 注意：容易幼稚化
+- **構成主義 (Constructivism)** `constr` — 俄國前衛的紅黑斜線、粗字和幾何張力。
+  - 感受：激進、宣言感、張力
+  - 適合：藝文、活動、政策倡議
+  - 搭配：Bauhaus、Big Type、Diagonal
+  - 注意：紅黑組合有政治聯想，要留意語境
+- **歐普藝術 (Op Art)** `opart` — 黑白條紋與同心圓造成的視錯覺。
+  - 感受：迷幻、視覺衝擊
+  - 適合：藝術、音樂
+  - 搭配：Monochromatic、Kinetic Typography
+  - 注意：會造成視覺不適，避免大面積與動態
+- **宇宙太空風 (Space / Cosmic)** `space` — 深藍星空、星雲漸層、行星軌道。
+  - 感受：浩瀚、未來、探索
+  - 適合：科技、教育、Web3
+  - 搭配：Particles、Aurora、Glow
+  - 注意：整體很暗，注意可讀性
+- **科幻 HUD (Sci-fi HUD)** `hud` — 抬頭顯示器式的細線框、刻度與掃描線。
+  - 感受：科幻、精密、監控
+  - 適合：遊戲、科技活動、資料產品
+  - 搭配：Wireframe、Monospace、Glow
+  - 注意：資訊太多會變成裝飾性噪音
+- **遊戲 UI (Game UI)** `gameui` — 血條、技能欄、像素邊框或 RPG 對話框。
+  - 感受：遊戲感、獎勵、沉浸
+  - 適合：遊戲、遊戲化產品
+  - 搭配：Pixel Art、Gamification
+  - 注意：跟一般網站操作習慣不同
+- **國潮 (Guochao)** `guochao` — 中國傳統紋樣、朱紅配金色，再加上現代排版。
+  - 感受：傳統新潮、自信、文化
+  - 適合：中式品牌、茶飲、節慶
+  - 搭配：Ink Wash、Folk Pattern、Vertical CJK
+  - 注意：紋樣要考據，避免拼湊
+- **復古報紙 (Newsprint)** `news` — 米黃紙、密集多欄排版、黑白照片網點。
+  - 感受：新聞感、權威、懷舊
+  - 適合：媒體、出版、品牌故事
+  - 搭配：Editorial、Serif Revival、Halftone
+  - 注意：密集排版在手機上要重整
+- **水墨風 (Ink Wash)** `inkwash` — 墨色暈染和留白，有東方意境。
+  - 感受：意境、東方、留白
+  - 適合：茶、文化、藝術、高端東方品牌
+  - 搭配：Japandi、Vertical CJK、Minimalism
+  - 注意：水墨素材品質要好，否則顯得廉價
+- **Web 1.0 復古網頁 (Old Web)** `oldweb` — 閃爍 GIF、跑馬燈、表格排版，有 Geocities 的懷舊感。
+  - 感受：懷舊、惡搞、網路考古
+  - 適合：個人網站、活動彩蛋
+  - 搭配：Pixel Art、Marquee
+  - 注意：幾乎只適合玩笑或懷舊主題
+- **Lo-fi 美學 (Lo-fi)** `lofi` — 低彩度、顆粒、慵懶的插畫氛圍。
+  - 感受：慵懶、放鬆、陪伴
+  - 適合：音樂、讀書、療癒 App
+  - 搭配：Grain、Morandi
+  - 注意：低對比要顧可讀性
+- **迷幻風 (Psychedelic)** `psyche` — 扭曲的漩渦和高飽和的流動色彩。
+  - 感受：迷幻、狂歡、強烈
+  - 適合：音樂祭、藝術
+  - 搭配：Neon、Kinetic Typography
+  - 注意：會造成視覺疲勞
+- **超現實主義 (Surrealism)** `surreal` — 不合邏輯的物件組合，有夢境般的場景。
+  - 感受：奇幻、驚喜、想像力
+  - 適合：藝術、品牌形象廣告
+  - 搭配：3D Render、Collage
+  - 注意：很搶戲，需要清楚的資訊層
+- **工業風 (Industrial)** `industrial` — 鋼鐵、水泥、警示條紋和模板字。
+  - 感受：粗獷、耐用、工地
+  - 適合：製造、工具、啤酒、健身
+  - 搭配：Condensed Type、Monochromatic
+  - 注意：容易顯得冷硬
+- **民俗紋樣 (Folk Pattern)** `folk` — 傳統織品或剪紙的重複紋樣。
+  - 感受：在地、傳統、手作
+  - 適合：文化、旅遊、手作品牌
+  - 搭配：Paper Cut、Earth Tones
+  - 注意：紋樣的文化來源要尊重
+- **Y3K 風格** `y3k` — 銀白、液態金屬、未來感的流線造型。
+  - 感受：冷冽、未來、超現實
+  - 適合：潮牌、科技、音樂
+  - 搭配：Chrome、Liquid Glass
+  - 注意：仍在流行中，容易過時
+- **浮世繪 (Ukiyo-e)** `ukiyoe` — 日本木版畫的平塗色塊、波浪紋和粗輪廓。
+  - 感受：日式古典、圖像性強
+  - 適合：日式品牌、藝文
+  - 搭配：Ink Wash、Vertical CJK
+  - 注意：使用傳統圖像要注意版權與語境
+- **街頭塗鴉 (Graffiti / Street)** `graffiti` — 噴漆字、滴流、貼紙牆，帶有街頭文化感。
+  - 感受：街頭、叛逆、能量
+  - 適合：潮牌、運動、音樂
+  - 搭配：Neon、Sticker Style、Big Type
+  - 注意：可讀性差，只用在標題
+- **運動能量 (Sporty / Athletic)** `sporty` — 斜體粗字、速度線、高對比，充滿衝勁。
+  - 感受：速度、力量、衝勁
+  - 適合：運動、健身、賽事
+  - 搭配：Condensed Type、Diagonal、Big Type
+  - 注意：高對比要克制，避免像促銷傳單
+- **深色 SaaS 精緻風 (Dark SaaS)** `darksaas` — 深灰底、細邊框、微光漸層，近年科技新創很常見。
+  - 感受：精緻、專業、現代科技
+  - 適合：SaaS、AI、開發者工具
+  - 搭配：Bento、Glass、Gradient Border、Aurora
+  - 注意：目前非常普遍，需要一點品牌特色才不會撞臉
+- **資訊圖表風 (Infographic)** `infographic` — 圖示、數字、箭頭組成的視覺化說明。
+  - 感受：清楚、教育、資訊化
+  - 適合：報告、教學、流程說明
+  - 搭配：Isometric、Duotone Icons、Count-up
+  - 注意：太多圖示會失去重點

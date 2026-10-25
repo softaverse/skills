@@ -48,6 +48,7 @@ themselves have no runtime.
   - [**Git Commit Optimizer**](./skills/git-commit-optimizer) — write conventional commits, split large diffs, and clean up commit history.
 - **Design and assets**
   - [**Extract Design System**](./skills/extract-design-system) — pull design tokens and reusable components out of a website URL or local HTML file.
+  - [**Web Design Vocabulary**](./skills/web-design-vocabulary) — discuss how a website should look in shared terms: turn vague feelings into 300 named styles, compare directions with a visual board, and keep a record of agreed decisions.
   - [**Optimize Images**](./skills/optimize-images) — convert and compress PNG/JPG to WebP and update source references.
 - **Documentation and notes**
   - [**Write README**](./skills/write-readme) — restructure a README into the 8-section entry-point layout and move deep docs into `docs/`.

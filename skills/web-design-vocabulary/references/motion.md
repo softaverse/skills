@@ -1,0 +1,159 @@
+# 互動與動態
+
+## 互動與動態 (Interaction & Motion)
+
+- **微互動 (Micro-interactions)** `micro` — 按鈕回饋、切換開關、按讚動畫這類小細節。
+  - 感受：細膩、有回饋、有生命感
+  - 適合：所有互動元件
+  - 搭配：Spring、Stateful Button、Ripple
+  - 注意：動畫太長會拖慢操作
+- **視差捲動 (Parallax Scrolling)** `parallax` — 前景和背景用不同速度捲動，製造景深。
+  - 感受：景深、沉浸、電影感
+  - 適合：Hero、品牌故事、旅遊
+  - 搭配：Scrollytelling、Full-bleed
+  - 注意：容易造成暈眩；手機效能差
+- **骨架屏 (Skeleton Screen)** `skeleton` — 載入時先顯示灰色的內容輪廓，取代轉圈圈。
+  - 感受：快速、穩定、可預期
+  - 適合：內容型 App、列表、動態牆
+  - 搭配：Optimistic UI
+  - 注意：骨架要接近真實排版
+- **磁吸游標 (Magnetic Cursor)** `magnet` — 游標靠近時，元素被吸過去或跟著偏移。
+  - 感受：精緻、好玩、高級手感
+  - 適合：作品集、創意工作室、CTA
+  - 搭配：Cursor Trail、Spotlight Cursor
+  - 注意：觸控裝置無效；只給少數重點元素
+- **黏性元素 (Sticky Elements)** `sticky` — 捲動時固定在畫面上的導覽列或區塊。
+  - 感受：方便、持續引導
+  - 適合：導覽列、CTA、目錄
+  - 搭配：Floating Nav、Scrollspy
+  - 注意：固定元素太多會擠壓內容
+- **捲動觸發揭露 (Scroll-triggered Reveal)** `reveal` — 元素捲進視窗時淡入或升起。
+  - 感受：流暢、有節奏、精緻
+  - 適合：幾乎所有行銷頁
+  - 搭配：Stagger、Easing
+  - 注意：每個元素都動會顯得廉價；內容不能等動畫才出現
+- **頁面轉場 (Page Transition)** `ptrans` — 切換頁面時有連續的過場動畫。
+  - 感受：連貫、流暢、App 感
+  - 適合：作品集、品牌網站
+  - 搭配：Morphing、Mask Reveal
+  - 注意：轉場太長會拖慢瀏覽
+- **3D 傾斜卡片 (Tilt Card)** `tilt` — 卡片隨游標位置傾斜，帶反光。
+  - 感受：立體、互動、精緻
+  - 適合：作品卡、產品卡、會員卡
+  - 搭配：Glass、Holographic、Magnetic Cursor
+  - 注意：觸控裝置無效
+- **游標軌跡 (Cursor Trail)** `trail` — 游標後面拖著殘影或粒子。
+  - 感受：玩心、藝術、記憶點
+  - 適合：創意作品集、活動頁
+  - 搭配：Particles、Magnetic Cursor
+  - 注意：干擾操作，商務網站慎用
+- **彈簧動態 (Spring / Bouncy)** `spring` — 有回彈和慣性的物理動態。
+  - 感受：活潑、物理感、好玩
+  - 適合：App、互動元件
+  - 搭配：Micro-interactions、Clay
+  - 注意：彈太多會顯得幼稚
+- **拖放 (Drag & Drop)** `drag` — 拖曳元素重新排序或放進目標區。
+  - 感受：掌控、直覺
+  - 適合：排序、看板、編輯器
+  - 搭配：Infinite Canvas
+  - 注意：要有鍵盤替代方案
+- **滑動手勢 (Swipe Gesture)** `swipe` — 左右滑動切換或刪除（Tinder 式）。
+  - 感受：快速、直覺、行動原生
+  - 適合：行動版卡片、相簿
+  - 搭配：Stacked Cards
+  - 注意：手勢不明顯時要有提示
+- **載入動畫 (Loading Spinner)** `loading` — 等待時的轉圈、進度或品牌化動畫。
+  - 感受：等待也有品牌感
+  - 適合：App、長時間處理
+  - 搭配：Skeleton Screen
+  - 注意：能用骨架屏就別只用轉圈
+- **緩動曲線 (Easing)** `easing` — ease-in、ease-out、彈性等速度變化，決定動畫的「手感」。
+  - 感受：手感、質感
+  - 適合：所有動畫
+  - 搭配：Spring
+  - 注意：屬於動畫品質細節，不必當成風格討論
+- **交錯動畫 (Stagger)** `stagger` — 一組元素依序錯開進場。
+  - 感受：節奏、精緻、有序
+  - 適合：列表進場、卡片群
+  - 搭配：Scroll-triggered Reveal
+  - 注意：延遲太長會讓人等
+- **形狀變形 (Morphing)** `morph` — 一個圖形平滑變成另一個圖形。
+  - 感受：流暢、聰明、精緻
+  - 適合：圖示切換、Logo、轉場
+  - 搭配：Page Transition、Line Draw
+  - 注意：實作成本高
+- **數字跳動 (Count-up)** `countup` — 數字從 0 滾動到目標值。
+  - 感受：成就感、數據有力
+  - 適合：數據亮點、成果展示
+  - 搭配：Stat Card、Scrollytelling
+  - 注意：數字要真實，動畫要短
+- **線條描繪 (Line Draw)** `linedraw` — 線條或簽名逐筆畫出來。
+  - 感受：優雅、手作、逐步揭露
+  - 適合：插圖、簽名、流程圖
+  - 搭配：Line Art、Hand-drawn
+  - 注意：線條太多會變慢
+- **串流輸出 (Streaming Text)** `stream` — AI 回應逐字流出，帶思考中的狀態。
+  - 感受：AI 原生、即時、思考中
+  - 適合：AI 回應、聊天介面
+  - 搭配：Conversational UI、Typewriter
+  - 注意：長回應要能跳過或捲動
+- **懸停揭露 (Hover Reveal)** `hoverrev` — 滑過時顯示圖片或隱藏資訊。
+  - 感受：探索、驚喜
+  - 適合：作品列表、團隊介紹
+  - 搭配：Masonry、Card UI
+  - 注意：觸控裝置要有替代
+- **遮罩揭幕 (Mask Reveal)** `maskrev` — 用遮罩擦開、揭露內容。
+  - 感受：戲劇性、高級揭幕
+  - 適合：Hero、作品集、轉場
+  - 搭配：Editorial、Page Transition
+  - 注意：不要讓重要內容依賴揭幕才出現
+- **滾動縮放 (Scroll Zoom)** `scrollzoom` — 捲動時畫面放大進入下一段。
+  - 感受：沉浸、穿越、電影感
+  - 適合：產品發表、品牌故事
+  - 搭配：Scrollytelling、Pinned Scroll
+  - 注意：手機效能與暈眩問題
+- **釘選捲動 (Pinned Scroll)** `pinned` — 區塊固定不動，內容在裡面切換。
+  - 感受：聚焦、敘事、步驟感
+  - 適合：產品功能說明、流程
+  - 搭配：Scrollytelling、Stacked Cards
+  - 注意：捲動被「卡住」會讓人困惑
+- **聚光燈游標 (Spotlight Cursor)** `spot` — 游標照亮周圍，其餘是暗的。
+  - 感受：神秘、探索、聚焦
+  - 適合：創意頁、活動彩蛋
+  - 搭配：Dark SaaS、Glow
+  - 注意：內容被遮住，不適合資訊頁
+- **漣漪點擊 (Ripple)** `ripple` — 點擊處擴散出圓形波紋。
+  - 感受：即時回饋、Material 感
+  - 適合：按鈕、清單項目
+  - 搭配：Material Design
+  - 注意：品牌感會偏 Google
+- **卡片翻轉 (Flip Card)** `flip` — 卡片翻面顯示背面資訊。
+  - 感受：驚喜、兩面資訊
+  - 適合：團隊介紹、方案卡
+  - 搭配：Tilt Card
+  - 注意：背面資訊對無障礙不友善
+- **下拉重新整理 (Pull to Refresh)** `ptr` — 往下拉觸發更新。
+  - 感受：行動原生、即時
+  - 適合：行動 App、動態牆
+  - 搭配：Infinite Scroll
+  - 注意：桌面網頁通常不需要
+- **吸附捲動 (Scroll Snap)** `snap` — 捲動停下時自動對齊到下一個區塊。
+  - 感受：整齊、一頁一主題
+  - 適合：全頁式簡報、作品集
+  - 搭配：Full-bleed、Pinned Scroll
+  - 注意：長內容區塊會被強制截斷
+- **閱讀進度條 (Reading Progress)** `readprog` — 頂部細條隨閱讀進度增長。
+  - 感受：掌握進度、安心
+  - 適合：長文、文件
+  - 搭配：Single Column、Sticky
+  - 注意：短頁面不需要
+- **慶祝動畫 (Confetti / Celebration)** `confetti` — 完成任務時噴出彩帶。
+  - 感受：慶祝、成就、愉悅
+  - 適合：完成購買、註冊、里程碑
+  - 搭配：Gamification、Micro-interactions
+  - 注意：只在真的值得慶祝時用
+- **狀態按鈕 (Stateful Button)** `stateful` — 按下後依序變成載入中、成功。
+  - 感受：清楚、安心、即時
+  - 適合：送出表單、付款、儲存
+  - 搭配：Micro-interactions、Optimistic UI
+  - 注意：失敗狀態也要設計

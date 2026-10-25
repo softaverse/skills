@@ -1,0 +1,134 @@
+# 色彩與對比
+
+## 色彩與對比 (Color & Contrast)
+
+- **雙色調 (Duotone)** `duo` — 整個介面僅由兩種對比鮮明的顏色（及其不同深淺的陰影）所組成。
+  - 感受：強烈、統一、海報感
+  - 適合：活動、音樂、品牌形象
+  - 搭配：Gradient Map、Riso、Big Type
+  - 注意：只有兩色時狀態色（錯誤、成功）要另外規劃
+- **單色系 (Monochromatic)** `mono` — 僅使用單一主色調（例如「不同深淺的電光藍」），營造出具高度凝聚力的品牌視覺。
+  - 感受：統一、品牌感、沉穩
+  - 適合：品牌官網、產品頁
+  - 搭配：Minimalism、Swiss
+  - 注意：層級全靠明度，對比要足夠
+- **粉彩哥德風 (Pastel Goth)** `goth` — 柔和、帶有奶霧感的粉彩色系，搭配俐落的黑色字體與邊框。
+  - 感受：甜中帶酷、反差
+  - 適合：潮牌、美妝、年輕族群
+  - 搭配：Kawaii、Outline Text
+  - 注意：受眾窄
+- **純黑暗色模式 (Dark Mode OLED)** `oled` — 採用純黑色背景（`#000000`）而非深灰，能極大化提升對比度並讓視覺元素更突出。
+  - 感受：深邃、高對比、科技
+  - 適合：App、影音、科技產品
+  - 搭配：Glow、Neon、Dark SaaS
+  - 注意：純黑配純白長文會刺眼，內文用淺灰
+- **高對比無障礙配色 (High Contrast / WCAG AA·AAA)** `contrast` — 文字與背景的對比度至少 4.5:1，以可讀性為優先。
+  - 感受：清楚、可信、人人可用
+  - 適合：政府、醫療、教育、所有網站的底線
+  - 搭配：Swiss、Big Type
+  - 注意：這是基本要求而非風格選項，任何方向都要達標
+- **大地色系 (Earth Tones)** `earth` — 赭、橄欖、陶土、沙色，沉穩自然。
+  - 感受：沉穩、自然、溫暖
+  - 適合：生活風格、食品、永續、家居
+  - 搭配：Japandi、Grain、Serif Revival
+  - 注意：容易顯得暗沉，需要一個亮點色
+- **霓虹撞色 (Neon / Vibrant Clash)** `neon` — 高飽和的對比色互相碰撞，衝擊力強。
+  - 感受：衝擊、興奮、年輕
+  - 適合：活動、潮牌、遊戲
+  - 搭配：Cyberpunk、Acid、Glow
+  - 注意：可讀性和視覺疲勞要注意
+- **類比色 (Analogous)** `analog` — 用色相環上相鄰的顏色，和諧柔順。
+  - 感受：和諧、柔順、平靜
+  - 適合：健康、生活風格
+  - 搭配：Aurora、Gradient Text
+  - 注意：對比不足，CTA 不夠突出時要補強調色
+- **互補色強調 (Complementary Accent)** `comp` — 大面積主色配上一小塊互補色當重點。
+  - 感受：焦點清楚、有活力
+  - 適合：CTA、行銷頁
+  - 搭配：Grayscale + Single Accent、60-30-10
+  - 注意：互補色等量使用會刺眼
+- **灰階加一點色 (Grayscale + Single Accent)** `gray1` — 整體灰階，只讓一個元素帶顏色（例如 CTA）。
+  - 感受：克制、高級、焦點清楚
+  - 適合：SaaS、作品集、精品
+  - 搭配：Minimalism、Swiss、Editorial
+  - 注意：強調色只能給最重要的東西
+- **莫蘭迪色 (Morandi Palette)** `morandi` — 加了灰的低飽和色，溫柔、高級。
+  - 感受：溫柔、高級、低調
+  - 適合：生活風格、美妝、婚禮
+  - 搭配：Japandi、Serif Revival、Minimalism
+  - 注意：整體灰濛，CTA 需要明確對比
+- **馬卡龍色 (Candy / Macaron)** `macaron` — 高明度、粉嫩的甜點色。
+  - 感受：甜美、輕快、可愛
+  - 適合：甜點、兒童、美妝
+  - 搭配：Kawaii、Clay
+  - 注意：淺色上的白字可讀性差
+- **多巴胺配色 (Dopamine Colors)** `dopamine` — 高飽和、多色並置，明亮快樂。
+  - 感受：快樂、活力、大膽
+  - 適合：年輕品牌、活動、創作者
+  - 搭配：Memphis、Neo-Brutalism、Color Blocking
+  - 注意：顏色多時要有一個主色收斂
+- **黑金配色 (Black & Gold)** `blackgold` — 黑底配金色，奢華精品感。
+  - 感受：奢華、尊貴、正式
+  - 適合：精品、酒、珠寶、VIP 方案
+  - 搭配：Art Deco、Serif Revival、Marble
+  - 注意：很容易顯得俗氣或老派；金色用量要少
+- **三分色 (Triadic)** `triadic` — 色相環上間隔 120° 的三個顏色。
+  - 感受：繽紛、平衡、活潑
+  - 適合：兒童、教育、遊戲
+  - 搭配：Bauhaus、Flat
+  - 注意：三色等量會很吵，要分主次
+- **冷暖對比 (Warm–Cool Contrast)** `warmcool` — 冷色背景配暖色重點，或反過來。
+  - 感受：層次、焦點、溫度
+  - 適合：Hero、CTA、攝影
+  - 搭配：Complementary Accent、Color Overlay
+  - 注意：兩邊比例要明確
+- **60-30-10 法則** `r6` — 主色 60%、輔色 30%、強調色 10% 的配色比例。
+  - 感受：有秩序、好落地
+  - 適合：任何網站的配色比例
+  - 搭配：所有配色方向
+  - 注意：這是比例原則，不是風格
+- **漸層文字 (Gradient Text)** `gtext` — 標題文字填入漸層，AI 產品很常見。
+  - 感受：AI 感、潮、亮眼
+  - 適合：AI 產品標題、Hero
+  - 搭配：Aurora、Dark SaaS、Gradient Border
+  - 注意：非常普遍；只用在一兩個關鍵字
+- **照片色調疊加 (Color Overlay)** `overlay` — 照片蓋一層品牌色，統一視覺。
+  - 感受：統一、品牌感
+  - 適合：照片多但來源不一的網站
+  - 搭配：Duotone、Hero
+  - 注意：品牌色太深會讓照片失去辨識度
+- **螢光點綴 (Fluorescent Accent)** `fluo` — 整體沉穩，只用一個螢光色當重點。
+  - 感受：沉穩中有亮點、潮
+  - 適合：科技、運動、設計工作室
+  - 搭配：Grayscale + Single Accent、Swiss
+  - 注意：螢光色當文字底色可讀性差
+- **復古褪色 (Faded Vintage)** `faded` — 泛黃、低對比，像老照片。
+  - 感受：懷舊、溫柔、故事感
+  - 適合：攝影、文創、復古品牌
+  - 搭配：Film、Grain
+  - 注意：對比低，文字要另外處理
+- **色塊拼接 (Color Blocking)** `colorblock` — 大面積純色塊直接拼在一起。
+  - 感受：大膽、清楚、現代
+  - 適合：新創、活動、時尚
+  - 搭配：Neo-Brutalism、Memphis、Split-Screen
+  - 注意：色塊之間的對比要同時顧到文字
+- **漸層映射 (Gradient Map)** `gradmap` — 把照片的明暗對應到兩三種顏色。
+  - 感受：統一、藝術、品牌化
+  - 適合：照片牆、活動、音樂
+  - 搭配：Duotone、Riso
+  - 注意：人物膚色可能變得怪異
+- **Material You 動態配色 (Dynamic Color)** `matyou` — 從桌布或圖片自動萃取整套配色。
+  - 感受：個人化、系統化
+  - 適合：Android App、可換主題的產品
+  - 搭配：Material Design
+  - 注意：對網站來說多半是概念參考
+- **色盲友善配色 (Colorblind-safe Palette)** `cbsafe` — 避開紅綠對立，加形狀或圖案輔助辨識。
+  - 感受：包容、清楚
+  - 適合：數據圖表、狀態標示
+  - 搭配：High Contrast
+  - 注意：這是基本要求而非風格
+- **中性色主調 (Neutral / Greige)** `greige` — 灰米、燕麥、石色為主，低調耐看。
+  - 感受：低調、耐看、安心
+  - 適合：家居、精品、顧問、高端服務
+  - 搭配：Japandi、Minimalism、Serif Revival
+  - 注意：太素會缺乏辨識度

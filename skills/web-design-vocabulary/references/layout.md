@@ -1,0 +1,124 @@
+# 布局與結構
+
+## 布局與結構 (Layout & Structure)
+
+- **便當盒格柵 (Bento Grid)** `bento` — 模組化、箱型、卡片式的布局風格。透過明確的分隔區塊將內容組織成具凝聚力的網格狀層級。
+  - 感受：整齊、模組化、資訊豐富但不亂
+  - 適合：SaaS 功能總覽、產品特色、個人作品首頁
+  - 搭配：Card UI、Dark SaaS、Micro-interactions
+  - 注意：格子大小要有主次，全部等大會變成無聊的表格
+- **編輯雜誌風 (Editorial)** `editorial` — 帶有高級時尚雜誌的質感。特點是大級數的襯線體標題（Serif）、留白豐富，以及非對稱的圖片排版。
+  - 感受：高級、有品牌觀點、像在讀雜誌
+  - 適合：品牌官網、作品集、內容型網站、精品
+  - 搭配：Serif Revival、Big Type、Asymmetric、Minimalism
+  - 注意：很吃好照片和好文案；資訊密集的產品頁不適合當主方向
+- **瑞士風格 (Swiss Style / 國際主義平面設計風格)** `swiss` — 強調客觀與清晰。高度依賴網格系統、無襯線字體（如 Helvetica 類字型）以及文字齊左對齊。
+  - 感受：理性、專業、清楚可信
+  - 適合：B2B、設計工作室、文件與資訊型網站
+  - 搭配：Minimalism、Grayscale + Single Accent、Big Type
+  - 注意：做不好會顯得冷淡；需要嚴格的網格紀律
+- **分屏布局 (Split-Screen)** `split` — 視覺上有明確的垂直分割，通常是一側為純色區塊、另一側搭配滿版圖片。
+  - 感受：對比、二選一、左右呼應
+  - 適合：Hero、登入頁、雙受眾入口（買家／賣家）
+  - 搭配：Full-bleed、Editorial、Color Blocking
+  - 注意：手機上會變上下堆疊，要確認兩半在直式畫面仍成立
+- **卡片式介面 (Card UI)** `card` — 把每則資訊放進一張獨立卡片，常見於動態牆與商品列表。
+  - 感受：親切、好掃讀、可點擊
+  - 適合：列表、商品、文章、動態牆
+  - 搭配：Bento、Masonry、Tilt Card
+  - 注意：卡片太多太像會失去層級
+- **瀑布流 (Masonry)** `masonry` — 卡片等寬、高度不一，交錯往下排（Pinterest 式）。
+  - 感受：豐富、探索、靈感牆
+  - 適合：圖片作品集、靈感收藏、社群內容
+  - 搭配：Card UI、Infinite Scroll、Hover Reveal
+  - 注意：閱讀順序不明確，不適合需要依序閱讀的內容
+- **F 型 / Z 型版面 (F-pattern / Z-pattern)** `fz` — 按照視線掃讀的路徑安排重點。
+  - 感受：好讀、引導視線
+  - 適合：登陸頁、文字密集頁面
+  - 搭配：Visual Hierarchy、Hero
+  - 注意：這是排版原則而非風格，通常不必對使用者強調
+- **全幅主視覺 (Hero Section)** `hero` — 首屏放滿版大圖或影片，搭配大標題和一個行動按鈕（CTA）。
+  - 感受：第一眼震撼、明確主張
+  - 適合：首頁、活動頁、產品發表
+  - 搭配：Big Type、Video Background、Aurora、Split-Screen
+  - 注意：首屏只放一個主訊息和一個 CTA，塞太多就失去力道
+- **破格／錯位布局 (Broken Grid)** `broken` — 刻意讓圖文跨出網格、互相重疊，製造張力。
+  - 感受：張力、前衛、有設計感
+  - 適合：創意工作室、時尚、作品集
+  - 搭配：Editorial、Collage、Asymmetric
+  - 注意：可讀性和響應式成本高；商務網站慎用
+- **極簡主義 (Minimalism)** `minimal` — 元素減到最少，大量留白（Negative Space），只留一個視覺焦點。
+  - 感受：乾淨、高級、聚焦
+  - 適合：精品、產品展示、作品集
+  - 搭配：Swiss、Editorial、Grayscale + Single Accent、Hairline Type
+  - 注意：內容不夠強時會顯得空洞；留白要有意圖
+- **捲動敘事 (Scrollytelling)** `scrolly` — 內容隨捲動逐段展開，像在說故事。
+  - 感受：沉浸、敘事、一步步被說服
+  - 適合：產品故事、年度報告、資料新聞
+  - 搭配：Pinned Scroll、Parallax、Scroll Zoom、Count-up
+  - 注意：開發成本高、首屏外的內容容易被跳過；手機效能要測
+- **側欄儀表板 (Dashboard / Sidebar Layout)** `dash` — 左側固定導覽，右側是資料卡和圖表區。
+  - 感受：效率、掌控、工具感
+  - 適合：後台、SaaS 應用、數據產品
+  - 搭配：Stat Card、Sparkline、Command Palette、Dark SaaS
+  - 注意：這是應用介面而非行銷頁布局，官網別硬套
+- **非對稱布局 (Asymmetric Layout)** `asym` — 刻意打破左右平衡，靠大小和留白做出視覺重心。
+  - 感受：動態、有個性、不呆板
+  - 適合：品牌官網、作品集、雜誌風頁面
+  - 搭配：Editorial、Broken Grid、Big Type
+  - 注意：需要明確的視覺重心，否則只是看起來沒對齊
+- **全出血 (Full-bleed)** `fullbleed` — 圖片或色塊延伸到畫面邊緣，不留邊框。
+  - 感受：開闊、沉浸、大器
+  - 適合：攝影、旅遊、精品、品牌形象
+  - 搭配：Hero、Editorial、Split-Screen
+  - 注意：圖片品質不能妥協；文字疊在圖上要處理對比
+- **單欄置中 (Single Column)** `singlecol` — 內容集中在窄欄，適合閱讀型頁面（Medium 式）。
+  - 感受：專注、安靜、好讀
+  - 適合：部落格、文章、文件、電子報
+  - 搭配：Serif Revival、Drop Cap、Reading Progress
+  - 注意：橫向空間利用率低，不適合資訊比較
+- **水平捲動 (Horizontal Scroll)** `hscroll` — 內容橫向排列，捲動時往左右移動。
+  - 感受：新鮮、像翻相簿、有節奏
+  - 適合：作品集、時間軸、商品陳列
+  - 搭配：Pinned Scroll、Scroll Snap
+  - 注意：違反使用者習慣，要有明確提示；無障礙要處理
+- **拼貼布局 (Collage)** `collage` — 照片、剪紙、文字自由疊放，像手作剪貼簿。
+  - 感受：手作、多元、有溫度
+  - 適合：創意品牌、活動、藝術、生活風格
+  - 搭配：Zine、Paper Cut、Hand-drawn、Sticker Style
+  - 注意：容易雜亂；需要一個統一的色彩或字體來收斂
+- **無限畫布 (Infinite Canvas)** `canvas` — 可以自由拖曳和縮放的白板式介面（Figma、Miro）。
+  - 感受：自由、探索、可操作
+  - 適合：白板工具、作品集、互動展示
+  - 搭配：Drag & Drop、Spring
+  - 注意：是產品型態而非頁面風格；行銷頁用來展示要謹慎
+- **對話式介面 (Conversational UI)** `chatui` — 以聊天泡泡為主體的介面，常見於 AI 產品。
+  - 感受：對話感、AI 原生、即時
+  - 適合：AI 產品、客服、互動引導
+  - 搭配：Streaming Text、Suggested Prompts、Copilot Sidebar
+  - 注意：把所有功能都塞進對話會讓操作變慢
+- **斜切分隔 (Diagonal Sections)** `diagonal` — 區塊之間用斜線或波浪切開。
+  - 感受：動感、前進、打破方正
+  - 適合：運動品牌、新創登陸頁
+  - 搭配：Sporty、Color Blocking
+  - 注意：斜度不一致會很亂；全站統一角度
+- **堆疊卡片 (Stacked Cards)** `stacked` — 捲動時卡片一張張疊上來。
+  - 感受：有節奏、像翻卡、聚焦單一
+  - 適合：特色介紹、案例、方案說明
+  - 搭配：Pinned Scroll、Card UI
+  - 注意：每張卡內容要少；太多張會很冗長
+- **雙欄對照 (Side-by-side Comparison)** `sidebyside` — 左右並排比較方案或新舊版本。
+  - 感受：客觀、好比較、做決定
+  - 適合：定價方案、Before/After、競品比較
+  - 搭配：Swiss、Card UI
+  - 注意：手機上需要改成切換或垂直排列
+- **徑向布局 (Radial Layout)** `radial` — 內容圍繞中心放射排列。
+  - 感受：中心化、生態系、整體感
+  - 適合：產品生態系、功能關係圖
+  - 搭配：Isometric、Infographic
+  - 注意：文字空間有限，不適合長內容
+- **影片背景 (Video Background)** `videobg` — 首屏用循環影片當背景。
+  - 感受：沉浸、生動、品牌感
+  - 適合：首頁 Hero、活動、旅遊、餐飲
+  - 搭配：Hero、Big Type、Color Overlay
+  - 注意：影響載入速度和電量；要有靜態備援與暫停鍵
