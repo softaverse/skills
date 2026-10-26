@@ -1,0 +1,239 @@
+# React Bits
+
+官方元件清單，由 `scripts/sync_catalog.py` 從 https://reactbits.dev/llms.txt 產生，2026-10-27 同步，共 217 個。只收名稱、說明與連結，不含程式碼。
+
+React 專用；每個元件有 JS／TS × CSS／Tailwind 四種版本，用 shadcn 或 jsrepo CLI 加進專案。授權 MIT + Commons Clause：可以用在任何網站或產品（含商用），但不能轉賣或轉散布元件本身。免費版之外另有付費的 React Bits Pro，不收在這裡。
+
+格式：`**名稱** — 中文說明 → 對應效果 id · 官方頁面`。沒有中文說明的是新元件，暫列英文。
+
+## 文字動畫（Text Animations）
+
+- **ASCII Text** — ASCII 字元組成的波浪文字，會朝游標傾斜，滑過時亂碼、點擊時漣漪 · https://reactbits.dev/text-animations/ascii-text
+- **Blur Text** — 文字從模糊變清晰的柔焦進場 → `reveal` · https://reactbits.dev/text-animations/blur-text
+- **Circular Text** — 文字沿圓形排列，可以持續旋轉 · https://reactbits.dev/text-animations/circular-text
+- **Count Up** — 數字跳動，支援千分位與小數 → `countup` · https://reactbits.dev/text-animations/count-up
+- **Curved Loop** — 沿曲線不斷循環的跑馬燈文字，可以拖曳 · https://reactbits.dev/text-animations/curved-loop
+- **Decrypted Text** — 駭客風解密：隨機字元跳動後定成正確文字 → `scramble` · https://reactbits.dev/text-animations/decrypted-text
+- **Depth Text** — 多層立體字，會隨游標產生視差 · https://reactbits.dev/text-animations/depth-text
+- **Echo Text** — 文字拖著殘影，最後收合成一個字 · https://reactbits.dev/text-animations/echo-text
+- **Falling Text** — 文字碎開掉成一堆，可以拖、丟，再飛回原位 · https://reactbits.dev/text-animations/falling-text
+- **Fold Text** — 每行像摺紙一樣展開到定位 · https://reactbits.dev/text-animations/fold-text
+- **Fuzzy Text** — 抖動的毛邊文字，hover 強度可調 · https://reactbits.dev/text-animations/fuzzy-text
+- **Glitch Text** — RGB 分離加抖動的故障風文字 · https://reactbits.dev/text-animations/glitch-text
+- **Gradient Text** — 文字內有流動漸層：滑動、網格漂移或錐形擺動 · https://reactbits.dev/text-animations/gradient-text
+- **Masked Heading** — 標題裡透出流動色塊或圖片，逐字揭露 · https://reactbits.dev/text-animations/masked-heading
+- **Particle Text** — 文字由漂浮的粒子聚合而成，可以打散重組 · https://reactbits.dev/text-animations/particle-text
+- **Rotating Text** — 多個詞句以 3D 翻轉輪流替換 · https://reactbits.dev/text-animations/rotating-text
+- **Scrambled Text** — 游標經過的字會被打亂扭曲 → `scramble` · https://reactbits.dev/text-animations/scrambled-text
+- **Scroll Float** — 捲動時文字輕輕浮起、帶視差 → `parallax` · https://reactbits.dev/text-animations/scroll-float
+- **Scroll Reveal** — 捲動時文字由模糊變清晰地出現 → `reveal` · https://reactbits.dev/text-animations/scroll-reveal
+- **Scroll Velocity** — 跑馬燈文字，速度與變形隨捲動速度改變 · https://reactbits.dev/text-animations/scroll-velocity
+- **Shiny Text** — 一道光掃過文字，從柔光到鏡面反光 → `shimmer` · https://reactbits.dev/text-animations/shiny-text
+- **Shuffle** — 字元先洗牌亂跳，再定成正確文字 → `scramble` · https://reactbits.dev/text-animations/shuffle
+- **Split Flap Text** — 機場翻牌看板，喀啦喀啦翻到下一句 · https://reactbits.dev/text-animations/split-flap-text
+- **Split Text** — 把文字拆成字或詞，交錯進場 → `splitreveal` · https://reactbits.dev/text-animations/split-text
+- **Stroke Text** — 字形先描出外框，再填滿顏色 → `linedraw` · https://reactbits.dev/text-animations/stroke-text
+- **Tech Text** — Logo 字在游標下變成虛線向量路徑 · https://reactbits.dev/text-animations/tech-text
+- **Text Cursor** — 文字或 emoji 跟著游標留下一串印記 · https://reactbits.dev/text-animations/text-cursor
+- **Text Loop** — 沿曲線 SVG 路徑無縫流動的跑馬燈文字 · https://reactbits.dev/text-animations/text-loop
+- **Text Pressure** — 字元依游標的距離放大、變形 · https://reactbits.dev/text-animations/text-pressure
+- **Text Type** — 打字機效果，有閃爍游標，節奏可調 · https://reactbits.dev/text-animations/text-type
+- **True Focus** — 一組詞依序聚焦、其他模糊 · https://reactbits.dev/text-animations/true-focus
+- **Variable Proximity** — 字重等樣式隨游標距離連續變化 · https://reactbits.dev/text-animations/variable-proximity
+- **Warp Text** — WebGL 讓文字在游標周圍彎曲折射 · https://reactbits.dev/text-animations/warp-text
+
+## 互動動畫（Animations）
+
+- **Animated Content** — 包住內容，捲動時滑入、模糊、3D 傾斜或交錯出現 → `reveal`、`stagger` · https://reactbits.dev/animations/animated-content
+- **Blob Cursor** — 液態金屬游標，會拉伸晃動、濺出水滴 · https://reactbits.dev/animations/blob-cursor
+- **Click Spark** — 每次點擊冒出火花 · https://reactbits.dev/animations/click-spark
+- **Crosshair** — 十字準星游標，鎖定連結與按鈕並標出尺寸 · https://reactbits.dev/animations/crosshair
+- **Crystalized Ball** — 帶電光邊緣的玻璃球，粉塵跟著游標旋轉 · https://reactbits.dev/animations/crystalized-ball
+- **Cubes** — 一格格 3D 方塊轉向游標，掃過會旋轉、點擊有漣漪 · https://reactbits.dev/animations/cubes
+- **Cursor Grid** — 網格在游標經過處亮起再淡出 · https://reactbits.dev/animations/cursor-grid
+- **Dither Veil** — 1-bit 抖色照片，游標燒穿處恢復全彩 · https://reactbits.dev/animations/dither-veil
+- **Elastic Mesh** — 把文字或 Logo 變成可以按壓拉扯的果凍 · https://reactbits.dev/animations/elastic-mesh
+- **Electric Border** — 元素外圍纏繞電流，靠近游標時迸出火花 · https://reactbits.dev/animations/electric-border
+- **Electric Logo** — Logo 變成活的閃電外框 · https://reactbits.dev/animations/electric-logo
+- **Fade Content** — 捲動時淡入，可加模糊、去色、顆粒或像素 → `reveal` · https://reactbits.dev/animations/fade-content
+- **Ghost Cursor** — 發光煙霧幽靈跟著游標飄 · https://reactbits.dev/animations/ghost-cursor
+- **Glare Hover** — hover 時一道光澤順著游標方向掃過元素 → `tilt` · https://reactbits.dev/animations/glare-hover
+- **Glow Cursor** — 游標散發柔光，漂散後慢慢冷卻 · https://reactbits.dev/animations/glow-cursor
+- **Gradual Blur** — 頁首、頁尾或輪播邊緣的漸進模糊 · https://reactbits.dev/animations/gradual-blur
+- **Halftone Reveal** — 網點印刷圖在游標下膨脹成真實照片 · https://reactbits.dev/animations/halftone-reveal
+- **Image Trail** — 游標拖出一串圖片 · https://reactbits.dev/animations/image-trail
+- **Laser Flow** — 一道雷射光打在內容上並沿邊角流下 · https://reactbits.dev/animations/laser-flow
+- **Logo Loop** — 不斷循環的 Logo 跑馬燈，hover 暫停 · https://reactbits.dev/animations/logo-loop
+- **Magnet** — 元素被游標吸過去，再彈性回位 → `magnet` · https://reactbits.dev/animations/magnet
+- **Meta Balls** — 會融合、拉伸、分離的液態球體 · https://reactbits.dev/animations/meta-balls
+- **Metallic Paint** — 液態鉻流過 Logo 或文字 · https://reactbits.dev/animations/metallic-paint
+- **Noise** — 底片顆粒疊加層，從細顆粒到灰塵與雜訊 · https://reactbits.dev/animations/noise
+- **Orbit Images** — 圖片沿 SVG 路徑環繞運行 · https://reactbits.dev/animations/orbit-images
+- **Pixel Swap** — 新內容從游標進入處以像素波浪長出來 · https://reactbits.dev/animations/pixel-swap
+- **Pixel Trail** — 游標後面拖著會融化的像素黏液 · https://reactbits.dev/animations/pixel-trail
+- **Pixel Transition** — 卡片被像素蓋滿、換內容後再散開 · https://reactbits.dev/animations/pixel-transition
+- **Ribbons** — 跟著游標的彈性緞帶 · https://reactbits.dev/animations/ribbons
+- **Ripple Distortion** — 游標像在水面劃過，內容被擾動並留下波紋 · https://reactbits.dev/animations/ripple-distortion
+- **Scroll Expand** — 圓角媒體框隨捲動放大到滿版 → `scrollzoom` · https://reactbits.dev/animations/scroll-expand
+- **Shape Blur** — Logo 或形狀在游標下像鏡頭失焦 · https://reactbits.dev/animations/shape-blur
+- **Splash Cursor** — 游標拖出流體墨水，點擊炸開 · https://reactbits.dev/animations/splash-cursor
+- **Star Border** — 一顆星沿按鈕或卡片外框繞行，拖出光尾 → `borderbeam` · https://reactbits.dev/animations/star-border
+- **Sticker Peel** — 可以撕起、拖曳、甩動的貼紙 · https://reactbits.dev/animations/sticker-peel
+- **Strands** — 玻璃球裡扭轉的光絲，像新版 Siri · https://reactbits.dev/animations/strands
+- **Swarm Cursor** — 粒子群像液體跟著游標流動 · https://reactbits.dev/animations/swarm-cursor
+- **Target Cursor** — 準星游標，四角括號會貼合目標的形狀 · https://reactbits.dev/animations/target-cursor
+
+## 元件（Components）
+
+- **Accordion Gallery** — hover 時面板展開，露出帶視差的圖片 · https://reactbits.dev/components/accordion-gallery
+- **Animated List** — 列表項目彈入，選取框滑動，可用方向鍵 → `stagger` · https://reactbits.dev/components/animated-list
+- **Border Glow** — 邊框的漸層光暈隨游標方向移動 → `spot` · https://reactbits.dev/components/border-glow
+- **Bounce Cards** — 一疊照片彈入展開，hover 的那張會擺正 · https://reactbits.dev/components/bounce-cards
+- **Bubble Menu** — 圓形浮動選單，項目交錯展開 · https://reactbits.dev/components/bubble-menu
+- **Card Nav** — 導覽列彈開成一排卡片 · https://reactbits.dev/components/card-nav
+- **Card Swap** — 3D 卡片堆，最前面的卡定時或被甩到最後 · https://reactbits.dev/components/card-swap
+- **Carousel** — 可滑動的卡片輪播，五種轉場與自動播放 · https://reactbits.dev/components/carousel
+- **Chroma Grid** — 灰階照片卡片，游標聚光處恢復顏色 → `spot` · https://reactbits.dev/components/chroma-grid
+- **Circular Carousel** — 3D 環狀圖片輪播，可拖曳、吸附 · https://reactbits.dev/components/circular-carousel
+- **Circular Gallery** — 彎曲的圖片畫廊，可拖、捲或用 Tab 切換 · https://reactbits.dev/components/circular-gallery
+- **Counter** — 里程表式數字，每一位滾動到新值 → `countup` · https://reactbits.dev/components/counter
+- **Curved Input** — 弧形輸入框，文字與按鈕都沿著曲線 · https://reactbits.dev/components/curved-input
+- **Decay Card** — 圖片卡片隨游標撕裂融化，再自己復原 · https://reactbits.dev/components/decay-card
+- **Depth Carousel** — 卡片沿 3D 軌道往深處排列的輪播 · https://reactbits.dev/components/depth-carousel
+- **Dock** — macOS 風格 Dock，滑過放大、啟動彈跳 · https://reactbits.dev/components/dock
+- **Dome Gallery** — 圖片投影在半球面上的沉浸式畫廊 · https://reactbits.dev/components/dome-gallery
+- **Drift Wall** — 無限透視牆面，圖塊漂過、hover 浮起 · https://reactbits.dev/components/drift-wall
+- **Elastic Slider** — 拉過頭會像橡皮一樣延伸再彈回的滑桿 · https://reactbits.dev/components/elastic-slider
+- **Flex Carousel** — 圖片列流過邊緣看不見的液態玻璃 · https://reactbits.dev/components/flex-carousel
+- **Flowing Menu** — 全高選單，液態色帶在項目間滑動並帶出跑馬燈 · https://reactbits.dev/components/flowing-menu
+- **Fluid Glass** — 3D 玻璃物件折射標題或圖片，跟著游標並變形 → `hero3d` · https://reactbits.dev/components/fluid-glass
+- **Flying Posters** — 3D 海報隨捲動或拖曳翻轉，無限延伸 → `hscroll` · https://reactbits.dev/components/flying-posters
+- **Folder** — 資料夾掀蓋或像書一樣打開，可以抽出紙張 · https://reactbits.dev/components/folder
+- **Glass Icons** — 液態玻璃圖示，折射背後的顏色 · https://reactbits.dev/components/glass-icons
+- **Glass Surface** — Apple 風格液態玻璃面板 · https://reactbits.dev/components/glass-surface
+- **Gooey Nav** — 導覽列的選取膠囊像黏液流到新項目 · https://reactbits.dev/components/gooey-nav
+- **Holo Card** — 全像鐳射收藏卡，傾斜時閃爍 · https://reactbits.dev/components/holo-card
+- **Infinite Menu** — 可拖曳的圖片球體選單 · https://reactbits.dev/components/infinite-menu
+- **Infinite Spiral** — 無限循環的 3D 螺旋圖片 · https://reactbits.dev/components/infinite-spiral
+- **Lanyard** — 掛在彈性繩上的 3D 名牌，可以拖、甩、翻面 → `hero3d` · https://reactbits.dev/components/lanyard
+- **Line Sidebar** — 側欄清單，靠近游標的項目會位移並亮起 · https://reactbits.dev/components/line-sidebar
+- **Magic Bento** — 便當格功能卡片，邊緣光跟著游標 → `spot` · https://reactbits.dev/components/magic-bento
+- **Masonry** — 瀑布流畫廊，彈入定位並可開燈箱 · https://reactbits.dev/components/masonry
+- **Model Viewer** — 產品風格的 3D 模型檢視器 → `hero3d` · https://reactbits.dev/components/model-viewer
+- **Morph Slider** — WebGL 圖片輪播，以擾動效果融化切換 · https://reactbits.dev/components/morph-slider
+- **Option Wheel** — 弧形滾輪選擇器 · https://reactbits.dev/components/option-wheel
+- **Pill Nav** — 膠囊導覽列，填色上升、文字翻滾 · https://reactbits.dev/components/pill-nav
+- **Pixel Card** — hover 時卡片冒出閃爍的像素 · https://reactbits.dev/components/pixel-card
+- **Profile Card** — 會朝游標傾斜、帶全像光澤的個人卡片 → `tilt` · https://reactbits.dev/components/profile-card
+- **Reflective Card** — 反射鏡頭畫面或影片的金屬卡片 · https://reactbits.dev/components/reflective-card
+- **Scroll Stack** — 卡片隨捲動釘住並疊成一疊 → `pinned` · https://reactbits.dev/components/scroll-stack
+- **Specular Button** — 玻璃按鈕，高光滑向游標 · https://reactbits.dev/components/specular-button
+- **Spotlight Card** — 聚光燈跟著游標照亮卡片與邊框 → `spot` · https://reactbits.dev/components/spotlight-card
+- **Stack** — 可以拖、甩、點擊切換的卡片堆 · https://reactbits.dev/components/stack
+- **Staggered Menu** — 開合時項目交錯動畫的選單 → `stagger` · https://reactbits.dev/components/staggered-menu
+- **Stepper** — 多步驟流程，指示器滑動、彈性轉場 · https://reactbits.dev/components/stepper
+- **Tilted Card** — 朝游標傾斜的 3D 卡片，帶反光與陰影 → `tilt` · https://reactbits.dev/components/tilted-card
+
+## 微互動（Micro）
+
+- **Bell Toggle** — 按下會搖鈴並展開的膠囊開關 · https://reactbits.dev/micro/bell-toggle
+- **Branched Menu** — 分支展開並畫線連到選項的選單 · https://reactbits.dev/micro/branched-menu
+- **Call Chip** — 工具呼叫狀態標籤，計時填色，成功變綠、失敗搖晃 · https://reactbits.dev/micro/call-chip
+- **Code Slots** — 驗證碼輸入，數字彈入格子 · https://reactbits.dev/micro/code-slots
+- **Comet Dial** — 用角度撥動的刻度轉盤，帶彗星光尾 · https://reactbits.dev/micro/comet-dial
+- **Dodge Field** — 子元素會閃避游標，之後滑回原位 · https://reactbits.dev/micro/dodge-field
+- **Flip Card** — 點擊或拖曳翻面的 3D 卡片 · https://reactbits.dev/micro/flip-card
+- **Flying Button** — hover 時噴射升空、再降落的按鈕 · https://reactbits.dev/micro/flying-button
+- **Folder Float** — 資料夾打開時便條紙飄出 · https://reactbits.dev/micro/folder-float
+- **Fuse Button** — 完成後顯示「復原」並燃燒引信倒數 · https://reactbits.dev/micro/fuse-button
+- **Glide Select** — 下拉選單從角落彈出，選取框滑動 · https://reactbits.dev/micro/glide-select
+- **Hold Button** — 按住確認，液體填滿 · https://reactbits.dev/micro/hold-button
+- **Jelly Radio** — 選中的選項膨脹、推開旁邊的選項 · https://reactbits.dev/micro/jelly-radio
+- **Lattice Loader** — AI 代理狀態列，格子波浪亮起加計時 · https://reactbits.dev/micro/lattice-loader
+- **Paper Crumple** — 按住拖曳時圖片揉成 3D 紙團 · https://reactbits.dev/micro/paper-crumple
+- **Peek Rating** — 星等評分，星星隨游標浮起 · https://reactbits.dev/micro/peek-rating
+- **Prompt Bar** — AI 對話輸入列：@ 來源、/ 指令、模型選擇、語音 · https://reactbits.dev/micro/prompt-bar
+- **Pulse Heart** — 按讚按鈕縮成一點、變色再脈動彈回 → `spring` · https://reactbits.dev/micro/pulse-heart
+- **Refine Frame** — 圖片逐步生成的過程，不造成版面跳動 · https://reactbits.dev/micro/refine-frame
+- **Rubber Segment** — 分段控制，橡皮滑塊拉伸再壓扁定位 · https://reactbits.dev/micro/rubber-segment
+- **Scrub Field** — 拖曳調整數值的欄位 · https://reactbits.dev/micro/scrub-field
+- **Shredder** — 把清單項目拖進碎紙機切成紙條 · https://reactbits.dev/micro/shredder
+- **Slide Commit** — 滑動確認，完成後展開成完成標籤 · https://reactbits.dev/micro/slide-commit
+- **Sling Button** — 像彈弓一樣拉開放手送出 · https://reactbits.dev/micro/sling-button
+- **Slosh Gauge** — 液體晃動的儲量表 · https://reactbits.dev/micro/slosh-gauge
+- **Spring Check** — 彈性勾選：填色、畫勾、劃掉文字一氣呵成 → `spring` · https://reactbits.dev/micro/spring-check
+- **Squish Switch** — 開關的圓鈕依速度拉伸、撞到邊緣壓扁 → `spring` · https://reactbits.dev/micro/squish-switch
+- **Status Mark** — 任務狀態圖示，從圓圈變成進度弧再變成勾 → `lottie` · https://reactbits.dev/micro/status-mark
+- **Swipe Row** — 左右滑動露出操作的清單列 · https://reactbits.dev/micro/swipe-row
+- **Swipe Toast** — 往下滑關閉、燃燒引信倒數的通知 · https://reactbits.dev/micro/swipe-toast
+- **Tear Ticket** — 可以沿撕線撕下票根 · https://reactbits.dev/micro/tear-ticket
+- **Thought Line** — AI 推理過程標題，完成後收成一行 · https://reactbits.dev/micro/thought-line
+- **Voice Pill** — 錄音時膨脹成等化器的麥克風按鈕 · https://reactbits.dev/micro/voice-pill
+- **Wake Slider** — 細條組成的滑桿，拖動速度帶出尾波 · https://reactbits.dev/micro/wake-slider
+- **Warm Tooltip** — 第一個提示會延遲，之後的提示立即出現 · https://reactbits.dev/micro/warm-tooltip
+
+## 背景（Backgrounds）
+
+- **Acid Squares** — 光滑方塊組成的波動地面，兩道彩光漂移 · https://reactbits.dev/backgrounds/acid-squares
+- **Aero Shards** — 玻璃碎片組成的絲帶在深度中流動 · https://reactbits.dev/backgrounds/aero-shards
+- **Antigravity** — 粒子在游標周圍浮起成發光圓環 · https://reactbits.dev/backgrounds/antigravity
+- **Aurora** — 柔和的極光在頁面上方流動、飄向游標 → `aurora` · https://reactbits.dev/backgrounds/aurora
+- **Balatro** — Balatro 遊戲的漩渦顏料 shader · https://reactbits.dev/backgrounds/balatro
+- **Ballpit** — 可以推、抓、丟的物理球池 · https://reactbits.dev/backgrounds/ballpit
+- **Beams** — 暗處起伏的光澤緞帶，光跟著游標 · https://reactbits.dev/backgrounds/beams
+- **Color Bends** — 鮮豔流動的色彩彎曲 · https://reactbits.dev/backgrounds/color-bends
+- **CRT Warp** — 彎曲 CRT 螢幕上的發光電漿，有掃描線 · https://reactbits.dev/backgrounds/crt-warp
+- **Dark Veil** — 暗處漂移的絲質光幕 · https://reactbits.dev/backgrounds/dark-veil
+- **Dither** — 復古抖色波浪 · https://reactbits.dev/backgrounds/dither
+- **Dot Field** — 點陣透過跟隨游標的透鏡放大或扭曲 · https://reactbits.dev/backgrounds/dot-field
+- **Dot Grid** — 像果凍一樣被游標撥動的點陣 · https://reactbits.dev/backgrounds/dot-grid
+- **Faulty Terminal** — 閃爍的 CRT 終端機字元背景 · https://reactbits.dev/backgrounds/faulty-terminal
+- **Ferrofluid** — 光滑的磁流體海面，游標拉起尖刺 · https://reactbits.dev/backgrounds/ferrofluid
+- **Floating Lines** — 細發光線成波浪漂移，繞開游標 · https://reactbits.dev/backgrounds/floating-lines
+- **Flux Lines** — 攪動磁流體中的發光通量線 · https://reactbits.dev/backgrounds/flux-lines
+- **Galaxy** — 穿越星空的無盡飛行 · https://reactbits.dev/backgrounds/galaxy
+- **Ghost Fibers** — 多層發光纖維在景深中飄動 · https://reactbits.dev/backgrounds/ghost-fibers
+- **Gradient ASCII** — 用 ASCII 字元畫出的柔和漸層光 · https://reactbits.dev/backgrounds/gradient-ascii
+- **Gradient Blinds** — 緞面漸層百葉窗，被聚光燈照亮 · https://reactbits.dev/backgrounds/gradient-blinds
+- **Gradient Waves** — 從霧中地平線湧來的緞面波浪 · https://reactbits.dev/backgrounds/gradient-waves
+- **Grainient** — 帶顆粒感的流動漸層 → `aurora` · https://reactbits.dev/backgrounds/grainient
+- **Grid Distortion** — 圖片在游標下碎成方格再復原 · https://reactbits.dev/backgrounds/grid-distortion
+- **Grid Motion** — 傾斜的圖塊牆隨游標滑動 · https://reactbits.dev/backgrounds/grid-motion
+- **Grid Scan** — 被掃描光掃過的 3D 網格房間 · https://reactbits.dev/backgrounds/grid-scan
+- **Hyperspeed** — 夜間公路光軌，按住進入超空間 · https://reactbits.dev/backgrounds/hyperspeed
+- **Iridescence** — 流動的彩虹光澤表面 · https://reactbits.dev/backgrounds/iridescence
+- **Letter Glitch** — 字母場閃爍、亂碼、故障變色 · https://reactbits.dev/backgrounds/letter-glitch
+- **Lightfall** — 光束沿彎曲隧道落下 · https://reactbits.dev/backgrounds/lightfall
+- **Lightning** — 朝游標彎折的閃電，點擊處落雷 · https://reactbits.dev/backgrounds/lightning
+- **Light Pillar** — 旋轉的光柱，靠向游標 · https://reactbits.dev/backgrounds/light-pillar
+- **Light Rays** — 從邊緣射入的體積光，游標控制光束 · https://reactbits.dev/backgrounds/light-rays
+- **Light Tunnel** — 光纖隧道，彗星光往深處衝 · https://reactbits.dev/backgrounds/light-tunnel
+- **Line Waves** — 細線成絲滑波浪，光帶漂過 · https://reactbits.dev/backgrounds/line-waves
+- **Liquid Chrome** — 液態鉻緞帶在暗池中旋轉 · https://reactbits.dev/backgrounds/liquid-chrome
+- **Liquid Ether** — 游標攪動發光液體 · https://reactbits.dev/backgrounds/liquid-ether
+- **Magic Rings** — 向外脈動的發光圓環 · https://reactbits.dev/backgrounds/magic-rings
+- **Magnet Lines** — 一片磁力線轉向游標 · https://reactbits.dev/backgrounds/magnet-lines
+- **Micro Slats** — 細小板條組成的透視波浪 · https://reactbits.dev/backgrounds/micro-slats
+- **Molten Metal** — 白熱核心的焦散絲線 · https://reactbits.dev/backgrounds/molten-metal
+- **Orb** — 會呼吸的彩色光環 · https://reactbits.dev/backgrounds/orb
+- **Particles** — 帶發光與連線的 3D 粒子場 · https://reactbits.dev/backgrounds/particles
+- **Pattern Waves** — 點、線或字元組成的半色調絲綢起伏 · https://reactbits.dev/backgrounds/pattern-waves
+- **Pixel Blast** — 抖色像素雲漂浮閃爍 · https://reactbits.dev/backgrounds/pixel-blast
+- **Pixel Snow** — 像素雪花分層飄落 · https://reactbits.dev/backgrounds/pixel-snow
+- **Plasma** — 緩慢扭轉的緞面光 · https://reactbits.dev/backgrounds/plasma
+- **Plasma Wave** — 兩條互相纏繞的電漿光帶 · https://reactbits.dev/backgrounds/plasma-wave
+- **Prism** — 旋轉的光譜稜鏡 · https://reactbits.dev/backgrounds/prism
+- **Prismatic Burst** — 朝游標傾斜的稜鏡光爆 · https://reactbits.dev/backgrounds/prismatic-burst
+- **Radar** — 雷達掃描與殘影 · https://reactbits.dev/backgrounds/radar
+- **Ripple Grid** — 像水面一樣起漣漪的網格 · https://reactbits.dev/backgrounds/ripple-grid
+- **Scanner** — 被掃描光束掃過的干涉線 · https://reactbits.dev/backgrounds/scanner
+- **Shape Grid** — 隨游標亮起的形狀網格 · https://reactbits.dev/backgrounds/shape-grid
+- **Shape Waves** — 三角、圓、方塊隨波浪變亮放大 · https://reactbits.dev/backgrounds/shape-waves
+- **Side Rays** — 從角落或側邊射入的光束 · https://reactbits.dev/backgrounds/side-rays
+- **Silk** — 光澤緞面摺痕 · https://reactbits.dev/backgrounds/silk
+- **Sliced Waves** — 被切成發光條的彩色波浪 · https://reactbits.dev/backgrounds/sliced-waves
+- **Soft Aurora** — 柔和極光 shader（3D 柏林噪聲） → `aurora` · https://reactbits.dev/backgrounds/soft-aurora
+- **Threads** — 會散開並繞過游標的細線 · https://reactbits.dev/backgrounds/threads
+- **Topography** — 發光等高線組成的 3D 地形 · https://reactbits.dev/backgrounds/topography
+- **Waves** — 密集如絲的線條波浪，繞過游標再彈回 · https://reactbits.dev/backgrounds/waves
+- **Web Threads** — 發光絲線交織，游標下亮起 · https://reactbits.dev/backgrounds/web-threads

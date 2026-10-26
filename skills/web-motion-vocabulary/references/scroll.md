@@ -1,0 +1,70 @@
+# D｜滾動敘事
+
+最有「得獎網站」感的一類：動畫跟著捲動走，訪客的手指就是播放鍵。也最容易用過頭——捲動是訪客的控制權，搶走太多會讓人煩躁。預算上限：`pinned` 與 `hscroll` 合計每頁 1 段。
+
+- **視差捲動 (Parallax)** `parallax` — 往下捲時，前景和背景用不同速度移動，畫面出現前後的距離感。
+  - 感受：景深、沉浸、電影感
+  - 適合：Hero 背景圖、品牌故事、旅遊與地產
+  - 搭配：scrollzoom、splitreveal
+  - 注意：速度差保持小（遠景約慢 20–40%，最遠的點綴可到 50%）；差太多容易暈；不要讓文字本身視差
+  - 工具：GSAP + ScrollTrigger（`scrub`）
+  - 成本：複雜度 中｜效能 中｜持續動畫 否
+  - 手機：減弱或關閉，手機捲動時容易抖
+  - 減少動態：關閉，所有圖層一起捲
+  - 來源：GSAP ScrollTrigger https://gsap.com/docs/v3/Plugins/ScrollTrigger/
+  - Demo：`demos/parallax.js`（↓ 往下滑）
+- **固定畫面敘事 (Pinned Scrollytelling)** `pinned` — 捲到這一段時畫面先停住，內容在原地依序切換（例如三個步驟），切完才繼續往下。
+  - 感受：像在看簡報或短片、有節奏、沉浸
+  - 適合：產品功能逐步說明、品牌故事、Before / After
+  - 搭配：splitreveal、linedraw
+  - 注意：每頁最多一段；步驟 3–5 個；太長會讓人覺得「卡住滑不動」；要有進度提示
+  - 工具：GSAP + ScrollTrigger（`pin` + timeline + `scrub`）
+  - 成本：複雜度 高｜效能 中｜持續動畫 否
+  - 手機：縮短捲動距離，或改成一般上下堆疊
+  - 減少動態：不固定，所有步驟直接上下排列
+  - 來源：GSAP ScrollTrigger https://gsap.com/docs/v3/Plugins/ScrollTrigger/
+  - Demo：`demos/pinned.js`（↓ 往下滑，注意畫面停住的那段）
+- **橫向捲動區 (Horizontal Scroll)** `hscroll` — 捲到這一段時，往下捲的動作變成內容往左移動，像在翻一條橫的畫廊。
+  - 感受：探索、畫廊、時間軸
+  - 適合：作品集、案例列表、歷史時間軸
+  - 搭配：parallax
+  - 注意：和 `pinned` 共用每頁 1 段的額度；項目不要多於 6 個；訪客可能不知道要繼續往下捲
+  - 工具：GSAP + ScrollTrigger（`pin` + 水平位移）
+  - 成本：複雜度 中｜效能 中｜持續動畫 否
+  - 手機：改成可以左右滑的橫向列表（原生捲動）
+  - 減少動態：改成上下排列或原生橫向捲動
+  - 來源：GSAP ScrollTrigger https://gsap.com/docs/v3/Plugins/ScrollTrigger/
+  - Demo：`demos/hscroll.js`（↓ 往下滑）
+- **滾動放大 (Scroll Zoom)** `scrollzoom` — 一張圖或影片一開始是畫面中間的小方塊，隨著往下捲慢慢放大，最後鋪滿整個畫面。
+  - 感受：揭幕、震撼、聚焦
+  - 適合：產品主圖、形象影片、Hero 到第一段的過場
+  - 搭配：parallax、splitreveal
+  - 注意：素材要夠清晰，放大到滿版不能糊；用 `transform: scale` 而不是改寬高
+  - 工具：GSAP + ScrollTrigger（`scrub`，常搭配 `pin`）
+  - 成本：複雜度 中｜效能 中｜持續動畫 否
+  - 手機：同桌機，但捲動距離縮短
+  - 減少動態：直接顯示滿版
+  - 來源：GSAP ScrollTrigger https://gsap.com/docs/v3/Plugins/ScrollTrigger/
+  - Demo：`demos/scrollzoom.js`（↓ 往下滑）
+- **線條描繪 (Line Draw)** `linedraw` — 往下捲時，一條線跟著被畫出來，依序連起流程中的每個節點。
+  - 感受：引導、過程感、手作感
+  - 適合：流程步驟、路線圖、時間軸、簽名
+  - 搭配：pinned、reveal
+  - 注意：線要有意義（真的在連接東西）；用 SVG，不要用點陣圖
+  - 工具：GSAP DrawSVG + ScrollTrigger
+  - 成本：複雜度 中｜效能 低｜持續動畫 否
+  - 手機：同桌機；直向排列時改成垂直線
+  - 減少動態：直接顯示完整的線
+  - 來源：GSAP DrawSVGPlugin https://gsap.com/docs/v3/Plugins/DrawSVGPlugin/
+  - Demo：`demos/linedraw.js`（↓ 往下滑）
+- **平滑捲動 (Smooth Scroll)** `smooth` — 整頁捲動帶有一點慣性，滾輪停了畫面還會順順滑一小段才停，而不是一格一格跳。
+  - 感受：滑順、高級、一致
+  - 適合：整站，尤其是有視差或滾動敘事的網站
+  - 搭配：parallax、pinned、scrollzoom
+  - 注意：它改的是「整個網站的捲動」，不是單一區塊；慣性太重會覺得遲鈍、跟不上手；要和 ScrollTrigger 同步
+  - 工具：Lenis
+  - 成本：複雜度 低｜效能 低｜持續動畫 否
+  - 手機：通常保留原生捲動（Lenis 預設不接管觸控）
+  - 減少動態：關閉，用原生捲動
+  - 來源：Lenis https://github.com/darkroomengineering/lenis
+  - Demo：`demos/smooth.js`（打開段落裡的開關，用滾輪來回捲動比較手感；開啟後整頁都會套用）

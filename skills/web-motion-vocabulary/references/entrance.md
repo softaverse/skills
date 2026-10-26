@@ -1,0 +1,48 @@
+# A｜基礎進場與互動
+
+最安全的一類：幾乎每個網站都用得上，成本低，做得好的話訪客不會「注意到動畫」，只會覺得順。
+
+- **捲動淡入 (Scroll-triggered Reveal)** `reveal` — 區塊捲進畫面時，從稍微模糊、稍微偏上的位置淡入到定位。
+  - 感受：流暢、有節奏、精緻
+  - 適合：幾乎所有區塊的標題與內容
+  - 搭配：stagger、splitreveal
+  - 注意：每個元素都動會顯得廉價；位移保持小（Magic UI 預設 6px，常見 6–30px）；內容不能等動畫跑完才看得到
+  - 工具：Motion（`inView` + `animate`）；React 專案可用 Magic UI Blur Fade
+  - 成本：複雜度 低｜效能 低｜持續動畫 否
+  - 手機：同桌機，位移再小一點
+  - 減少動態：直接顯示，不位移不模糊
+  - 來源：Magic UI Blur Fade（MIT）https://magicui.design/docs/components/blur-fade ；Motion https://motion.dev/docs/inview
+  - Demo：`demos/reveal.js`（↓ 往下滑）
+- **交錯進場 (Stagger)** `stagger` — 一組卡片或清單不是一起出現，而是一個接一個、間隔約 0.05–0.1 秒依序進場。
+  - 感受：有秩序、有節奏、引導視線
+  - 適合：特色卡片、功能清單、Logo 牆、導覽選單
+  - 搭配：reveal
+  - 注意：間隔太長會讓人等；超過 6–8 個項目時總時長要封頂
+  - 工具：Motion（`stagger`）
+  - 成本：複雜度 低｜效能 低｜持續動畫 否
+  - 手機：同桌機；單欄排列時改成逐個捲入
+  - 減少動態：全部同時直接顯示
+  - 來源：Motion https://motion.dev/docs/stagger
+  - Demo：`demos/stagger.js`（按 ↻ 重播）
+- **彈簧按鈕 (Spring Button)** `spring` — 游標移上去時按鈕微微放大，按下去縮一下再彈回來，像有彈性的實體按鍵。
+  - 感受：有回饋、有生命感、好按
+  - 適合：CTA、主要按鈕、可點擊的卡片
+  - 搭配：magnet
+  - 注意：放大幅度約 1.03–1.05 就夠；回彈太誇張會變卡通
+  - 工具：Motion（`hover`、`press` 搭配 spring）
+  - 成本：複雜度 低｜效能 低｜持續動畫 否
+  - 手機：沒有 hover，只保留按下去的回饋
+  - 減少動態：只改顏色，不縮放
+  - 來源：Motion https://motion.dev/docs/hover 、https://motion.dev/docs/press
+  - Demo：`demos/spring.js`（游標移到按鈕上，再按下去）
+- **數字跳動 (Count-up)** `countup` — 數字捲進畫面時，從 0 快速增加到目標值，最後慢下來停住。
+  - 感受：有成就感、有說服力、活潑
+  - 適合：數據區、成果、用戶數、統計
+  - 搭配：stagger
+  - 注意：只用在真的值得強調的數字；要用等寬數字（tabular numbers）避免寬度跳動
+  - 工具：Motion（`animate` 數值）；React 專案可用 Magic UI Number Ticker
+  - 成本：複雜度 低｜效能 低｜持續動畫 否
+  - 手機：同桌機
+  - 減少動態：直接顯示最終數字
+  - 來源：Magic UI Number Ticker（MIT）https://magicui.design/docs/components/number-ticker ；React Bits Count Up https://reactbits.dev/text-animations/count-up
+  - Demo：`demos/countup.js`（往下滑到數字區）

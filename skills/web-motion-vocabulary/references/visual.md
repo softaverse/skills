@@ -1,0 +1,48 @@
+# E｜視覺特效
+
+用來加分的大招。每一個都很吸睛，所以必須稀少：整站最多 2 個，3D / WebGL 最多 1 個且只放在 Hero。
+
+- **光束邊框 (Border Beam)** `borderbeam` — 一道短短的光沿著卡片或按鈕的邊框持續繞行。
+  - 感受：科技、能量、「這個最重要」
+  - 適合：推薦的價格方案、主要 CTA、AI 產品的輸入框
+  - 搭配：spot、shimmer
+  - 注意：**持續播放**；整頁只給一個元素，否則就失去「最重要」的意義
+  - 工具：React 用 Magic UI Border Beam；非 React 用 CSS `@property` + conic-gradient
+  - 成本：複雜度 低｜效能 低｜持續動畫 是
+  - 手機：同桌機
+  - 減少動態：停住光，留一圈靜態漸層邊框
+  - 來源：Magic UI Border Beam（MIT）https://magicui.design/docs/components/border-beam
+  - Demo：`demos/borderbeam.js`（直接看）
+- **動態極光背景 (Aurora Background)** `aurora` — 背景是幾團柔和的色彩，像極光一樣緩慢流動、交融。
+  - 感受：夢幻、未來、有氛圍
+  - 適合：Hero 背景、AI / Web3 品牌、活動頁
+  - 搭配：splitreveal、shimmer
+  - 注意：**持續播放、耗 GPU**；佔掉 3D / WebGL 的唯一額度；文字疊在上面要確認對比度
+  - 工具：WebGL（React Bits Aurora 使用 OGL）；輕量版可用 CSS 模糊漸層
+  - 成本：複雜度 中｜效能 高｜持續動畫 是
+  - 手機：改成靜態漸層圖，或降低解析度
+  - 減少動態：停在一張靜態畫面
+  - 來源：React Bits Aurora（MIT + Commons Clause）https://reactbits.dev/backgrounds/aurora
+  - Demo：`demos/aurora.js`（直接看，注意風扇和電量）
+- **互動 3D 主視覺 (Interactive 3D Hero)** `hero3d` — Hero 中央有一個真的 3D 物件，緩慢旋轉，並跟著游標轉向。
+  - 感受：未來、創新、產品實體感
+  - 適合：硬體產品、科技品牌、創意工作室
+  - 搭配：splitreveal
+  - 注意：佔掉 3D / WebGL 的唯一額度；模型檔大小直接影響首頁載入速度；要有載入前的替代畫面
+  - 工具：程式化 3D 用 Three.js（React 用 React Three Fiber）；不寫程式、用編輯器做場景用 Spline
+  - 成本：複雜度 高｜效能 高｜持續動畫 是
+  - 手機：改成靜態圖或影片
+  - 減少動態：停止旋轉，只保留靜態物件
+  - 來源：Three.js https://threejs.org/examples/ ；Spline https://docs.spline.design
+  - Demo：`demos/hero3d.js`（游標在畫面上移動）
+- **預製動態插畫 (Lottie Animation)** `lottie` — 一段由設計師事先做好的向量動畫，在指定時機播放一次，例如送出成功時畫出一個打勾。
+  - 感受：完成感、親切、精緻
+  - 適合：成功提示、空狀態、Loading、品牌吉祥物
+  - 搭配：spring
+  - 注意：Lottie 只能「播放」；如果動畫要依使用者操作改變狀態（hover 時眼睛跟著看、點擊切換表情），要用 Rive
+  - 工具：lottie-web（React 用 lottie-react）；互動狀態動畫用 Rive
+  - 成本：複雜度 低｜效能 低｜持續動畫 否（除非設成循環）
+  - 手機：同桌機
+  - 減少動態：直接顯示最後一格
+  - 來源：Lottie https://airbnb.io/lottie/ ；Rive https://rive.app/docs
+  - Demo：`demos/lottie.js`（按「送出」按鈕）

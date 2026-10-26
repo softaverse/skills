@@ -60,6 +60,7 @@ themselves have no runtime.
 - **Design and assets**
   - [**Extract Design System**](./skills/extract-design-system) — pull design tokens and reusable components out of a website URL or local HTML file.
   - [**Web Design Vocabulary**](./skills/web-design-vocabulary) — discuss how a website should look in shared terms: turn vague feelings into 300 named styles, compare directions with a visual board, and keep a record of agreed decisions.
+  - [**Web Motion Vocabulary**](./skills/web-motion-vocabulary) — guide a web-animation beginner to the effects their site should have: 20 named effects (entrance, cursor, text, scroll storytelling, visual extras) with live demos on a scrollable comparison page, the tool behind each (Motion, GSAP, Lenis, Magic UI, React Bits, Three.js, Lottie), an animation budget, and an animation plan to hand off — plus a Chinese catalog of every official React Bits and Magic UI component.
   - [**Video Motion Vocabulary**](./skills/video-motion-vocabulary) — discuss how a video scene should move in shared terms: 230+ named motion styles (text, captions, transitions, camera, feel, data, UI, backgrounds, layouts, style families), each linked to real hf-studio compositions to watch, plus a comparison board and a per-scene decision record.
   - [**Optimize Images**](./skills/optimize-images) — convert and compress PNG/JPG to WebP and update source references.
 - **Documentation and notes**

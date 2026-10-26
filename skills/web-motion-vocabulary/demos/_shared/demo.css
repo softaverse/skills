@@ -1,0 +1,197 @@
+/* Shared look for every demo page: neutral, so effects compare fairly.
+   Light by default; page.html?theme=dark switches. Brand colors can later be
+   swapped in by overriding these tokens. Demos use tokens, never raw colors. */
+:root {
+  --bg: #fafaf9;
+  --bg-alt: #f1f1ef;
+  --surface: #ffffff;
+  --surface-alt: #ffffff;
+  --line: #e4e4e1;
+  --fg: #18181b;
+  --fg-hover: #3f3f46;
+  --muted: #71717a;
+  --accent: #3f3f46;
+  --num: #d4d4d0;
+  --icon: #e8e8e5;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+  --placeholder: linear-gradient(135deg, #e7e7e4, #d6d6d2 60%, #ecebe8);
+  --art: radial-gradient(circle at 30% 30%, #ffffff, #d4d4d0 70%);
+  --tilt-face: linear-gradient(160deg, #ffffff, #ececea 70%);
+  --glare: rgba(255, 255, 255, 0.7);
+  --spot-inner: #D9D9D955;   /* Magic UI's light-mode gradientColor */
+  color-scheme: light;
+  --radius: 14px;
+  --font: ui-sans-serif, system-ui, -apple-system, "PingFang TC", "Noto Sans TC", sans-serif;
+  --mono: ui-monospace, Menlo, monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg: #111113;
+  --bg-alt: #17171a;
+  --surface: #1c1c1f;
+  --surface-alt: #202024;
+  --line: #2e2e33;
+  --fg: #ededef;
+  --fg-hover: #ffffff;
+  --muted: #8b8b93;
+  --accent: #d4d4d8;
+  --num: #3a3a42;
+  --icon: #2e2e35;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --placeholder: linear-gradient(135deg, #2a2a30, #3a3a42 60%, #24242a);
+  --art: radial-gradient(circle at 30% 30%, #6b6b78, #2a2a31 70%);
+  --tilt-face: linear-gradient(160deg, #34343c, #1d1d22 70%);
+  --glare: rgba(255, 255, 255, 0.22);
+  --spot-inner: #262626;     /* Magic UI's dark-mode gradientColor */
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* One effect = one chapter of the page: a numbered heading, then the effect */
+.demo-section {
+  --section-bg: var(--bg);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--section-bg);
+  border-top: 1px solid var(--line);
+}
+.demo-section.alt { --section-bg: var(--bg-alt); }
+.demo-section.alt .card { background: var(--surface-alt); }
+
+/* Sticks to the top while its section scrolls; the next section's heading pushes it away.
+   Its height is published as --head-h so pinned effects can start below it. */
+.demo-head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px max(24px, calc((100% - 1100px) / 2));
+  background: color-mix(in srgb, var(--section-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.demo-head .num {
+  flex: none;
+  font: 700 clamp(28px, 5vw, 40px)/1 var(--font);
+  font-variant-numeric: tabular-nums;
+  color: var(--num);
+}
+.demo-head .num small { font-size: 0.4em; font-weight: 600; margin-left: 2px; }
+.demo-head .title { flex: 1; min-width: 0; }
+.demo-head h2 { margin: 0; font-size: clamp(16px, 2.6vw, 19px); line-height: 1.3; }
+.demo-head .en { font-weight: 400; color: var(--muted); font-size: 0.8em; }
+.demo-head .hint { margin: 1px 0 0; font-size: 13px; color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.demo-head .tool {
+  flex: none;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.demo-head .actions { flex: none; display: flex; gap: 6px; }
+.demo-head .actions button {
+  font: inherit;
+  font-size: 12px;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.demo-head .actions button[hidden] { display: none; }
+.demo-head .actions button[aria-expanded="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+@media (max-width: 720px) { .demo-head .tool { display: none; } }
+@media (max-width: 560px) { .demo-head .en { display: none; } }
+
+/* Details drop down from the heading without pushing the page */
+.demo-more {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: max(24px, calc((100% - 1100px) / 2));
+  width: min(420px, calc(100vw - 32px));
+  max-height: 60vh;
+  overflow: auto;
+  padding: 4px 16px 14px;
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.demo-more[hidden] { display: none; }
+.demo-more p { margin: 10px 0; color: var(--muted); }
+.demo-more dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; }
+.demo-more dt { color: var(--accent); font-weight: 600; }
+.demo-more dd { margin: 0; }
+.demo-more a { color: var(--fg); word-break: break-all; }
+.demo-more code { font: 12px var(--mono); }
+@media (max-width: 560px) { .demo-more { right: 16px; } }
+
+.demo-body {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px 64px;
+}
+
+.demo-intro, .demo-group, .demo-end {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 48px 24px;
+}
+.demo-intro { min-height: 70vh; }
+.demo-intro h1 { margin: 0 0 8px; font-size: clamp(26px, 6vw, 40px); }
+.demo-intro p, .demo-end p { margin: 0; color: var(--muted); }
+.demo-group { min-height: 30vh; border-top: 1px solid var(--line); }
+.demo-group h2 { margin: 0; font-size: clamp(20px, 4vw, 28px); }
+.demo-end { min-height: 40vh; border-top: 1px solid var(--line); }
+
+.demo-missing, .demo-heavy {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+.demo-heavy button {
+  font: inherit;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+/* Required by Lenis (from lenis@1.3.26/dist/lenis.css) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Helpers modules may use */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.muted { color: var(--muted); }
