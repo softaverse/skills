@@ -1,0 +1,1103 @@
+{
+  "_note": "Chinese one-liners and style ids for catalog/icon-sets.md, keyed by Iconify prefix. scripts/sync_icon_sets.py keeps these when it refreshes the list; a value is either the Chinese text, or {\"zh\": …, \"ids\": [style ids]}.",
+  "icon-sets": {
+    "iconmind": {
+      "zh": "數量最多的開源介面圖示庫之一，多種粗細與實心、雙色版本，AI 與開發相關圖示特別多",
+      "ids": [
+        "iconline",
+        "iconduo"
+      ]
+    },
+    "iconoven": {
+      "zh": "超大型的線性介面圖示庫，涵蓋面很廣",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "keyline-icons": {
+      "zh": "大型介面圖示庫，同一個圖示有線性、實心、雙色等多種版本",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "solar": {
+      "zh": "圓潤柔和的介面圖示，有線性、粗體、雙色、斷線等六種風格，雙色版很受歡迎",
+      "ids": [
+        "iconline",
+        "iconduo",
+        "iconfill"
+      ]
+    },
+    "reicon": {
+      "zh": "大型介面圖示庫，含線性、實心與雙色版本",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "tabler": {
+      "zh": "最熱門的線性圖示之一，2px 描邊、圓角端點，部分圖示另有實心版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "hugeicons": {
+      "zh": "現代感的線性介面圖示，數量多、線條俐落",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "withicons": {
+      "zh": "一般介面圖示，有線性、實心與雙色版本",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "boxicons": {
+      "zh": "經典的通用介面圖示，有一般與實心版本",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "mingcute": {
+      "zh": "圓潤細緻的介面圖示，每個都有線性（-line）與實心（-fill）兩版，適合切換選取狀態",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "ri": {
+      "zh": "Remix Icon：中性、工整的介面圖示，每個都有線性（-line）與實心（-fill）兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "andrsrxn": {
+      "zh": "線條乾淨的現代介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "lucide-extended": {
+      "zh": "Lucide 的延伸版，補上實心與雙色版本和更多圖示",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "icon-park-outline": {
+      "zh": "字節跳動 IconPark 的線性版，數量多、題材廣",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "mynaui": {
+      "zh": "簡潔的線性介面圖示，另有實心版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "tdesign": {
+      "zh": "騰訊 TDesign 設計系統的圖示，線條工整，適合後台與工具",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "griddy-icons": {
+      "zh": "嚴格對齊網格的介面圖示，線性與實心都有",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "lucide": {
+      "zh": "最常用的線性圖示之一（shadcn/ui 預設），2px 描邊、風格穩定，社群持續維護",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "streamline-ultimate": {
+      "zh": "Streamline 的免費精選，線條細緻、題材很廣",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "icon-park-solid": {
+      "zh": "IconPark 的實心版，和線性版一一對應",
+      "ids": [
+        "iconfill"
+      ]
+    },
+    "icon-park-twotone": {
+      "zh": "IconPark 的雙色版，和線性版一一對應",
+      "ids": [
+        "iconduo"
+      ]
+    },
+    "vadivam": {
+      "zh": "線條清楚的現代介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "iconamoon": {
+      "zh": "圓潤可愛的介面圖示，有細、一般、粗、實心、雙色等版本",
+      "ids": [
+        "iconline",
+        "iconduo"
+      ]
+    },
+    "iconoir": {
+      "zh": "簡約的線性圖示，1.5px 細線、風格安靜，適合極簡網站",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "lets-icons": {
+      "zh": "柔和的介面圖示，線性、實心與雙色都有",
+      "ids": [
+        "iconline",
+        "iconduo"
+      ]
+    },
+    "streamline-sharp": {
+      "zh": "Streamline 的直角銳利風格，俐落、偏工業感",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "streamline-plump": {
+      "zh": "Streamline 的圓胖風格，飽滿可愛",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "si": {
+      "zh": "Sargam Icons：線性、實心與雙色版本的介面圖示",
+      "ids": [
+        "iconline",
+        "iconduo"
+      ]
+    },
+    "uil": {
+      "zh": "Unicons 線性版，友善圓潤的通用圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "mage": {
+      "zh": "現代感介面圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "pixelarticons": {
+      "zh": "像素風介面圖示，24px 點陣",
+      "ids": [
+        "iconpixel"
+      ]
+    },
+    "stash": {
+      "zh": "介面圖示，線性、實心與雙色版本",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "jam": {
+      "zh": "Jam Icons：簡潔的通用介面圖示，多數另有實心版（名稱結尾 -f，用 `--variant f`）",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "bx": {
+      "zh": "BoxIcons 第二版的一般款",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "majesticons": {
+      "zh": "圓潤的介面圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "flowbite": {
+      "zh": "Flowbite（Tailwind 元件庫）的圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "gg": {
+      "zh": "css.gg：極簡的幾何圖示，風格很輕",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "bxs": {
+      "zh": "BoxIcons 第二版的實心款",
+      "ids": [
+        "iconfill"
+      ]
+    },
+    "lineicons": {
+      "zh": "通用線性圖示，含不少品牌與商務圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "pixel": {
+      "zh": "像素風介面圖示",
+      "ids": [
+        "iconpixel"
+      ]
+    },
+    "proicons": {
+      "zh": "Fluent 風格的線性介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "streamline-cyber": {
+      "zh": "Streamline 的科技賽博風格",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "basil": {
+      "zh": "線性與實心兩版的介面圖示，偏圓潤",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "akar-icons": {
+      "zh": "線條圓潤、比例一致的小型線性圖示集",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "ci": {
+      "zh": "coolicons：簡潔的線性介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "meteor-icons": {
+      "zh": "線條輕巧的線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "lucide-lab": {
+      "zh": "Lucide 的實驗區，補上主套件沒收的主題圖示，風格一致",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "guidance": {
+      "zh": "公共空間與導引標誌：洗手間、出入口、無障礙設施等",
+      "ids": []
+    },
+    "bitcoin-icons": {
+      "zh": "比特幣與加密貨幣錢包相關的介面圖示",
+      "ids": []
+    },
+    "prime": {
+      "zh": "PrimeVue／PrimeReact 元件庫的圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "uim": {
+      "zh": "Unicons 單色版，帶淡色層次",
+      "ids": [
+        "iconduo"
+      ]
+    },
+    "humbleicons": {
+      "zh": "中性低調的線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "matita": {
+      "zh": "略帶手感的線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "fe": {
+      "zh": "Feather 風格的細線圖示（Lucide 的前身）",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "eos-icons": {
+      "zh": "含動態載入圖示的介面圖示集，常用於後台與開發工具",
+      "ids": []
+    },
+    "uit": {
+      "zh": "Unicons 細線版",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "doodle-icons": {
+      "zh": "手繪塗鴉風圖示，線條不規則、很親切",
+      "ids": [
+        "iconhand"
+      ]
+    },
+    "uis": {
+      "zh": "Unicons 實心版",
+      "ids": [
+        "iconfill"
+      ]
+    },
+    "cuida": {
+      "zh": "線性介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "mi": {
+      "zh": "Mono Icons：簡單的單色線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "weui": {
+      "zh": "微信 WeUI 的圖示，實心（-filled）與線性（-outlined）兩版；Iconify 把實心版標成預設，篩選時用 `--variant filled`，不要用 `base`",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "duo-icons": {
+      "zh": "小型雙色圖示集，主色加淡色層",
+      "ids": [
+        "iconduo"
+      ]
+    },
+    "svg-spinners": {
+      "zh": "會動的載入中動畫（SVG 動畫，不是靜態圖示）",
+      "ids": []
+    },
+    "carbon": {
+      "zh": "IBM Carbon 設計系統的圖示，32px 格線，理性、企業感",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "bi": {
+      "zh": "Bootstrap Icons：16px 格線的通用圖示，一般與實心（-fill）兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "ion": {
+      "zh": "Ionicons：Ionic 的圖示，一般、線性（-outline）與銳角（-sharp）三版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "famicons": {
+      "zh": "Ionicons 的延續版本，一般、線性與銳角三版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "ant-design": {
+      "zh": "Ant Design 的圖示，線性（-outlined）、實心（-filled）、雙色（-twotone）三版",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "gravity-ui": {
+      "zh": "Yandex Gravity UI 的 16px 介面圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "lsicon": {
+      "zh": "16px 介面圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "streamline-pixel": {
+      "zh": "Streamline 的像素風圖示",
+      "ids": [
+        "iconpixel"
+      ]
+    },
+    "at-icons": {
+      "zh": "16px 小尺寸介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "cil": {
+      "zh": "CoreUI 的免費線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "streamline-block": {
+      "zh": "Streamline 的塊狀粗體風格",
+      "ids": [
+        "iconfill"
+      ]
+    },
+    "ep": {
+      "zh": "Element Plus（Vue 元件庫）的圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "charm": {
+      "zh": "16px 的小型線性圖示，簡潔",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "rivet-icons": {
+      "zh": "16px 介面圖示，一般與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "formkit": {
+      "zh": "表單相關的介面圖示：勾選、排序、送出等",
+      "ids": []
+    },
+    "quill": {
+      "zh": "細線的小型圖示集",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "nimbus": {
+      "zh": "16px 小型介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "bytesize": {
+      "zh": "極簡的小型線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "fluent": {
+      "zh": "微軟 Fluent UI 的系統圖示，數量最多之一，一般（-regular）與實心（-filled），多種尺寸",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "ph": {
+      "zh": "Phosphor：變化最完整的圖示集之一，thin／light／regular／bold／fill／duotone 六種粗細",
+      "ids": [
+        "iconline",
+        "iconfill",
+        "iconduo"
+      ]
+    },
+    "energy-icons": {
+      "zh": "大型介面圖示庫，多種尺寸",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "glyphs": {
+      "zh": "大型介面圖示庫，有粗體與雙色版本",
+      "ids": [
+        "iconline",
+        "iconduo"
+      ]
+    },
+    "streamline": {
+      "zh": "Streamline 的免費精選核心圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "fa7-solid": {
+      "zh": "Font Awesome 7 的免費實心圖示，最多人認得的風格",
+      "ids": [
+        "iconfill"
+      ]
+    },
+    "streamline-flex": {
+      "zh": "Streamline 的流線風格，線條柔順",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "garden": {
+      "zh": "多種尺寸的介面圖示，一般與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "ix": {
+      "zh": "Siemens 工業設計系統的圖示，偏工業與設備",
+      "ids": []
+    },
+    "heroicons": {
+      "zh": "Tailwind 團隊的圖示，outline、solid 與小尺寸版本，Tailwind 網站最常見",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "pepicons-pop": {
+      "zh": "Pepicons 的普普粗線風格，有趣、有個性",
+      "ids": [
+        "iconhand"
+      ]
+    },
+    "pepicons-print": {
+      "zh": "Pepicons 的印刷質感風格，邊緣粗糙",
+      "ids": [
+        "iconhand"
+      ]
+    },
+    "pepicons-pencil": {
+      "zh": "Pepicons 的鉛筆手繪風格",
+      "ids": [
+        "iconhand"
+      ]
+    },
+    "f7": {
+      "zh": "Framework7 的 iOS 風格圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "teenyicons": {
+      "zh": "15px 的迷你圖示，線性與實心兩版",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "dinkie-icons": {
+      "zh": "像素點陣風格的小圖示",
+      "ids": [
+        "iconpixel"
+      ]
+    },
+    "clarity": {
+      "zh": "VMware Clarity 設計系統的圖示，企業後台常見",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "streamline-freehand": {
+      "zh": "Streamline 的手繪風格，筆觸自然",
+      "ids": [
+        "iconhand"
+      ]
+    },
+    "qlementine-icons": {
+      "zh": "桌面應用風格的小圖示",
+      "ids": []
+    },
+    "glyphs-poly": {
+      "zh": "Glyphs 的多色版本",
+      "ids": []
+    },
+    "picon": {
+      "zh": "像素風格的小圖示",
+      "ids": [
+        "iconpixel"
+      ]
+    },
+    "octicon": {
+      "zh": "GitHub 的圖示，開發者工具網站的標準風格",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "memory": {
+      "zh": "像素風格的介面圖示",
+      "ids": [
+        "iconpixel"
+      ]
+    },
+    "nrk": {
+      "zh": "挪威廣播公司 NRK 的介面圖示",
+      "ids": []
+    },
+    "oui": {
+      "zh": "OpenSearch 介面圖示，偏資料與搜尋工具",
+      "ids": []
+    },
+    "system-uicons": {
+      "zh": "極簡細線的系統圖示，Unlicense 授權",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "ooui": {
+      "zh": "維基媒體（Wikipedia）介面的圖示",
+      "ids": []
+    },
+    "pajamas": {
+      "zh": "GitLab 的介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "radix-icons": {
+      "zh": "Radix 的 15px 精緻小圖示，適合密集介面",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "zondicons": {
+      "zh": "簡單的實心小圖示",
+      "ids": [
+        "iconfill"
+      ]
+    },
+    "fa7-regular": {
+      "zh": "Font Awesome 7 的免費一般（線性）圖示，數量少",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "sidekickicons": {
+      "zh": "配合 Heroicons 的補充圖示，風格一致",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "uiw": {
+      "zh": "uiw 元件庫的圖示",
+      "ids": []
+    },
+    "codex": {
+      "zh": "CodeX 編輯器的圖示，偏文字編輯：對齊、標題、表格",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "ei": {
+      "zh": "Evil Icons：少量、細緻的線性圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "material-symbols-light": {
+      "zh": "Google Material Symbols 的細體版，一般、圓角、銳角與線性變體",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "material-symbols": {
+      "zh": "Google Material Symbols，Android 與 Google 產品的標準圖示，數量最多之一",
+      "ids": [
+        "iconline",
+        "iconfill"
+      ]
+    },
+    "ic": {
+      "zh": "舊版 Google Material Icons，五種風格寫在名稱前面",
+      "ids": [
+        "iconfill",
+        "iconline",
+        "iconduo"
+      ]
+    },
+    "mdi": {
+      "zh": "Material Design Icons：社群版 Material 圖示，實心為主，部分有線性（-outline）",
+      "ids": [
+        "iconfill",
+        "iconline"
+      ]
+    },
+    "line-md": {
+      "zh": "會動的 Material 線性圖示（SVG 繪製動畫）",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "mdi-light": {
+      "zh": "Material Design Icons 的細線版，數量少",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "icon-park": {
+      "zh": "IconPark 的多色版",
+      "ids": []
+    },
+    "streamline-color": {
+      "zh": "Streamline 的雙色系彩色圖示",
+      "ids": [
+        "iconduo"
+      ]
+    },
+    "streamline-plump-color": {
+      "zh": "Streamline 圓胖風格的彩色版，可愛飽滿",
+      "ids": []
+    },
+    "streamline-freehand-color": {
+      "zh": "Streamline 手繪風格的彩色版",
+      "ids": [
+        "iconhand"
+      ]
+    },
+    "withicons-suite": {
+      "zh": "with icons 的多色版本",
+      "ids": []
+    },
+    "withicons-skeuo": {
+      "zh": "with icons 的擬物風格，有光影立體感",
+      "ids": [
+        "icon3d"
+      ]
+    },
+    "withicons-sticker": {
+      "zh": "with icons 的貼紙風格，白色外框",
+      "ids": []
+    },
+    "withicons-pastel": {
+      "zh": "with icons 的粉彩配色",
+      "ids": []
+    },
+    "withicons-plush": {
+      "zh": "with icons 的絨毛玩偶風格，柔軟可愛",
+      "ids": [
+        "icon3d"
+      ]
+    },
+    "withicons-anime": {
+      "zh": "with icons 的動漫風格",
+      "ids": []
+    },
+    "withicons-gothic": {
+      "zh": "with icons 的哥德風格",
+      "ids": []
+    },
+    "withicons-bauhaus": {
+      "zh": "with icons 的包浩斯幾何風格",
+      "ids": []
+    },
+    "withicons-halloween": {
+      "zh": "with icons 的萬聖節主題配色，適合季節活動頁",
+      "ids": []
+    },
+    "withicons-christmas": {
+      "zh": "with icons 的聖誕節主題配色，適合季節活動頁",
+      "ids": []
+    },
+    "streamline-flex-color": {
+      "zh": "Streamline 流線風格的彩色版",
+      "ids": []
+    },
+    "streamline-sharp-color": {
+      "zh": "Streamline 銳角風格的彩色版",
+      "ids": []
+    },
+    "streamline-ultimate-color": {
+      "zh": "Streamline 精選的彩色版，插畫感較重",
+      "ids": []
+    },
+    "fluent-color": {
+      "zh": "微軟 Fluent 的彩色圖示，帶柔和漸層，接近 3D 圖示的質感",
+      "ids": [
+        "icon3d",
+        "icongrad"
+      ]
+    },
+    "marketeq": {
+      "zh": "行銷與商務主題的彩色圖示",
+      "ids": []
+    },
+    "streamline-cyber-color": {
+      "zh": "Streamline 賽博風格的彩色版",
+      "ids": []
+    },
+    "streamline-kameleon-color": {
+      "zh": "Kameleon 圓形底的扁平彩色圖示，常見於功能介紹區",
+      "ids": []
+    },
+    "streamline-stickies-color": {
+      "zh": "便利貼風格的彩色圖示，活潑",
+      "ids": []
+    },
+    "twemoji": {
+      "zh": "X（Twitter）的 emoji 圖檔，扁平彩色",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "noto": {
+      "zh": "Google Noto Emoji，Android 上看到的 emoji",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "fluent-emoji-flat": {
+      "zh": "微軟 Fluent Emoji 的扁平版，配色柔和",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "noto-v1": {
+      "zh": "Google Noto Emoji 舊版",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "emojione": {
+      "zh": "EmojiOne 彩色 emoji（舊版，CC BY）",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "fluent-emoji-high-contrast": {
+      "zh": "微軟 Fluent Emoji 的單色高對比版，可以跟著文字變色",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "emojione-monotone": {
+      "zh": "EmojiOne 單色 emoji",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "fxemoji": {
+      "zh": "Firefox OS 的 emoji，造型可愛圓潤",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "streamline-emojis": {
+      "zh": "Streamline 的插畫風 emoji",
+      "ids": [
+        "emoji"
+      ]
+    },
+    "game-icons": {
+      "zh": "四千多個遊戲主題圖示：武器、魔法、怪物、道具（CC BY 3.0）",
+      "ids": []
+    },
+    "healthicons": {
+      "zh": "醫療衛生主題圖示，原本為公共衛生專案設計，有線性與實心",
+      "ids": []
+    },
+    "meteocons": {
+      "zh": "天氣圖示，彩色、有動畫版",
+      "ids": []
+    },
+    "wi": {
+      "zh": "Weather Icons：天氣與氣象圖示",
+      "ids": []
+    },
+    "academicons": {
+      "zh": "學術網站與資料庫的標誌：ORCID、Google Scholar 等",
+      "ids": []
+    },
+    "fad": {
+      "zh": "音訊與音樂製作的圖示：播放、混音、波形",
+      "ids": []
+    },
+    "medical-icon": {
+      "zh": "醫院設施與科別的導引圖示",
+      "ids": []
+    },
+    "covid": {
+      "zh": "防疫主題圖示：口罩、社交距離、疫苗",
+      "ids": []
+    },
+    "ginetex": {
+      "zh": "衣物洗滌標示（水洗、漂白、晾乾）",
+      "ids": []
+    },
+    "pinhead": {
+      "zh": "地圖標記用的小圖示，題材很廣",
+      "ids": []
+    },
+    "roentgen": {
+      "zh": "OpenStreetMap 地圖用的圖示",
+      "ids": []
+    },
+    "temaki": {
+      "zh": "地圖編輯用的補充圖示",
+      "ids": []
+    },
+    "flag": {
+      "zh": "各國國旗，4:3 與 1:1 兩種比例",
+      "ids": []
+    },
+    "circle-flags": {
+      "zh": "圓形國旗，適合語言或地區切換",
+      "ids": []
+    },
+    "gis": {
+      "zh": "地理資訊系統（GIS）專業圖示",
+      "ids": []
+    },
+    "flagpack": {
+      "zh": "小尺寸國旗，細節簡化",
+      "ids": []
+    },
+    "maki": {
+      "zh": "Mapbox 的地圖興趣點圖示：餐廳、車站、商店",
+      "ids": []
+    },
+    "cif": {
+      "zh": "CoreUI 的國旗圖示",
+      "ids": []
+    },
+    "osmic": {
+      "zh": "OpenStreetMap 的興趣點圖示",
+      "ids": []
+    },
+    "map": {
+      "zh": "地圖興趣點圖示（Google 地點類型風格）",
+      "ids": []
+    },
+    "geo": {
+      "zh": "地理運算（Turf.js）概念圖示",
+      "ids": []
+    },
+    "vscode-icons": {
+      "zh": "VS Code 的檔案類型圖示，彩色",
+      "ids": []
+    },
+    "devicon": {
+      "zh": "程式語言、框架與開發工具的彩色 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "file-icons": {
+      "zh": "檔案類型圖示，單色",
+      "ids": []
+    },
+    "material-icon-theme": {
+      "zh": "VS Code Material Icon Theme 的檔案與資料夾圖示",
+      "ids": []
+    },
+    "devicon-plain": {
+      "zh": "程式語言與工具的單色 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "codicon": {
+      "zh": "VS Code 介面圖示",
+      "ids": [
+        "iconline"
+      ]
+    },
+    "catppuccin": {
+      "zh": "Catppuccin 粉彩配色的檔案與資料夾圖示",
+      "ids": []
+    },
+    "skill-icons": {
+      "zh": "技術棧徽章：圓角方塊裡的語言與工具 Logo，常用在作品集的「技能」區（屬於各自的商標）",
+      "ids": []
+    },
+    "gcp": {
+      "zh": "Google Cloud 產品圖示（Google 的商標）",
+      "ids": []
+    },
+    "unjs": {
+      "zh": "UnJS 開源專案的 Logo",
+      "ids": []
+    },
+    "k8s": {
+      "zh": "Kubernetes 資源圖示：Pod、Deployment 等",
+      "ids": []
+    },
+    "selfhst": {
+      "zh": "自架服務與應用程式的彩色 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "thesvg-color": {
+      "zh": "大量品牌的彩色 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "token-branded": {
+      "zh": "加密貨幣與區塊鏈專案的彩色 Logo",
+      "ids": []
+    },
+    "thesvg": {
+      "zh": "大量品牌的單色 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "simple-icons": {
+      "zh": "三千多個品牌的單色 Logo，官方品牌色另有標示；整合列表與社群連結最常用",
+      "ids": []
+    },
+    "logos": {
+      "zh": "科技品牌的彩色 Logo，有圖示版與完整字標版",
+      "ids": []
+    },
+    "token": {
+      "zh": "加密貨幣與區塊鏈專案的單色 Logo",
+      "ids": []
+    },
+    "streamline-logos": {
+      "zh": "Streamline 風格重繪的品牌 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "cib": {
+      "zh": "CoreUI 的品牌 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "fa7-brands": {
+      "zh": "Font Awesome 的品牌 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "cryptocurrency": {
+      "zh": "加密貨幣單色圖示",
+      "ids": []
+    },
+    "cryptocurrency-color": {
+      "zh": "加密貨幣彩色圖示",
+      "ids": []
+    },
+    "bxl": {
+      "zh": "BoxIcons 的品牌 Logo（屬於各自的商標）",
+      "ids": []
+    },
+    "nonicons": {
+      "zh": "少量開發工具的 Logo",
+      "ids": []
+    }
+  }
+}

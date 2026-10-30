@@ -4,6 +4,8 @@
 
 `search.py --slot icons` 一次搜網站需要的所有概念，比較頁每一列是一套圖示集，看它把這些概念畫成什麼樣、缺了哪幾個。
 
+下面每種風格只列幾套代表。全部 199 套可商用的圖示集在 `catalog/icon-sets.md`：每套有中文說明、對應的風格 id、數量、授權、格線，以及 `--variant` 能用的變體。使用者想看更多選擇、問「有沒有某種風格的」或「某套能不能商用」時，搜尋那份目錄（例如找 `iconduo` 或 `像素`），把找到的 prefix 放進 `--prefixes`。要更新目錄，執行 `python3 <skill-dir>/scripts/sync_icon_sets.py`（為了不被 Iconify 限流，會慢慢讀，約需數分鐘）；中文說明存在 `catalog/translations.json`，新出現的圖示集會列在最後，等你補上說明。
+
 ## 搜尋要點
 
 - `--q` 放網站實際要用的概念，逗號分隔：`"home, user, settings, chart, mail, lock"`。
@@ -40,7 +42,7 @@
   - 感受：活潑、新穎、吸睛
   - 適合：行銷頁的功能區、空狀態、引導流程
   - 搭配：render3d、clay、pastelphoto
-  - 圖示集：Iconify 沒有真正的 3D 圖示；最接近的是 `fluent-emoji`（MIT，彩色立體感）
+  - 圖示集：Iconify 沒有真正的 3D 圖示；最接近的是 `fluent-color`（MIT，柔和漸層）與 `withicons-skeuo`（MIT，擬物光影）
   - 現成來源（只給連結）：3dicons https://3dicons.co （CC0，可商用、免標註；授權以官網為準）
   - 注意：3D 圖示通常是 PNG，檔案比 SVG 大很多，一頁不要放太多
 - **表情符號風 (Emoji Style)** `emoji` — 用 emoji 當作圖示或視覺重點。

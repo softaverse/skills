@@ -43,6 +43,7 @@ Never load all of it. Read only what the current step needs.
 | `references/video.md` | a hero background video: styles, spec, compression |
 | `references/illustration.md` | illustration styles and the no-API sources (unDraw, Open Peeps…) |
 | `references/icons.md` | icon styles and which Iconify sets to compare |
+| `catalog/icon-sets.md` | the user wants more icon sets than `icons.md` names, asks whether a set may be used commercially, or asks for a style (像素、手繪、雙色、國旗、品牌 Logo…): search it, never load it whole |
 | `references/query-recipes.md` | writing search words, per-source color and orientation, fixing poor results |
 | `references/sources.md` | the user asks about a library, a license, attribution, rate limits, or API keys |
 
