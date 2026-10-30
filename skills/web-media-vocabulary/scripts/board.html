@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+:root { --page:#f4f4f2; --bar:#ffffff; --card:#ffffff; --ink:#18181b; --muted:#6b6b73; --line:#e2e2de;
+  --accent:#18181b; --on-accent:#ffffff; --ok:#15803d; --ok-bg:#dcfce7; --warn:#a16207; --warn-bg:#fef3c7;
+  --pick:#2563eb; --scrim:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55)); }
+body.dark { --page:#0b0b0c; --bar:#161618; --card:#1a1a1d; --ink:#ededef; --muted:#8b8b93; --line:#2e2e33;
+  --accent:#ededef; --on-accent:#0b0b0c; --ok:#4ade80; --ok-bg:#14532d; --warn:#fbbf24; --warn-bg:#451a03;
+  --pick:#60a5fa; }
+* { box-sizing:border-box; }
+html, body { margin:0; background:var(--page); color:var(--ink);
+  font:14px/1.5 -apple-system,"PingFang TC","Noto Sans TC",system-ui,sans-serif; }
+header { position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center;
+  justify-content:space-between; padding:8px 16px; background:var(--bar); border-bottom:1px solid var(--line); }
+h1 { margin:0; font-size:15px; }
+.controls { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.seg { display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.seg button { font:inherit; font-size:13px; padding:4px 12px; border:0; background:transparent; color:var(--muted); cursor:pointer; }
+.seg button[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
+#headline { font:inherit; font-size:13px; padding:4px 10px; border:1px solid var(--line); border-radius:999px;
+  background:var(--card); color:var(--ink); width:14em; max-width:100%; }
+main { max-width:1280px; margin:0 auto; padding:16px; }
+section.slot { margin:8px 0 40px; }
+section.slot > h2 { margin:0 0 4px; font-size:20px; }
+.slot-meta { color:var(--muted); font-size:13px; margin-bottom:16px; }
+.group { margin:0 0 28px; }
+.group h3 { margin:0; font-size:15px; }
+.group .why { color:var(--muted); font-size:13px; margin:2px 0 10px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; }
+body.mobile .grid { grid-template-columns:repeat(auto-fill,minmax(160px,200px)); }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+.card.picked { outline:3px solid var(--pick); outline-offset:-1px; }
+.media { position:relative; background:var(--line); overflow:hidden; }
+.media img, .media video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.overlay { display:none; position:absolute; inset:0; background:var(--scrim); color:#fff; padding:14px;
+  flex-direction:column; justify-content:flex-end; font-weight:700; font-size:clamp(14px,2.2vw,22px); line-height:1.2; }
+body.headline .overlay { display:flex; }
+.overlay small { font-weight:400; font-size:12px; opacity:.85; margin-top:4px; }
+.dur { position:absolute; right:8px; top:8px; background:rgba(0,0,0,.6); color:#fff; font-size:12px; padding:1px 6px; border-radius:6px; }
+.icons { display:grid; grid-template-columns:repeat(auto-fill,minmax(64px,1fr)); gap:6px; padding:14px; }
+.icon { display:flex; flex-direction:column; align-items:center; gap:4px; font-size:11px; color:var(--muted); text-align:center; }
+.glyph { width:32px; height:32px; background:var(--ink); -webkit-mask:var(--src) center/contain no-repeat; mask:var(--src) center/contain no-repeat; }
+.glyph.none { background:none; border:1px dashed var(--line); border-radius:6px; -webkit-mask:none; mask:none; }
+.body { padding:10px 12px 12px; display:flex; flex-direction:column; gap:6px; flex:1; }
+.who { font-size:13px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.who a { color:inherit; }
+.chips { display:flex; flex-wrap:wrap; gap:4px; }
+.chip { font-size:11px; padding:1px 7px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+.chip.ok { color:var(--ok); background:var(--ok-bg); border-color:transparent; }
+.chip.warn { color:var(--warn); background:var(--warn-bg); border-color:transparent; }
+.actions { display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:4px; }
+.actions a { color:var(--muted); font-size:12px; }
+.pick { font:inherit; font-size:13px; padding:4px 12px; border-radius:999px; border:1px solid var(--line);
+  background:transparent; color:var(--ink); cursor:pointer; }
+.card.picked .pick { background:var(--pick); border-color:var(--pick); color:#fff; }
+body.only .card:not(.picked) { display:none; }
+.empty { color:var(--muted); padding:12px 0; }
+.legend { color:var(--muted); font-size:12px; margin:0 0 20px; }
+</style></head>
+<body>
+<header><h1>{{TITLE}}</h1>
+<div class="controls">
+  <span class="seg" data-toggle="mobile"><button type="button" aria-pressed="true">桌機比例</button><button type="button" aria-pressed="false">手機比例</button></span>
+  <span class="seg" data-toggle="dark"><button type="button" aria-pressed="true">淺色</button><button type="button" aria-pressed="false">深色</button></span>
+  <span class="seg" data-toggle="headline"><button type="button" aria-pressed="true">原圖</button><button type="button" aria-pressed="false">疊上標題</button></span>
+  <input id="headline" aria-label="預覽用的標題文字">
+  <span class="seg" data-toggle="only"><button type="button" aria-pressed="true">全部</button><button type="button" aria-pressed="false">只看已選</button></span>
+</div></header>
+<main>
+<p class="legend">每張都已過濾成「免費、可商用」。綠色＝不用標註；黃色＝需要標註或有風險（含人像、可能含商標）。按 ☆ 選取，選好的會存回 session 檔。</p>
+<div id="slots"></div>
+</main>
+<script>
+const CONFIG = {{CONFIG}};
+const SOURCE = { pexels: "Pexels", unsplash: "Unsplash", pixabay: "Pixabay", openverse: "Openverse", iconify: "Iconify" };
+const FLAG = { people: "可能含人像：只當情境圖，勿當真實客戶或代言", brand: "可能含商標或品牌" };
+let session, vocab = {};
+
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v);
+  }
+  for (const k of kids.flat()) if (k != null) n.append(k);
+  return n;
+}
+const ratioCss = (r) => r.replace(":", " / ");
+const chip = (text, cls = "") => el("span", { class: "chip " + cls, text });
+
+function licenseChips(r, slot, group) {
+  const out = [chip(SOURCE[r.source] || r.source)];
+  out.push(r.attribution_required ? chip(r.license + "・需標註", "warn") : chip(r.license + "・免標註", "ok"));
+  for (const f of r.flags || []) out.push(chip("⚠️ " + FLAG[f], "warn"));
+  if (r.hotlink) out.push(chip("以 CDN 連結使用"));
+  if (r.kind !== "icon" && r.width) {
+    out.push(chip(`${r.width}×${r.height}`));
+    const need = group.params && group.params.min_width;
+    const cap = r.max_download_width;
+    if (cap && need && cap < need) out.push(chip(`⚠️ 下載上限 ${cap}px`, "warn"));
+  }
+  return out;
+}
+
+function mediaFor(r, slot) {
+  const ratio = document.body.classList.contains("mobile") ? slot.mobile_ratio : slot.ratio;
+  if (r.kind === "icon") {
+    return el("div", { class: "icons" }, r.icons.map((full, i) => {
+      const term = r.terms[i].split("|")[0];
+      if (!full) return el("div", { class: "icon" }, el("span", { class: "glyph none" }), el("span", { text: term + "（無）" }));
+      const [p, n] = full.split(":");
+      const g = el("span", { class: "glyph", role: "img", "aria-label": full });
+      g.style.setProperty("--src", `url("https://api.iconify.design/${p}/${n}.svg")`);
+      return el("div", { class: "icon", title: full }, g, el("span", { text: term }));
+    }));
+  }
+  const box = el("div", { class: "media" });
+  box.style.aspectRatio = ratioCss(ratio);
+  if (r.kind === "video") {
+    const v = el("video", { muted: "", loop: "", playsinline: "", preload: "none", poster: r.thumb, src: r.video_preview });
+    v.muted = true;
+    box.addEventListener("mouseenter", () => v.play().catch(() => {}));
+    box.addEventListener("mouseleave", () => v.pause());
+    box.append(v);
+    if (r.duration) box.append(el("span", { class: "dur", text: r.duration + " 秒・移上去播放" }));
+  } else {
+    box.append(el("img", { src: r.preview || r.thumb, alt: r.alt || "", loading: "lazy" }));
+  }
+  const ov = el("div", { class: "overlay" });
+  ov.append(document.createTextNode(document.getElementById("headline").value), el("small", { text: "副標或說明文字放在這裡" }));
+  box.append(ov);
+  return box;
+}
+
+function card(r, slotKey, slot, group) {
+  const picked = (session.picks?.[slotKey] || []).includes(r.uid);
+  const c = el("article", { class: "card" + (picked ? " picked" : ""), "data-uid": r.uid });
+  const btn = el("button", { class: "pick", type: "button", text: picked ? "★ 已選" : "☆ 選這個" });
+  btn.addEventListener("click", async () => {
+    const on = !c.classList.contains("picked");
+    const res = await fetch("/pick", { method: "POST", body: JSON.stringify({ slot: slotKey, uid: r.uid, on }) });
+    if (!res.ok) return;
+    session.picks = await res.json();
+    c.classList.toggle("picked", on);
+    btn.textContent = on ? "★ 已選" : "☆ 選這個";
+  });
+  const who = r.kind === "icon"
+    ? el("div", { class: "who" }, el("strong", { text: r.set_name }), ` ・${r.coverage}/${r.terms.length} 個有對應`)
+    : el("div", { class: "who", title: r.alt }, r.author_url ? el("a", { href: r.author_url, target: "_blank", rel: "noopener", text: r.author }) : r.author);
+  c.append(mediaFor(r, slot), el("div", { class: "body" }, who,
+    el("div", { class: "chips" }, licenseChips(r, slot, group)),
+    el("div", { class: "actions" }, el("a", { href: r.page, target: "_blank", rel: "noopener", text: "原始頁面 ↗" }), btn)));
+  return c;
+}
+
+function render() {
+  const root = document.getElementById("slots");
+  root.replaceChildren();
+  for (const key of CONFIG.slots) {
+    const slot = session.slots[key];
+    if (!slot) continue;
+    const n = (session.picks?.[key] || []).length;
+    const sec = el("section", { class: "slot", id: key },
+      el("h2", { text: slot.label }),
+      el("div", { class: "slot-meta", text: `${key}・桌機 ${slot.ratio}・手機 ${slot.mobile_ratio}・已選 ${n}` }));
+    for (const g of slot.groups || []) {
+      const names = (g.styles || []).map((s) => vocab[s] ? `${vocab[s].name}` : s).join("、");
+      sec.append(el("div", { class: "group" },
+        el("h3", { text: g.label }),
+        el("div", { class: "why", text: [names, `搜尋：${g.query}`].filter(Boolean).join("｜") }),
+        g.items.length ? el("div", { class: "grid" }, g.items.map((r) => card(r, key, slot, g)))
+                       : el("div", { class: "empty", text: "這組沒有符合授權條件的結果，換個關鍵字試試。" })));
+    }
+    root.append(sec);
+  }
+}
+
+document.getElementById("headline").value = CONFIG.headline;
+document.getElementById("headline").addEventListener("input", (e) => {
+  document.querySelectorAll(".overlay").forEach((o) => { o.firstChild.textContent = e.target.value; });
+});
+document.querySelectorAll(".seg").forEach((seg) => {
+  const [off, on] = seg.querySelectorAll("button");
+  seg.addEventListener("click", (ev) => {
+    if (ev.target.tagName !== "BUTTON") return;
+    const key = seg.dataset.toggle, value = ev.target === on;
+    off.setAttribute("aria-pressed", String(!value));
+    on.setAttribute("aria-pressed", String(value));
+    document.body.classList.toggle(key, value);
+    if (key === "mobile") render();  // the crop ratio changes
+  });
+});
+
+Promise.all([fetch("/session.json").then((r) => r.json()), fetch("/vocab.json").then((r) => r.json())])
+  .then(([s, v]) => { session = s; vocab = v; render(); });
+</script>
+</body></html>

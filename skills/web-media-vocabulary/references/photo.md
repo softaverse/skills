@@ -1,0 +1,257 @@
+# 攝影風格
+
+照片的「感覺」拆成四個面向：光線色調、構圖、題材人物、紋理背景。一個網站通常各挑一個，組起來就是整站的攝影方向。和 `web-design-vocabulary` 同名的效果沿用同一個 id。
+
+每個條目的 **搜尋** 是英文關鍵字起手式（圖庫用英文搜最準），**篩選** 是 `search.py` 的參數。
+
+## 光線與色調
+
+- **高調攝影 (High-key)** `highkey` — 大面積亮白、陰影很淡，乾淨明亮。
+  - 感受：乾淨、輕盈、可信、現代
+  - 適合：SaaS、醫療、美妝、極簡品牌的 Hero 與功能配圖
+  - 搭配：negspace、stilllife、iconline
+  - 搜尋：`bright minimal`、`white background natural light`、`airy`
+  - 篩選：`--color white`
+  - 注意：白底網站上放高調照片，邊界會消失；需要時加淡陰影或圓角卡片框住
+- **低調攝影 (Low-key)** `lowkey` — 大面積暗部，只用一道光雕出主體。
+  - 感受：神秘、精品、戲劇性、專注
+  - 適合：精品、酒類、科技硬體、深色網站
+  - 搭配：macro、marble、neonnight
+  - 搜尋：`dark moody`、`low key lighting`、`dramatic light black background`
+  - 篩選：`--color black`
+  - 注意：暗部上放文字最好讀，但壓縮後暗部容易出現色階斷層，匯出品質不要壓太低
+- **自然光 (Natural Light)** `natlight` — 窗邊或戶外的柔和光線，不像棚拍。
+  - 感受：真實、溫和、有生活感
+  - 適合：生活風格、教育、社群、個人品牌
+  - 搭配：candid、hands、lifestyle
+  - 搜尋：`natural light`、`window light`、`soft daylight`
+  - 篩選：無
+  - 注意：最萬用的方向；搜尋時加上它，可以排掉很多棚拍感重的圖
+- **黃金時刻 (Golden Hour)** `goldenhour` — 日出日落前後的低角度暖光，金黃色、長影子。
+  - 感受：溫暖、懷舊、希望、浪漫
+  - 適合：旅遊、戶外、非營利、品牌故事段落
+  - 搭配：candid、landscape、film
+  - 搜尋：`golden hour`、`sunset light`、`warm backlight`
+  - 篩選：`--color orange` 或 `--color yellow`
+  - 注意：整站都用暖光會偏甜；適合用在一兩個情緒段落
+- **底片風 (Film / Analog)** `film` — 顆粒、偏色、柔和的對比，像底片相機拍的。
+  - 感受：有溫度、懷舊、有個性、不商業
+  - 適合：咖啡、選物、創作者、作品集
+  - 搭配：natlight、candid、grain
+  - 搜尋：`film photography`、`35mm film`、`analog grain`
+  - 篩選：無
+  - 注意：不同照片的底片色差很大，挑的時候要比整組的色調是否一致
+- **黑白 (Black & White)** `bw` — 去掉顏色，只剩明暗與質感。
+  - 感受：經典、嚴肅、專業、有份量
+  - 適合：律師事務所、建築、攝影師、品牌故事、團隊頁
+  - 搭配：archline、lowkey、gray1
+  - 搜尋：`black and white`、`monochrome`
+  - 篩選：`--color bw`（Unsplash、Pixabay 支援；Pexels 沒有黑白篩選，會略過）
+  - 注意：要讓整站照片風格一致，最簡單的作法就是全部轉黑白；可以下載彩色版，再用 CSS `filter: grayscale(1)` 統一
+- **粉彩色調 (Pastel Tones)** `pastelphoto` — 低飽和的粉、薄荷、奶油色，柔和明亮。
+  - 感受：可愛、溫柔、年輕、輕鬆
+  - 適合：美妝、甜點、女性品牌、兒童
+  - 搭配：stilllife、flatlay、macaron
+  - 搜尋：`pastel`、`pastel background`、`soft colors`
+  - 篩選：`--color pink` 或品牌色 hex（Pexels）
+  - 注意：粉彩照片配飽和的品牌色會打架；先確認品牌色本身也偏柔和
+- **霓虹夜景 (Neon Night)** `neonnight` — 夜晚城市的霓虹、招牌與反光。
+  - 感受：科技、都市、夜生活、賽博
+  - 適合：遊戲、音樂、夜店活動、深色科技網站
+  - 搭配：lowkey、urban、cyber
+  - 搜尋：`neon city night`、`neon lights`、`cyberpunk street`
+  - 篩選：`--color purple` 或 `--color blue`
+  - 注意：招牌上的文字常是真實店名或品牌，留意 ⚠️ 商標標記
+
+## 構圖
+
+- **負空間 (Negative Space)** `negspace` — 主體只占畫面一小角，其他大片是乾淨的留白。
+  - 感受：安靜、高級、有呼吸感
+  - 適合：**要疊標題的 Hero 和橫幅**，這是網站最常需要的構圖
+  - 搭配：highkey、minimal、bigtype
+  - 搜尋：`copy space`、`negative space`、`minimal background`
+  - 篩選：`--orientation landscape`
+  - 注意：在比較頁按「疊上標題」確認文字落在空的那一側；手機版裁切後空白常常不見，要另外看手機比例
+- **俯拍平鋪 (Flat Lay)** `flatlay` — 從正上方拍物品整齊排列。
+  - 感受：有條理、精心、生活風格
+  - 適合：電商、文具、美食、工作術、部落格封面
+  - 搭配：pastelphoto、stilllife
+  - 搜尋：`flat lay`、`top view desk`、`overhead`
+  - 篩選：無
+  - 注意：畫面裡的筆電、手機常有品牌 Logo
+- **微距 (Macro)** `macro` — 極近距離的細節與質感。
+  - 感受：精密、專注、有質感、科學
+  - 適合：硬體、材料、保養品、科技的功能說明
+  - 搭配：lowkey、shallowdof
+  - 搜尋：`macro`、`close up texture`、`extreme close up`
+  - 篩選：無
+  - 注意：微距照片放成小卡片會看不出是什麼，適合大尺寸展示
+- **空拍俯視 (Aerial)** `aerial` — 從空中往下拍的地景、城市、海岸。
+  - 感受：宏觀、自由、有規模感
+  - 適合：旅遊、地產、物流、永續、品牌開場
+  - 搭配：landscape、aerialloop（影片）
+  - 搜尋：`aerial view`、`drone shot`、`top down city`
+  - 篩選：`--orientation landscape`
+  - 注意：空拍圖細節多，疊文字要加深色遮罩
+- **建築線條 (Architectural Lines)** `archline` — 建築物的線條、幾何、重複結構。
+  - 感受：理性、專業、穩重、現代
+  - 適合：B2B、顧問、金融、建築、法律
+  - 搭配：bw、swiss、negspace
+  - 搜尋：`architecture minimal`、`building lines`、`modern architecture abstract`
+  - 篩選：無
+  - 注意：沒有人物也很有份量，是「專業感」又不落俗套的好選擇
+- **淺景深 (Shallow Depth of Field)** `shallowdof` — 只有主體清楚，前後都柔和地糊掉。
+  - 感受：聚焦、溫柔、有質感
+  - 適合：產品情境、人物側寫、文章封面
+  - 搭配：natlight、macro、bokeh
+  - 搜尋：`shallow depth of field`、`blurred background`
+  - 篩選：無
+  - 注意：模糊的部分正好可以放文字
+- **剪影 (Silhouette)** `silhouette` — 逆光下只剩輪廓的主體。
+  - 感受：詩意、象徵、匿名
+  - 適合：品牌故事、非營利、運動、心理健康
+  - 搭配：goldenhour、negspace
+  - 搜尋：`silhouette sunset`、`backlit silhouette`
+  - 篩選：無
+  - 注意：人物無法辨識，是避開肖像風險的方法之一
+- **動態模糊 (Motion Blur)** `mblur` — 拍出速度感的拖影。
+  - 感受：速度、能量、都市節奏
+  - 適合：運動、物流、交通、新創
+  - 搭配：urban、neonnight
+  - 搜尋：`motion blur`、`long exposure city`、`light trails`
+  - 篩選：無
+  - 注意：小尺寸時看起來像沒對焦，適合大圖
+- **極簡靜物 (Minimal Still Life)** `stilllife` — 一兩個物件放在素色背景上，安靜地構圖。
+  - 感受：精品、克制、設計感
+  - 適合：精品、選物、香氛、保養品、品牌形象
+  - 搭配：highkey、negspace、pastelphoto
+  - 搜尋：`minimal still life`、`object on plain background`
+  - 篩選：可加品牌色
+  - 注意：物件常是別家的產品；用在「概念」段落，不要讓人誤會是你們家的商品
+
+## 題材與人物
+
+- **自然紀實 (Candid)** `candid` — 人物沒有看鏡頭、沒有擺拍，像被順手拍下的真實瞬間。
+  - 感受：真實、可信、有溫度，**最能去掉「圖庫感」**
+  - 適合：社群、教育、服務業、關於我們
+  - 搭配：natlight、hands、goldenhour
+  - 搜尋：`candid`、`unposed`、`documentary`、`real people`
+  - 篩選：無
+  - 注意：⚠️ 有可辨識人臉。可以當情境圖，不能當真實客戶、員工或代言人
+- **手部特寫 (Hands at Work)** `hands` — 只拍手在做事：打字、寫字、做菜、組裝。
+  - 感受：專注、手作、真實，有人味又不露臉
+  - 適合：功能說明、服務流程、工藝、教學
+  - 搭配：natlight、macro、shallowdof
+  - 搜尋：`hands typing`、`hands working`、`hands close up`
+  - 篩選：無
+  - 注意：想要「有人」但不想處理肖像問題時的首選
+- **工作情境 (Workspace)** `workspace` — 桌面、筆電、咖啡、筆記本，沒有人或人很小。
+  - 感受：專業、生產力、日常
+  - 適合：SaaS、生產力工具、部落格、遠距工作
+  - 搭配：highkey、flatlay、negspace
+  - 搜尋：`minimal workspace`、`desk setup`、`home office`
+  - 篩選：無
+  - 注意：筆電螢幕上常有別家軟體畫面或品牌 Logo；最好挑螢幕是黑的或拍不到的
+- **團隊協作 (Teamwork)** `teamwork` — 多人一起討論、開會、白板。
+  - 感受：合作、成長、活力
+  - 適合：招募頁、企業服務、課程
+  - 搭配：candid、natlight
+  - 搜尋：`team meeting candid`、`coworkers discussing`
+  - 篩選：無
+  - 注意：⚠️ 最容易「圖庫感」爆表的題材：避開握手、對鏡頭比讚、一群人一起指著螢幕笑。圖庫裡的人**不能**當成你們的團隊
+- **生活風格 (Lifestyle)** `lifestyle` — 日常生活裡使用東西的樣子：在家、通勤、旅行。
+  - 感受：親近、嚮往、有溫度
+  - 適合：消費品、App、旅遊、居家
+  - 搭配：natlight、candid、goldenhour
+  - 搜尋：`lifestyle`、`everyday life`、`cozy home`
+  - 篩選：無
+  - 注意：⚠️ 多半有人像
+- **自然風景 (Nature & Landscape)** `landscape` — 山、海、森林、天空。
+  - 感受：開闊、平靜、永續、自由
+  - 適合：戶外、永續、健康、旅遊、背景大圖
+  - 搭配：aerial、goldenhour、earth
+  - 搜尋：`mountain landscape`、`forest`、`ocean calm`
+  - 篩選：`--color green` 或 `--color blue`
+  - 注意：風景是最安全的題材（沒有人像、沒有商標），但也最容易顯得「跟產品無關」
+- **城市街景 (Urban)** `urban` — 街道、建築、通勤人潮。
+  - 感受：現代、節奏、多元
+  - 適合：新創、地產、交通、媒體
+  - 搭配：mblur、archline、neonnight
+  - 搜尋：`city street`、`urban`、`downtown`
+  - 篩選：無
+  - 注意：⚠️ 招牌、車牌、路人臉
+- **抽象光影 (Abstract Light)** `abstract` — 光線、液體、玻璃折射、彩色模糊，看不出具體物件。
+  - 感受：科技、創新、想像空間
+  - 適合：AI、科技、金融科技的 Hero 背景
+  - 搭配：lowkey、blurgrad、aurora
+  - 搜尋：`abstract light`、`light refraction`、`liquid abstract`、`glass abstract`
+  - 篩選：可加品牌色
+  - 注意：很多「抽象科技圖」其實是 AI 生成或 3D 渲染，風格會跟照片混在一起；整站要統一
+- **食物 (Food)** `food` — 料理、食材、餐桌。
+  - 感受：可口、溫暖、分享
+  - 適合：餐廳、食譜、外送、食品品牌
+  - 搭配：flatlay、natlight、shallowdof
+  - 搜尋：`food top view`、`healthy food natural light`
+  - 篩選：無
+  - 注意：餐廳網站應該用自己的菜；圖庫食物只適合部落格或概念段落
+
+## 紋理與背景
+
+給 `texture` 版位，或當區塊背景、卡片底紋用。一般會再疊一層色調遮罩（`overlay`）或降低透明度。
+
+- **紙張紋理 (Paper Texture)** `papertex` — 紙的纖維、皺褶、再生紙質感。
+  - 感受：手作、溫度、文藝
+  - 適合：文創、出版、手作品牌的背景
+  - 搭配：doodle、film、serif
+  - 搜尋：`paper texture`、`recycled paper background`
+  - 篩選：`--orientation any`
+  - 注意：要當重複背景時，挑邊緣能無縫拼接的；不行就用一張大圖 `background-size: cover`
+- **混凝土／石材 (Concrete & Stone)** `concrete` — 清水模、水泥、石面。
+  - 感受：工業、原始、穩重
+  - 適合：建築、設計工作室、工業風品牌
+  - 搭配：archline、industrial、bw
+  - 搜尋：`concrete texture`、`stone wall texture`
+  - 篩選：`--color gray`
+  - 注意：對比要壓低，免得搶走上面的文字
+- **大理石紋 (Marble)** `marble` — 石材紋理，有精品和建築感。
+  - 感受：奢華、經典、精緻
+  - 適合：精品、珠寶、美妝、婚禮
+  - 搭配：lowkey、blackgold、serif
+  - 搜尋：`marble texture`、`white marble`
+  - 篩選：`--color white` 或 `--color black`
+  - 注意：大理石很容易顯得俗氣；只用在小面積或配極簡排版
+- **木紋 (Wood Grain)** `wood` — 溫暖的自然材質。
+  - 感受：自然、溫暖、手作
+  - 適合：家居、咖啡、生活風格
+  - 搭配：natlight、earth、japandi
+  - 搜尋：`wood texture`、`oak wood grain`
+  - 篩選：`--color brown`
+  - 注意：木紋的顏色要和品牌色協調，偏黃和偏紅的木頭感覺差很多
+- **布料／針織 (Fabric / Knit)** `fabric` — 織物紋理，柔軟有手感。
+  - 感受：柔軟、親密、舒適
+  - 適合：服飾、家紡、母嬰
+  - 搭配：pastelphoto、macro
+  - 搜尋：`fabric texture`、`linen texture`、`knit close up`
+  - 篩選：無
+  - 注意：細密的紋理縮小後容易產生摩爾紋
+- **散景光斑 (Bokeh)** `bokeh` — 失焦的圓形光點，營造夢幻景深。
+  - 感受：夢幻、節慶、溫暖
+  - 適合：活動、節日檔期、深色背景
+  - 搭配：lowkey、goldenhour
+  - 搜尋：`bokeh lights`、`bokeh background`
+  - 篩選：`--color black` 或 `--color yellow`
+  - 注意：節慶感很強，平時用會有點過時
+- **模糊漸層 (Blurred Gradient)** `blurgrad` — 照片糊到只剩柔和的色塊漸層。
+  - 感受：柔和、現代、科技
+  - 適合：Hero 背景、卡片底、App 介紹頁
+  - 搭配：abstract、glass、aurora
+  - 搜尋：`blurred gradient`、`soft gradient background`、`defocused colors`
+  - 篩選：品牌色
+  - 注意：很多時候用 CSS 漸層就做得出來，比圖片輕得多；只有想要「照片才有的雜訊和層次」時才用圖
+- **水面／天空 (Water & Sky)** `sky` — 水面波紋、雲、天空的漸層。
+  - 感受：平靜、開闊、清新
+  - 適合：健康、保險、永續、背景大圖
+  - 搭配：landscape、negspace、aerial
+  - 搜尋：`clear sky clouds`、`water surface ripples`
+  - 篩選：`--color blue`
+  - 注意：天空本身就是天然的負空間，很適合放標題
