@@ -68,6 +68,8 @@ themselves have no runtime.
   - [**Write README**](./skills/write-readme) — restructure a README into the 8-section entry-point layout and move deep docs into `docs/`.
   - [**Obsidian Formatter**](./skills/obsidian-formatter) — format Markdown so tables, code blocks, and headings render correctly in Obsidian.
   - [**Draw Mermaid Diagrams for Obsidian**](./skills/draw-mermaid-diagrams-for-obsidian) — create Mermaid diagrams tailored for Obsidian notes.
+- **Writing and copy**
+  - [**Plain Business Language**](./skills/plain-business-language) — rewrite engineering jargon into plain 繁體中文 that non-technical business owners understand: a ~150-term glossary (AI, integrations, dev process, systems, marketing, data, security, services) plus a buzzword blacklist, an owner pain-point library mapped to services, rewrite patterns and headline formulas, and a before/after table before any file is changed.
 - **Planning and skill authoring**
   - [**Idea to Product**](./skills/idea-to-product) — turn product ideas into concise, actionable plans and implementation roadmaps.
   - [**Route Skill References**](./skills/route-skill-references) — refactor a bloated skill into a lean `SKILL.md` plus on-demand reference files.
