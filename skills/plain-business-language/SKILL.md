@@ -19,7 +19,7 @@ Read only what the current task needs.
 
 | File | Read when |
 |---|---|
-| `references/glossary.md` | **First stop** for any rewrite. ~180 jargon terms by category, each with plain wording and when the original term may stay. Includes a blacklist of empty buzzwords and a section of spoken engineer slang and English abbreviations (rollback, blocker, ETA, scope creep…) |
+| `references/glossary.md` | **First stop** for any rewrite. ~200 jargon terms by category, each with plain wording and when the original term may stay. Includes a blacklist of empty buzzwords and a section of spoken engineer slang and English abbreviations (rollback, blocker, ETA, scope creep…) |
 | `references/pain-points.md` | Writing headlines, service intros, or problem sections. Owner pain points by business area, each mapped to the service behind it |
 | `references/patterns.md` | Restructuring whole sentences or paragraphs: rewrite patterns, headline formulas, before/after examples, self-introductions. §10 converts metrics (99.9%, 人天, ms, token) into time and money; §11 covers client communication (incidents, progress, delays, declining, extra scope, asking the owner to do something) |
 
