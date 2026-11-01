@@ -1,6 +1,6 @@
 ---
 name: plain-business-language
-description: Rewrite engineering jargon into plain 繁體中文 that a small-business owner (老闆) who never touches tech can understand and repeat to others — for website copy, service pages, hero headlines, proposals, quotes, self-introductions, and client communication (LINE replies, progress updates, incident reports, delay notices, meeting explanations) aimed at non-technical clients. Use when the user says 「老闆看不懂」「太工程師了」「白話一點」「講人話」「客戶聽得懂的說法」「這個詞要怎麼跟客戶講」, asks how to explain API / AI Agent / MVP / 串接 / 自動化 to a client, wants to audit a site or proposal for jargon, or is writing a positioning line for a tech service sold to non-technical buyers. Scans for jargon and empty buzzwords, rewrites from the owner's daily pain, checks consistency, and shows a before/after table before touching any file. Do not use for content written for developers (technical articles, docs, READMEs), for English copy, or for visual design discussions (web-design-vocabulary).
+description: Rewrite engineering jargon into plain 繁體中文 that a small-business owner (老闆) who never touches tech can understand and repeat to others — for website copy, service pages, hero headlines, proposals, quotes, self-introductions, and engineer-speak in client messages (LINE replies, progress updates, meetings) aimed at non-technical clients. Use when the user says 「老闆看不懂」「太工程師了」「白話一點」「講人話」「客戶聽得懂的說法」「這個詞要怎麼跟客戶講」, asks how to explain API / AI Agent / MVP / 串接 / 自動化 to a client, wants to audit a site or proposal for jargon, or is writing a positioning line for a tech service sold to non-technical buyers. Scans for jargon and empty buzzwords, rewrites from the owner's daily pain, checks consistency, and shows a before/after table before touching any file. Do not use for content written for developers (technical articles, docs, READMEs), for English copy, or for visual design discussions (web-design-vocabulary).
 ---
 
 # Plain Business Language
@@ -21,7 +21,7 @@ Read only what the current task needs.
 |---|---|
 | `references/glossary.md` | **First stop** for any rewrite. ~200 jargon terms by category, each with plain wording and when the original term may stay. Includes a blacklist of empty buzzwords and a section of spoken engineer slang and English abbreviations (rollback, blocker, ETA, scope creep…) |
 | `references/pain-points.md` | Writing headlines, service intros, or problem sections. Owner pain points by business area, each mapped to the service behind it |
-| `references/patterns.md` | Restructuring whole sentences or paragraphs: rewrite patterns, headline formulas, before/after examples, self-introductions. §10 converts metrics (99.9%, 人天, ms, token) into time and money; §11 covers client communication (incidents, progress, delays, declining, extra scope, asking the owner to do something) |
+| `references/patterns.md` | Restructuring whole sentences or paragraphs: rewrite patterns, headline formulas, before/after examples, self-introductions. §10 converts metrics (99.9%, 人天, ms, token) into time and money; §11 rewrites spoken engineer slang in client messages |
 
 A term missing from the glossary is not a reason to keep it. Translate it with the
 same principles (what it does for the owner, in their words), and mention the gap to
@@ -36,7 +36,7 @@ Before changing anything, sort each piece of content by reader:
 | 老闆 (non-technical buyer) | hero, service pages, pricing, contact page, nav labels, SEO description, proposals, quotes | Rewrite fully |
 | 開發者 | technical articles, open-source resources, docs, talks | Leave alone. Jargon here builds credibility with the people who refer clients |
 | Mixed | about page, case studies | Lead with the owner's outcome; put tech stack in a secondary spot (a small 「使用技術」 line at the end) |
-| 已合作的客戶 | LINE replies, progress updates, incident reports, delay notices | Rewrite in the order 結果 → 原因（一句）→ 影響 → 下一步, and state any cost impact. See `patterns.md` §11 |
+| 已合作的客戶 | LINE replies, progress updates, meeting explanations | Replace the jargon and keep the message's facts as they are. See `patterns.md` §11 |
 
 If the user has already decided which pages are in scope, follow that and don't
 reopen it.
@@ -74,7 +74,6 @@ one short message that lists everything missing:
 - **Money**: total price, monthly fees, cost of the alternative. Needed for quotes, proposals, and 「建議不做」 messages
 - **Industry and customer**: who the client sells to. Needed to pass the 換人測試. Without it, a generic sentence is the best you can do
 - **Real numbers**: order volume, average order value, time currently spent. Needed before converting anything into 「每月省 X 小時／X 元」
-- **Impact facts** for incidents: how long it was down, whether orders or data were lost
 
 If the user wants a draft anyway, write it with visible placeholders (「X 萬元」「每月約 X 元」) and list what to fill in. Never put in a plausible-looking number.
 
@@ -89,7 +88,6 @@ Run every rewritten sentence through these. Any 「否」 means rewrite again.
 - **一致性**: is the same service called the same thing in every place, and is the pronoun consistent?
 - **沒有黑名單詞**: no word from the buzzword blacklist survived.
 - **沒有編造**: every number, price, and outcome came from the user or is a marked placeholder.
-- **客戶溝通**: does the message say whether the problem is fixed, whether anything was lost, whether it costs extra, and what happens next?
 
 ## Step 5: Show before touching files
 
