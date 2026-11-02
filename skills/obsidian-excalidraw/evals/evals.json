@@ -1,0 +1,26 @@
+{
+  "skill_name": "obsidian-excalidraw",
+  "evals": [
+    {
+      "id": 1,
+      "name": "create-flowchart-from-requirements",
+      "prompt": "會員註冊的需求如下：使用者填寫 Email 和密碼後，系統先檢查 Email 格式，格式錯就請他重填；格式對再檢查是否已註冊，已註冊就提示去登入。沒註冊過就建立未啟用帳號並寄驗證信。使用者 24 小時內點驗證連結就啟用帳號、註冊完成；逾時可以要求重寄驗證信，最多重寄 3 次，超過就顯示請聯絡客服。幫我在 Obsidian 畫成一張 Excalidraw 圖，存成 registration.excalidraw.md。",
+      "expected_output": "A new .excalidraw.md file containing a flowchart: start/end, ≥3 decision diamonds (格式/已註冊/24小時內/重寄次數) with labelled branches, retry loops, the 3-resend limit and 聯絡客服 outcome; bound arrows; no overlaps.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "add-architecture-preserve-user-edits",
+      "prompt": "我剛在 Obsidian 改過 drawing.excalidraw.md（加了一則註記、改了 frame 名稱）。請在現有內容下方加一張系統架構圖：使用者用 Web（Next.js）和 iOS App，都打 API Gateway；Gateway 後面是 Order Service 和 Member Service（都是 NestJS），各自有自己的 PostgreSQL；Order Service 下單後發事件到 Kafka，由 Notification Service 消費，再透過第三方 SendGrid 寄信；付款走第三方 Stripe（Order Service 呼叫）。第三方服務要看得出是外部的。不要動到我原本的內容和註記。",
+      "expected_output": "Architecture diagram added below the existing frame (no overlap), all 11 components present with call/event arrows, third-party services visually distinct (dashed or different style), async event edges distinguishable; user's note and renamed frame preserved; backup made.",
+      "files": ["evals/fixtures/fixture-arch.excalidraw.md"]
+    },
+    {
+      "id": 3,
+      "name": "add-sequence-diagram",
+      "prompt": "drawing.excalidraw.md 裡已經有一個「登入功能」的簡單流程。幫我在它下面補一張時序圖，說明 Google 登入（OAuth 2.0 授權碼流程）實際怎麼運作：參與者是瀏覽器、我們的 App Server、Google 授權伺服器。要包含導向授權頁、使用者同意、帶 code 回 callback、App Server 驗證 state 後用 code 換 access token、拿 token 取使用者資料、最後設定登入 session 回瀏覽器。回應要和請求區分開來。",
+      "expected_output": "A sequence diagram below the existing frame: 3 participants with lifelines, ≥7 time-ordered messages including redirect, consent, callback with code, state check, code→token exchange, userinfo, session cookie; responses dashed; existing flow untouched; backup made.",
+      "files": ["evals/fixtures/fixture-seq.excalidraw.md"]
+    }
+  ]
+}

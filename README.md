@@ -68,6 +68,7 @@ themselves have no runtime.
   - [**Write README**](./skills/write-readme) — restructure a README into the 8-section entry-point layout and move deep docs into `docs/`.
   - [**Obsidian Formatter**](./skills/obsidian-formatter) — format Markdown so tables, code blocks, and headings render correctly in Obsidian.
   - [**Draw Mermaid Diagrams for Obsidian**](./skills/draw-mermaid-diagrams-for-obsidian) — create Mermaid diagrams tailored for Obsidian notes.
+  - [**Obsidian Excalidraw**](./skills/obsidian-excalidraw) — turn requirements, processes, and architectures into hand-drawn Excalidraw diagrams in Obsidian (`.excalidraw.md`): flowcharts, swimlanes, layered architecture, sequence, state, ER, trees, timelines, and tables with automatic layout, a real Excalidraw render to check the result, and safe edits that keep what the user drew by hand.
 - **Writing and copy**
   - [**Plain Business Language**](./skills/plain-business-language) — rewrite engineering jargon into plain 繁體中文 that non-technical business owners understand: a ~200-term glossary (AI, integrations, dev process, systems, marketing, data, security, services, spoken engineer slang) plus a buzzword blacklist, an owner pain-point library mapped to services, rewrite patterns and headline formulas, metric-to-time/money conversion, before/after examples for engineer slang in client messages, and a before/after table before any file is changed.
 - **Planning and skill authoring**
