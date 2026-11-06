@@ -9,7 +9,7 @@ Find what is eating disk space on macOS and produce a prioritized, tiered cleanu
 
 ## Workflow
 
-1. **Scan** — Run the bundled script and save its output to the scratchpad (it can take a few minutes on a large home directory):
+1. **Scan** — Run the bundled script and save its output to the scratchpad (it walks the home directory once, about a minute on a large one; entries under 50 MB are omitted, override with `MIN_KB=...`):
 
    ```bash
    bash <skill-dir>/scripts/disk-audit.sh [project-dir ...] > <scratchpad>/disk-audit.txt 2>&1

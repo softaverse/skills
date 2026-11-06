@@ -12,6 +12,7 @@ Deleting these costs only re-download or rebuild time.
 | Next.js `.next/`, `.turbo/`, `.parcel-cache/` | `rm -rf .next` | |
 | Generic `dist/`, `build/` in JS projects | `rm -rf dist` | Check it is not a committed output folder |
 | Rust `target/` | `cargo clean` | |
+| Android `.cxx/` (app and `node_modules/*/android/.cxx`) | `rm -rf .cxx` or `./gradlew clean` | Native (NDK) build output, often 1 GB+ in React Native projects |
 | `~/.npm` | `npm cache clean --force` | |
 | `~/Library/pnpm`, `~/.pnpm-store` | `pnpm store prune` | Keeps packages still linked by projects |
 | Yarn cache | `yarn cache clean` | |
