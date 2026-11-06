@@ -76,6 +76,7 @@ themselves have no runtime.
   - [**Route Skill References**](./skills/route-skill-references) — refactor a bloated skill into a lean `SKILL.md` plus on-demand reference files.
 - **System maintenance**
   - [**Disk Audit**](./skills/disk-audit) — scan a macOS disk for reclaimable space and report a tiered cleanup list with commands.
+  - [**Push Notify**](./skills/push-notify) — push messages to your phone through a self-hosted Scheduler server: create a scheduled script that pushes its results (upload, install deps, create the job, test run), add a `notify()` client to any program or GitHub Actions, or send one message now — URL and token always read from local `PUSH_URL` / `PUSH_TOKEN`.
 - **Audio**
   - [**Voice Polish**](./skills/voice-polish) — polish a voiceover or podcast recording with an ffmpeg vocal chain: even out tone and level differences between clips, audition presets at matched loudness, tweak, and master to a platform loudness target.
 - **Video production**
